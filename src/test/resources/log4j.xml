@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="kr.green.testgame">
+	<logger name="kr.green.game">
 		<level value="info" />
 	</logger>
 	

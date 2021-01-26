@@ -1,4 +1,4 @@
-package kr.green.testgame;
+package kr.green.game;
 
 import java.text.DateFormat;
 import java.util.Date;
