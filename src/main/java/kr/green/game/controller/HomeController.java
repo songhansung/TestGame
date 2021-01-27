@@ -1,4 +1,4 @@
-package kr.green.game;
+package kr.green.game.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -26,5 +26,10 @@ public class HomeController {
 		mv.addObject("setHeader","타일즈");
 		return mv;
 	}
-	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public ModelAndView loginView(ModelAndView mv) {
+		mv.setViewName("/login/login");
+		mv.addObject("setHeader","타일즈");
+		return mv;
+	}
 }

@@ -50,7 +50,7 @@
         .header-bar .header-right{
             /* background-color: blue; */
             height: 100%;
-            flex: 1;
+            flex: 1.5;
             padding-top: 20px;
             padding-bottom: 20px;
             box-sizing: border-box;
