@@ -5,8 +5,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<style>
+        .footer-bar{
+            width: 100%;
+            height: 300px;
+            background-color: black;
+        }
+    </style>
 </head>
 <body>
-	푸터
+	<div class="footer-bar">
+
+    </div>
 </body>
 </html>

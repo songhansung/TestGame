@@ -5,10 +5,17 @@
 <html>
 <head>
 	<title>Home</title>
+	<style>
+        .main-body{
+            background-color: rgb(60,60,60);
+            width: 100%;
+            height:  500px;
+        }
+    </style>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
+	<div class="main-body">
+
+    </div>
 </body>
 </html>
