@@ -4,6 +4,8 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +44,7 @@ public class HomeController {
 	//로그인 기능
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView loginPost(ModelAndView mv,UserVo user) {
-		//UserVo 에게 아이디와 비밀번호를 가져오라고시킴 
+		//UserService 에게 UserVo의 아이디와 비밀번호를 가져오라고시킴 
 		UserVo isUser = userService.isUser(user.getId(),user.getPw());
 		mv.addObject("user", isUser);
 		//isUser의 정보가 null이아니면 메인으로 없으면 로그인창으로

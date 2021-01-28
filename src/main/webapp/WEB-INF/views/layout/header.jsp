@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +13,7 @@
             text-decoration: none;
             color: white;
             font-size: 12px;
+            
         }
         .header-bar{
             width: 100%;
@@ -50,7 +52,7 @@
         .header-bar .header-right{
             /* background-color: blue; */
             height: 100%;
-            flex: 1.5;
+            flex: 2;
             padding-top: 20px;
             padding-bottom: 20px;
             box-sizing: border-box;
@@ -63,16 +65,18 @@
             box-sizing: border-box;
             line-height: 40px;
             margin-left: 20px;
-            margin-right: 20px;
+            margin-right: 40px;
+            font-weight: bold;
         }
         .header-bar .header-right .box.link-join{
             background-color: rgb(11,196,226);
             box-sizing: border-box;
-            padding: 10px;
+            padding: 10px 35px 10px 35px;
             height: 100%;
             line-height: 20px;
             margin-right: 10px;
             border-radius: 3px;
+            font-weight: bold;
         }
         .header-bar .header-right .box.link-join>a{
             padding-left: 10px;
@@ -81,7 +85,52 @@
             text-align: center;
             height: 100%;
         }
+        .header-bar .header-right .login-box{
+            float: right;
+            height: 100%;
+        }
+        .header-bar .header-right .login-box .login-inbox{
+            width: 100px;
+            line-height: 20px;
+            height: 100%;
+            text-align: right;
+            float: left;
+        }
+        .header-bar .header-right .login-box .login-inbox .login-box-id{
+            position: relative;
+        }
+        .header-bar .header-right .login-box .login-inbox .login-box-id>i{
+            margin-left: 5px;
+        }
+        .header-bar .header-right .login-minibox{
+            width: 120px;
+            height: 200px;
+            position: absolute;
+            background-color:red;
+            top: 20px;
+            left: -20px;
+            text-align: center;
+            font-weight: bold;
+            display: none;
+        }
+        .header-bar .header-right .login-minibox>a{
+            display: block;
+        }
+        .header-bar .header-right .login-box .login-inbox .login-box-id .login-id-btn{
+            background-color: black;
+            border: none;
+        }
+        .header-bar .header-right .login-box .login-box-img{
+            width: 50px;
+            height: 100%;
+            display: inline;
+            border: 1px solid white;
+            margin-left: 20px;
+            float: right;
+            margin-right: 50px;
+        }
     </style>
+    <script src="https://kit.fontawesome.com/3a4fdcd1c5.js" crossorigin="anonymous"></script>
 </head>
 <body>
 	 <div class="header-bar">
@@ -103,18 +152,53 @@
                 <a href="#">고객센터</a>
             </div>
         </div>
-        <div class="header-right">  
-            <div class="box link-join">
-                <a href="<%=request.getContextPath()%>/signup">
-                    <span>회원가입</span>
-                </a>
-            </div>      
-            <div class="box login">
-                <a href="<%=request.getContextPath()%>/login">
-                    <span>로그인</span>
-                </a>
-            </div>           
+        <div class="header-right">
+        	<c:if test="${user == null}">   
+	            <div class="box link-join">
+	                <a href="<%=request.getContextPath()%>/signup">
+	                    <span>회원가입</span>
+	                </a>
+	            </div>                
+				<div class="box login">
+					<a href="<%=request.getContextPath()%>/login">
+						<span>로그인</span>
+					</a>
+				</div>
+            </c:if>
+            <c:if test="${user != null}">
+            <div class="login-box">
+                <div class="login-inbox">
+                    <div class="login-box-id">
+                    	<button class="login-id-btn">
+                        <span>${user.id}</span><i class="fas fa-angle-down"></i>
+                        </button>
+                        <div class="login-minibox">
+                            <a href="#">마이페이지</a>
+                            <a href="#">마이페이지</a>
+                            <a href="#">마이페이지</a>
+                            <a href="#">마이페이지</a>
+                            <a href="#">마이페이지</a>
+                            <a href="#">마이페이지</a>
+                        </div>
+                    </div>
+                    <div class="login-box-money">
+                        <span>${user.money}원</span>
+                    </div>
+                </div>
+                <div class="login-box-img">
+                    <a href="">3252</a>
+                </div>
+            </div>
+            </c:if>
+            <div class="mybox"></div>           
         </div>
     </div>
+    <script>
+        $(function(){
+            $('.login-id-btn').click(function(){
+                $('.login-minibox').toggle();
+            })
+        })
+    </script>
 </body>
 </html>
