@@ -105,12 +105,12 @@
         </div>
         <div class="header-right">  
             <div class="box link-join">
-                <a href="#">
+                <a href="<%=request.getContextPath()%>/signup">
                     <span>회원가입</span>
                 </a>
             </div>      
             <div class="box login">
-                <a href="#">
+                <a href="<%=request.getContextPath()%>/login">
                     <span>로그인</span>
                 </a>
             </div>           

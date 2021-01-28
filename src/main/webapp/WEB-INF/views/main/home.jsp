@@ -7,7 +7,7 @@
 	<title>Home</title>
 	<style>
         .main-body{
-            background-color: rgb(60,60,60);
+            /* background-color: rgb(60,60,60); */
             width: 100%;
             height:  500px;
         }
@@ -15,7 +15,7 @@
 </head>
 <body>
 	<div class="main-body">
-
+		${user}
     </div>
 </body>
 </html>

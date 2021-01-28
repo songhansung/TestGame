@@ -2,6 +2,12 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="kr.green.game.dao.UserDao">
-
+<mapper namespace="kr.green.game.dao.UserDao">
+	<insert id="insertUser" parameterType="kr.green.game.vo.UserVo">
+  	insert into user(id,name,pw,email,phone)
+  		values(#{user.id},#{user.name},#{user.pw},#{user.email},#{user.phone})
+  	</insert>
+  	<select id="getUser" resultType="kr.green.game.vo.UserVo">
+    	select * from user where id = #{id}
+  	</select>
 </mapper>

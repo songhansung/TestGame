@@ -25,8 +25,9 @@
         }
         .login-body .login-box{
             height: 100%;
-            background-color: rgb(30,30,30);
-            padding: 50px 40px 20px 40px;
+            /* background-color: rgb(30,30,30); */
+            background-color: white;
+            padding: 50px 100px 20px 100px;
         }
         .login-body .login-box .login-inbox{
             height: 100%;
@@ -43,6 +44,10 @@
         }
         .login-body .login-box .login-inbox .login-form input{
             background-color: gray;
+        }
+        .login-body .login-box .login-inbox .login-form .form-label{
+        	color: white;
+        	font-size: 10px;
         }
         .footer{
             width: 100%;
@@ -61,15 +66,27 @@
 				        <img src="https://store.akamai.steamstatic.com/public/shared/images/header/logo_steam.svg?t=962016" height="80" width="250">
 				    </a>
 				</div>
-				<form action="<%=request.getContextPath()%>/login" class="login-form" method="post">
-				    <label for="">로그인 후 이용바랍니다.</label>
+				<form action="<%=request.getContextPath()%>/signup" class="login-form" method="post">
 				    <div class="form-group">
-				      <input type="text" class="form-control" id="id" name="id">
+				      <input type="text" class="form-control" placeholder="아이디" id="id" name="id" value="${user.id}">
+				      <label for="" class="form-label">영문으로 시작하는 4~24 영문+숫자를입력해주세요</label>
 				    </div>
 				    <div class="form-group">
-				      <input type="password" class="form-control" id="pw" name="pw">
+				      <input type="text" class="form-control" placeholder="이름" id="name" name="name" value="${user.name}">
 				    </div>
-				    <button type="submit" class="btn btn-dark btn-block">로그인</button>
+				    <div class="form-group">
+				      <input type="password" class="form-control" placeholder="비밀번호" id="pw" name="pw" value="${user.pw}">
+				    </div>
+				    <div class="form-group">
+				      <input type="password" class="form-control" placeholder="비밀번호확인" id="pw2" name="pw2" value="">
+				    </div>
+				    <div class="form-group">
+				      <input type="text" class="form-control" placeholder="전화번호" id="phone" name="phone" value="${user.phone}">
+				    </div>
+				    <div class="form-group">
+				      <input type="text" class="form-control" placeholder="이메일" id="email" name="email" value="${user.email}">
+				    </div>
+				    <button type="submit" class="btn btn-dark btn-block">회원가입</button>
 				</form>				
             </div>
         </div>
