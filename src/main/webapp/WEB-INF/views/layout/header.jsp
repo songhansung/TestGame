@@ -22,6 +22,11 @@
             background-color: black;
             display: flex;
         }
+        .header-inbar{
+            width: 1500px;
+            margin: 0 auto;
+            display: flex;
+        }
         .header-bar .header-left{
             width: 20%;
             height: 100%;
@@ -100,7 +105,7 @@
             position: relative;
         }
         .header-bar .header-right .login-box .login-inbox .login-box-id>i{
-            margin-left: 5px;
+            margin-left: 20px;
         }
         .header-bar .header-right .login-minibox{
             width: 120px;
@@ -131,70 +136,71 @@
             margin-right: 50px;
         }
     </style>
-    <script src="https://kit.fontawesome.com/3a4fdcd1c5.js" crossorigin="anonymous"></script>
 </head>
 <body>
 	 <div class="header-bar">
-        <div class="header-left">
-            <div class="logo">
-                <a href="">
-                    <img src="https://store.akamai.steamstatic.com/public/shared/images/header/logo_steam.svg?t=962016" height="80" width="120">
-                </a>
-            </div>
-        </div>
-        <div class="header-center">
-            <div class="box customer">
-                <a href="#">고객센터</a>
-            </div>
-            <div class="box customer">
-                <a href="#">고객센터</a>
-            </div>
-            <div class="box customer">
-                <a href="#">고객센터</a>
-            </div>
-            <c:if test="${user.rating == 10}">
-	            <div class="box customer">
-	                <a href="#">제품등록</a>
-	            </div>
-            </c:if>
-        </div>
-        <div class="header-right">
-        	<c:if test="${user == null}">   
-	            <div class="box link-join">
-	                <a href="<%=request.getContextPath()%>/signup">
-	                    <span>회원가입</span>
+	 	<div class="header-inbar">
+	        <div class="header-left">
+	            <div class="logo">
+	                <a href="<%=request.getContextPath()%>/">
+	                    <img src="https://store.akamai.steamstatic.com/public/shared/images/header/logo_steam.svg?t=962016" height="80" width="120">
 	                </a>
-	            </div>                
-				<div class="box login">
-					<a href="<%=request.getContextPath()%>/login">
-						<span>로그인</span>
-					</a>
-				</div>
-            </c:if>
-            <c:if test="${user != null}">
-	            <div class="login-box">
-	                <div class="login-inbox">
-	                    <div class="login-box-id">
-	                    	<button class="login-id-btn">
-	                        <span>${user.id}</span><i class="fas fa-angle-down"></i>
-	                        </button>
-	                        <div class="login-minibox">
-	                            <a href="#">마이페이지</a>
-	                            <a href="#">마이페이지</a>
-	                            <a href="#">마이페이지</a>
-	                            <a href="<%=request.getContextPath()%>/signout">로그아웃</a>	                           
-	                        </div>
-	                    </div>
-	                    <div class="login-box-money">
-	                        <span>${user.money}원</span>
-	                    </div>
-	                </div>
-	                <div class="login-box-img">
-	                    <a href="">3252</a>
-	                </div>
 	            </div>
-            </c:if>
-            <div class="mybox"></div>           
+	        </div>
+	        <div class="header-center">
+	            <div class="box customer">
+	                <a href="#">상점</a>
+	            </div>
+	            <div class="box customer">
+	                <a href="#">고객센터</a>
+	            </div>
+	            <div class="box customer">
+	                <a href="#">고객센터</a>
+	            </div>
+	            <%-- <c:if test="${user.rating == 10}"> --%>
+		            <div class="box customer">
+		                <a href="<%=request.getContextPath()%>/game">제품목록</a>
+		            </div>
+	            <%-- </c:if> --%>
+	        </div>
+	        <div class="header-right">
+	        	<c:if test="${user == null}">   
+		            <div class="box link-join">
+		                <a href="<%=request.getContextPath()%>/signup">
+		                    <span>회원가입</span>
+		                </a>
+		            </div>                
+					<div class="box login">
+						<a href="<%=request.getContextPath()%>/login">
+							<span>로그인</span>
+						</a>
+					</div>
+	            </c:if>
+	            <c:if test="${user != null}">
+		            <div class="login-box">
+		                <div class="login-inbox">
+		                    <div class="login-box-id">
+		                    	<button class="login-id-btn">
+		                        <span>${user.id}</span><i class="fas fa-angle-down"></i>
+		                        </button>
+		                        <div class="login-minibox">
+		                            <a href="#">마이페이지</a>
+		                            <a href="#">마이페이지</a>
+		                            <a href="#">마이페이지</a>
+		                            <a href="<%=request.getContextPath()%>/signout">로그아웃</a>	                           
+		                        </div>
+		                    </div>
+		                    <div class="login-box-money">
+		                        <span>${user.money}원</span>
+		                    </div>
+		                </div>
+		                <div class="login-box-img">
+		                    <a href="">3252</a>
+		                </div>
+		            </div>
+	            </c:if>
+	            <div class="mybox"></div>           
+	        </div>
         </div>
     </div>
     <script>

@@ -28,6 +28,8 @@
             height: 100%;
             background-color: rgb(30,30,30);
             padding: 50px 40px 20px 40px;
+            width: 500px;
+            margin: 0 auto;
         }
         .login-body .login-box .login-inbox{
             height: 100%;
@@ -65,10 +67,10 @@
 				<form action="<%=request.getContextPath()%>/login" class="login-form" method="post">
 				    <label for="">로그인 후 이용바랍니다.</label>
 				    <div class="form-group">
-				      <input type="text" class="form-control" id="id" name="id">
+				      <input type="text" class="form-control" placeholder="ID" id="id" name="id">
 				    </div>
 				    <div class="form-group">
-				      <input type="password" class="form-control" id="pw" name="pw">
+				      <input type="password" class="form-control" placeholder="Password" id="pw" name="pw">
 				    </div>
 				    <button type="submit" class="btn btn-dark btn-block">로그인</button>
 				</form>				
