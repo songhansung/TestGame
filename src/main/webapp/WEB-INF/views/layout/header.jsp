@@ -106,7 +106,7 @@
             width: 120px;
             height: 200px;
             position: absolute;
-            background-color:red;
+            background-color:rgb(26,23,33);
             top: 20px;
             left: -20px;
             text-align: center;
@@ -115,6 +115,7 @@
         }
         .header-bar .header-right .login-minibox>a{
             display: block;
+            line-height: 40px;
         }
         .header-bar .header-right .login-box .login-inbox .login-box-id .login-id-btn{
             background-color: black;
@@ -151,6 +152,11 @@
             <div class="box customer">
                 <a href="#">고객센터</a>
             </div>
+            <c:if test="${user.rating == 10}">
+	            <div class="box customer">
+	                <a href="#">제품등록</a>
+	            </div>
+            </c:if>
         </div>
         <div class="header-right">
         	<c:if test="${user == null}">   
@@ -166,29 +172,27 @@
 				</div>
             </c:if>
             <c:if test="${user != null}">
-            <div class="login-box">
-                <div class="login-inbox">
-                    <div class="login-box-id">
-                    	<button class="login-id-btn">
-                        <span>${user.id}</span><i class="fas fa-angle-down"></i>
-                        </button>
-                        <div class="login-minibox">
-                            <a href="#">마이페이지</a>
-                            <a href="#">마이페이지</a>
-                            <a href="#">마이페이지</a>
-                            <a href="#">마이페이지</a>
-                            <a href="#">마이페이지</a>
-                            <a href="#">마이페이지</a>
-                        </div>
-                    </div>
-                    <div class="login-box-money">
-                        <span>${user.money}원</span>
-                    </div>
-                </div>
-                <div class="login-box-img">
-                    <a href="">3252</a>
-                </div>
-            </div>
+	            <div class="login-box">
+	                <div class="login-inbox">
+	                    <div class="login-box-id">
+	                    	<button class="login-id-btn">
+	                        <span>${user.id}</span><i class="fas fa-angle-down"></i>
+	                        </button>
+	                        <div class="login-minibox">
+	                            <a href="#">마이페이지</a>
+	                            <a href="#">마이페이지</a>
+	                            <a href="#">마이페이지</a>
+	                            <a href="<%=request.getContextPath()%>/signout">로그아웃</a>	                           
+	                        </div>
+	                    </div>
+	                    <div class="login-box-money">
+	                        <span>${user.money}원</span>
+	                    </div>
+	                </div>
+	                <div class="login-box-img">
+	                    <a href="">3252</a>
+	                </div>
+	            </div>
             </c:if>
             <div class="mybox"></div>           
         </div>

@@ -53,7 +53,13 @@ public class HomeController {
 		}else {
 			mv.setViewName("redirect:/login");
 		}
-		System.out.println(isUser);
+		return mv;
+	}
+	//로그아웃
+	@RequestMapping(value = "/signout", method = RequestMethod.GET)
+	public ModelAndView singoutGet(ModelAndView mv, HttpServletRequest request) {
+		request.getSession().removeAttribute("user");
+		mv.setViewName("redirect:/");
 		return mv;
 	}
 	//회원가입 뷰
