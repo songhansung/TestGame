@@ -8,7 +8,7 @@
         .main-body{
             background-color: rgb(60,60,60);
             width: 100%;
-            height:  100%;
+            height: 100%;
         }
         .main-body-home{
             width: 1500px;
@@ -50,7 +50,7 @@
         }
         .main-body-home .main-items .items-box .right-icon{
             position: absolute;
-            left: 929px;
+            left: 1398px;
             top: 150px;
             height: 80px;
             width: 50px;

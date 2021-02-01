@@ -11,7 +11,6 @@
             margin: 0;
             padding: 0;
             text-decoration: none;
-            color: white;
             font-size: 12px;
             
         }
@@ -159,7 +158,7 @@
 	            </div>
 	            <%-- <c:if test="${user.rating == 10}"> --%>
 		            <div class="box customer">
-		                <a href="<%=request.getContextPath()%>/game">제품목록</a>
+		                <a href="<%=request.getContextPath()%>/game/game">제품목록</a>
 		            </div>
 	            <%-- </c:if> --%>
 	        </div>

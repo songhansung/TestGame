@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인</title>
+<title>회원가입</title>
 	<style>
         .login{
             height: auto;
@@ -25,9 +25,10 @@
         }
         .login-body .login-box{
             height: 100%;
-            /* background-color: rgb(30,30,30); */
-            background-color: white;
+            background-color: rgb(30,30,30);
             padding: 50px 100px 20px 100px;
+            width: 500px;
+            margin: 0 auto;
         }
         .login-body .login-box .login-inbox{
             height: 100%;

@@ -18,10 +18,14 @@ public class UserServiceImp implements UserService{
 
 	@Override
 	public boolean signup(UserVo user) {
+		UserVo tmp = userDao.getUser(user.getId());
+		if(tmp != null) {
+			return false;
+		}
 		String encPw = passwordEncoder.encode(user.getPw());
 		user.setPw(encPw);
 		userDao.insertUser(user);
-		return false;
+		return true;
 	}
 
 	@Override

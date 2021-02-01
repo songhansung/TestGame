@@ -74,9 +74,9 @@ public class HomeController {
 	public ModelAndView signupPost(ModelAndView mv,UserVo user) {
 		boolean signup = userService.signup(user);
 		if(signup) {
-			mv.setViewName("redirect:/signup");			
+			mv.setViewName("redirect:/");			
 		}else {
-			mv.setViewName("redirect:/");
+			mv.setViewName("redirect:/signup");
 		}
 		return mv;
 	}

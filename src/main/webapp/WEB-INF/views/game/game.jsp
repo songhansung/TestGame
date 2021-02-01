@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +31,7 @@
 <body>
 	<div class="main-body">
 		<div class="gamelist">
-			<a href="<%=request.getContextPath()%>/register">
+			<a href="<%=request.getContextPath()%>/game/register">
             <button type="button" class="btn btn-primary btn-block">제품등록</button>
             </a>
             <table class="gamelist-table">
@@ -41,13 +42,15 @@
                     <th>출시일자</th>
                     <th>개발사</th>
                 </tr>
-                <tr class="" align="center" onClick="location.href='#'" style="cursor:pointer;"> 
-                    <td>1</td>
-                    <td><img src="https://cdn.akamai.steamstatic.com/steam/apps/578080/capsule_sm_120.jpg?t=1608093288" alt=""></td>
-                    <td>배틀그라운드</td>
-                    <td>2017-02-07</td>
-                    <td>블루홀</td>
-                </tr>
+               <c:forEach items="${list}" var="game">
+	                <tr class="" align="center" onClick="location.href='#'" style="cursor:pointer;"> 
+	                    <td>${game.gameNum}</td>
+	                    <td><img src="https://cdn.akamai.steamstatic.com/steam/apps/578080/capsule_sm_120.jpg?t=1608093288" alt=""></td>
+	                    <td>${game.title}</td>
+	                    <td>${game.launch}</td>
+	                    <td>${game.company}</td>
+	                </tr>
+                </c:forEach>
             </table>
         </div>
     </div>
