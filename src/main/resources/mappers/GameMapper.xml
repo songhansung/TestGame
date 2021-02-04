@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="kr.green.game.dao.GameDao">
   	<select id="getGameList" resultType="kr.green.game.vo.GameVo">
-    	select * from game where isDel = 'N' 
+    	select * from game where isdel = 'N' 
 	</select>
   	<insert id="insertGame" useGeneratedKeys="true" keyProperty="game.gameNum" parameterType="kr.green.game.vo.GameVo">
 		insert into game(title,content,price,launch,company,tags)
@@ -14,4 +14,10 @@
     	insert into image(gameNum, oriFilename, filename)
     	values(#{gameNum}, #{filename}, #{path})
     </insert>
+    <select id="getgame" resultType="kr.green.game.vo.GameVo">
+    	select * from game where gameNum = #{gameNum} and isdel = 'N'
+	</select>
+	<select id="getImglist" resultType="kr.green.game.vo.ImgVo">
+		select * from image where gameNum = #{gameNum} and isdel ='N'
+	</select>
   </mapper>

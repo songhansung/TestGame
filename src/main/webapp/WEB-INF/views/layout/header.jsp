@@ -11,8 +11,6 @@
             margin: 0;
             padding: 0;
             text-decoration: none;
-            font-size: 12px;
-            
         }
         .header-bar{
             width: 100%;

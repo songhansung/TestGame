@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.apache.ibatis.annotations.Param;
 
 import kr.green.game.vo.GameVo;
+import kr.green.game.vo.ImgVo;
 
 public interface GameDao {
 
@@ -13,5 +14,10 @@ public interface GameDao {
 	ArrayList<GameVo> getGameList();
 
 	void insertFile(@Param("gameNum")int gameNum,@Param("filename") String originalFilename,@Param("path") String path);
+
+	GameVo getgame(@Param("gameNum")Integer gameNum);
+
+	ArrayList<ImgVo> getImglist(@Param("gameNum")Integer gameNum);
+
 
 }

@@ -52,10 +52,10 @@
 		    	<textarea rows="10" class="form-control" name="content"></textarea>
 		  	</div>
 		  	<div class="form-group">
-		    	<label>첨부파일</label>
-		    	<input type="file" class="form-control" name="filelist">
-		    	<input type="file" class="form-control" name="filelist">
-		    	<input type="file" class="form-control" name="filelist">
+		    	<label>메인이미지</label>
+		    	<input type="file" class="form-control-file border" name="filelist">		    	
+				<label>서브이미지</label>
+		    	<input type="file" class="form-control-file border" name="filelist">
 		    </div>
 		  	<button type="submit" class="btn btn-warning">등록</button>
 		</form>

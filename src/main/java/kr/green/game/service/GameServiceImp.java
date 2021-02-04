@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.green.game.dao.GameDao;
 import kr.green.game.vo.GameVo;
+import kr.green.game.vo.ImgVo;
 
 @Service
 public class GameServiceImp implements GameService{
@@ -27,6 +28,23 @@ public class GameServiceImp implements GameService{
 	@Override
 	public void registerFile(int gameNum, String originalFilename, String path) {
 		gameDao.insertFile(gameNum,originalFilename,path);
+	}
+
+	@Override
+	public GameVo getgame(Integer gameNum) {
+		if(gameNum == null) {
+			return null;
+		}
+		GameVo game = gameDao.getgame(gameNum);
+		return game;
+	}
+
+	@Override
+	public ArrayList<ImgVo> getImglist(Integer gameNum) {
+		if(gameNum == null) {
+			return null;
+		}
+		return gameDao.getImglist(gameNum); 
 	}
 
 }

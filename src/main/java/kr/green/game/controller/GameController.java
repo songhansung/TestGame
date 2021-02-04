@@ -13,19 +13,24 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.green.game.service.GameService;
 import kr.green.game.utils.UploadFileUtils;
 import kr.green.game.vo.GameVo;
+import kr.green.game.vo.ImgVo;
 
 @Controller
 public class GameController {
 	@Autowired
 	GameService gameService;
 	
-	private String uploadPath ="D:\\java_SHS\\gameimg";
+	private String uploadPath ="D:\\java_SHS\\git\\TestGame\\src\\main\\webapp\\resources\\img";
 	
 	@RequestMapping(value = "/game/game", method = RequestMethod.GET)
-	public ModelAndView gameGet(ModelAndView mv) {
+	public ModelAndView gameGet(ModelAndView mv,Integer gameNum) {
 		//게임정보를 담는 리스트
 		ArrayList<GameVo> list = gameService.getGameList();
+		ArrayList<ImgVo> imglist = gameService.getImglist(gameNum);
+		
 		mv.addObject("list", list);
+		mv.addObject("imglist", imglist);
+
 		mv.setViewName("/game/game");
 		return mv;
 	}
@@ -51,7 +56,12 @@ public class GameController {
 		return mv;
 	}
 	@RequestMapping(value = "/game/detail", method = RequestMethod.GET)
-	public ModelAndView detailGet(ModelAndView mv) {
+	public ModelAndView detailGet(ModelAndView mv,Integer gameNum) {
+		GameVo game = gameService.getgame(gameNum);
+		ArrayList<ImgVo> imglist = gameService.getImglist(gameNum);
+		
+		mv.addObject("imglist",imglist);
+		mv.addObject("game",game);
 		mv.setViewName("/game/detail");
 		return mv;
 	}
