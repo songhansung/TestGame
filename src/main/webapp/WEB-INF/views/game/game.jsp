@@ -10,11 +10,9 @@
         .main-body{      	
             background-color: rgb(60,60,60);
             width: 100%;
-            height:  500px;
         }
         .gamelist{
             width: 1000px;
-            height: 300px;
             color: white;
             margin: 0 auto;
 			
@@ -43,7 +41,7 @@
                     <th>개발사</th>
                 </tr>
                <c:forEach items="${list}" var="game">
-	                <tr class="" align="center" onClick="location.href='#'" style="cursor:pointer;"> 
+	                <tr class="" align="center" onClick="location.href='<%=request.getContextPath()%>/game/detail?num=${game.gameNum}'" style="cursor:pointer;"> 
 	                    <td>${game.gameNum}</td>
 	                    <td><img src="https://cdn.akamai.steamstatic.com/steam/apps/578080/capsule_sm_120.jpg?t=1608093288" alt=""></td>
 	                    <td>${game.title}</td>

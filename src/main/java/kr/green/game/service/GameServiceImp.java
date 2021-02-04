@@ -24,4 +24,9 @@ public class GameServiceImp implements GameService{
 		return list;
 	}
 
+	@Override
+	public void registerFile(int gameNum, String originalFilename, String path) {
+		gameDao.insertFile(gameNum,originalFilename,path);
+	}
+
 }

@@ -10,18 +10,17 @@
         .main-body{
             background-color: rgb(60,60,60);
             width: 100%;
-            height: 500px;
         }
-        .detail-form{
+        .register-form{
         	width: 1000px;
-            height: 300px;
+            height: 100%;
             margin: 0 auto;
         }
     </style>	
 </head>
 <body>
 	<div class="main-body">
-		<form action="<%=request.getContextPath()%>/game/register" class="detail-form" method="post">
+		<form action="<%=request.getContextPath()%>/game/register" class="register-form" method="post" enctype="multipart/form-data">
 			<div class="form-group">
 		    	<label>제목</label>
 		    	<input type="text" class="form-control" name="title">
@@ -52,6 +51,12 @@
 		    	<label>내용</label>
 		    	<textarea rows="10" class="form-control" name="content"></textarea>
 		  	</div>
+		  	<div class="form-group">
+		    	<label>첨부파일</label>
+		    	<input type="file" class="form-control" name="filelist">
+		    	<input type="file" class="form-control" name="filelist">
+		    	<input type="file" class="form-control" name="filelist">
+		    </div>
 		  	<button type="submit" class="btn btn-warning">등록</button>
 		</form>
     </div>

@@ -10,4 +10,6 @@ public interface GameService {
 
 	ArrayList<GameVo> getGameList();
 
+	void registerFile(int gameNum, String originalFilename, String path);
+
 }
