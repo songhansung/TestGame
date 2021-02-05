@@ -16,7 +16,9 @@
             height: 100%;
             margin: 0 auto;
         }
-    </style>	
+    </style>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>	
 </head>
 <body>
 	<div class="main-body">
@@ -48,17 +50,71 @@
 		    	<input type="text" class="form-control" id="tags" name="tags">
 		    </div>
 		    <div class="form-group">
-		    	<label>내용</label>
-		    	<textarea rows="10" class="form-control" name="content"></textarea>
+		    	<label>서브내용</label>
+		    	<textarea rows="3" class="form-control" name="content"></textarea>
 		  	</div>
+		  	<div class="form-group" style="display:none;">
+		    	<label>메인내용</label>
+		    	<textarea rows="10" class="form-control" name="longcontent"></textarea>
+		  	</div>
+		  	<div id="summernote"></div>
 		  	<div class="form-group">
-		    	<label>메인이미지</label>
-		    	<input type="file" class="form-control-file border" name="filelist">		    	
-				<label>서브이미지</label>
-		    	<input type="file" class="form-control-file border" name="filelist">
+		    			    	
+				<div class="row">
+			        <div class="col-lg-12">
+			            <div class="card shadow mb-4">
+			                <div class="card-header py-3">
+			                    <h4 class="m-0 font-weight-bold text-primary">이미지업로드</h4>
+			                </div>
+			                <div class="card-body">
+			                    <div class="form-group uploadDiv">
+			                    	<label>메인이미지:</label>
+			                        <input type="file" name="filelist" multiple accept=".gif, .jpg, .png">
+		    						<label>서브이미지:</label>
+			                        <input type="file" name="filelist" class="sub" multiple accept=".gif, .jpg, .png">
+			                    </div>
+			                    <div class="uploadResult">
+			                        <ul></ul>
+			                    </div>
+			                </div>
+			            </div>
+			        </div>
+			    </div>
 		    </div>
 		  	<button type="submit" class="btn btn-warning">등록</button>
 		</form>
     </div>
+    <script>
+    $('#summernote').summernote({
+        placeholder: 'Hello Bootstrap 4',
+        tabsize: 2,
+        height: 300
+      });
+      $('form').submit(function(){
+    	  var code = $('#summernote').summernote('code');
+    	  $('textarea[name=longcontent]').val(code);
+      })
+	
+	subInputInsert($("input[type='file'].sub"))
+    function subInputInsert(obj){
+    	obj.change(function(e){
+        	var count = 0;
+        	$("input[type='file'].sub").each(function(){
+        		if($(this).val() == '')
+        			count++;
+        	})	
+    		if($(this).val() == '' && count == 2){
+    			$(this).remove();
+    			return;
+    		}
+        	if($(this).val() != '' && count == 0){
+    			$('.form-group.uploadDiv').append('<input type="file" name="filelist" class="sub" multiple accept=".gif, .jpg, .png">');
+    			subInputInsert($("input[type='file'].sub").last())			
+    			return;
+    		}
+    	});	
+    }
+   
+	</script>
 </body>
 </html>

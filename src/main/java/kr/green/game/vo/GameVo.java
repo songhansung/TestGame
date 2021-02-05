@@ -8,6 +8,7 @@ public class GameVo {
 	private int gameNum;
 	private String title;
 	private String content;
+	private String longcontent;
 	private int price;
 	private Date launch;
 	private String company;
@@ -33,6 +34,12 @@ public class GameVo {
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public String getLongcontent() {
+		return longcontent;
+	}
+	public void setLongcontent(String longcontent) {
+		this.longcontent = longcontent;
 	}
 	public int getPrice() {
 		return price;
@@ -87,9 +94,11 @@ public class GameVo {
 	}
 	@Override
 	public String toString() {
-		return "GameVo [gameNum=" + gameNum + ", title=" + title + ", content=" + content + ", price=" + price
-				+ ", launch=" + launch + ", company=" + company + ", tags=" + tags + ", isdel=" + isdel
-				+ ", isdiscount=" + isdiscount + ", origameNum=" + origameNum + ", oder=" + oder + "]";
+		return "GameVo [gameNum=" + gameNum + ", title=" + title + ", content=" + content + ", longcontent="
+				+ longcontent + ", price=" + price + ", launch=" + launch + ", company=" + company + ", tags=" + tags
+				+ ", isdel=" + isdel + ", isdiscount=" + isdiscount + ", origameNum=" + origameNum + ", oder=" + oder
+				+ "]";
 	}
+	
 	
 }

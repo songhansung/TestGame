@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -39,8 +40,10 @@ public class GameController {
 		mv.setViewName("/game/register");
 		return mv;
 	}
+	@ResponseBody
 	@RequestMapping(value = "/game/register", method = RequestMethod.POST)
 	public ModelAndView registerPost(ModelAndView mv,GameVo game,MultipartFile[] filelist) throws IOException, Exception {
+		
 		gameService.registerGame(game);
 		
 		if(filelist != null && filelist.length != 0) {
@@ -49,9 +52,12 @@ public class GameController {
 					String path = UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(),file.getBytes());
 					gameService.registerFile(game.getGameNum(),file.getOriginalFilename(),path);
 				}
+				
+				
 			}
 		}
 		
+		mv.addObject("filelist",filelist);
 		mv.setViewName("redirect:/game/game");
 		return mv;
 	}

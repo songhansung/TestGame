@@ -74,20 +74,24 @@
 		.sbcontent-box .sbtext-box{
 			height: 200px;
 			display:flex;
-		  
 		}
 		.sbcontent-box .sbtext-box .main-img{
 			flex-basis: 25%;
 			height: 100%;
 			background-color: brown;
+			padding-top: 15px;
+      		padding-bottom: 15px;
+		}
+		.sbcontent-box .sbtext-box .main-img img{
+			width: 100%;
+      		height: 100%;
 		}
 		.sbcontent-box .sbtext-box .text-box{
 			flex-basis: 50%;
 			height: 100%;
 			background-color: cornflowerblue;
 			box-sizing: border-box;
-			padding-left: 20px;
-			padding-right: 20px;
+			padding: 15px 20px 15px 20px;
 		}
 		.sbcontent-box .sbtext-box .buy-box{
 			flex-basis: 25%;
@@ -113,6 +117,11 @@
 		.sbcontent-box .sbtext-box .buy-box .buy-btn-box button{
 			font-weight: bold;
 		}
+		.maincontent-box{
+			width: 70%;
+			margin-left: auto;
+			margin-right: auto;
+		}
 	</style>
 </head>
 <body>
@@ -132,7 +141,9 @@
 			<div class="swiper-slide" style="background-image:url(https://swiperjs.com/demos/images/nature-10.jpg)"></div>
 		-->
 		<c:forEach items="${imglist}" var="img">
-			<div class="swiper-slide" style="background-image:url('<%=request.getContextPath()%>/resources/img/${img.filename}')"></div>
+			<c:if test="${img.isimg == 'S'}">
+				<div class="swiper-slide" style="background-image:url('<%=request.getContextPath()%>/resources/img/${img.filename}')"></div>
+			</c:if>
 		</c:forEach>
 		</div>
 		<!-- Add Arrows -->
@@ -153,15 +164,25 @@
 			<div class="swiper-slide" style="background-image:url(https://swiperjs.com/demos/images/nature-9.jpg)"></div>
 			<div class="swiper-slide" style="background-image:url(https://swiperjs.com/demos/images/nature-10.jpg)"></div>
 		 -->
-		 <c:forEach items="${imglist}" var="img">
-			<div class="swiper-slide" style="background-image:url('<%=request.getContextPath()%>/resources/img/${img.filename}')"></div>
+		 
+		<c:forEach items="${imglist}" var="img">
+			<c:if test="${img.isimg == 'S'}">
+				<div class="swiper-slide" style="background-image:url('<%=request.getContextPath()%>/resources/img/${img.filename}')"></div>
+			</c:if>
 		</c:forEach>
+		
 		</div>
 	</div>
 	<div class="sbcontent-box">
 		<div class="sbtext-box">
-			<div class="main-img">${game}</div>
-			<div class="text-box">${imglist}</div>
+			<div class="main-img">
+				<c:forEach items="${imglist}" var="img">
+					<c:if test="${img.isimg == 'M'}">
+						<img src="<%=request.getContextPath()%>/resources/img/${img.filename}" >
+					</c:if>
+				</c:forEach>	
+			</div>	
+			<div class="text-box">${game.content}</div>
 			<div class="buy-box">
 				<div class="price-box"><span>₩ ${game.price}</span></div>
 				<div class="buy-btn-box row">
@@ -172,9 +193,10 @@
 		</div>
 	</div>
 	<div class="maincontent-box">
-	  
+	  <div class="longcontent-box">
+	  		${game.longcontent}
+	  </div>
 	</div>
-      
     <!-- Swiper JS -->
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
       
