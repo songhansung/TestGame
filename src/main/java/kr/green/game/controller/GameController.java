@@ -71,4 +71,26 @@ public class GameController {
 		mv.setViewName("/game/detail");
 		return mv;
 	}
+	@RequestMapping(value = "/game/modify", method = RequestMethod.GET)
+	public ModelAndView modifyGet(ModelAndView mv,Integer gameNum) {
+		GameVo game = gameService.getgame(gameNum);
+		ArrayList<ImgVo> imglist = gameService.getImglist(gameNum);
+		
+		mv.addObject("imglist",imglist);
+		mv.addObject("game",game);
+		mv.setViewName("/game/modify");
+		return mv;
+	}
+	@RequestMapping(value = "/game/modify", method = RequestMethod.POST)
+	public ModelAndView modifyPost(ModelAndView mv,GameVo game) {
+		gameService.modifyGame(game);
+		mv.setViewName("redirect:/game/game");
+		return mv;
+	}
+	@RequestMapping(value = "/game/delete", method = RequestMethod.GET)
+	public ModelAndView deleteGet(ModelAndView mv,Integer gameNum) {
+		gameService.deleteGame(gameNum);
+		mv.setViewName("redirect:/game/game");
+		return mv;
+	}
 }

@@ -19,5 +19,6 @@ public interface GameDao {
 
 	ArrayList<ImgVo> getImglist(@Param("gameNum")Integer gameNum);
 
+	void updateGame(@Param("game")GameVo origame);
 
 }

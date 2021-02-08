@@ -1,5 +1,6 @@
 package kr.green.game.service;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,38 @@ public class GameServiceImp implements GameService{
 			return null;
 		}
 		return gameDao.getImglist(gameNum); 
+	}
+
+	@Override
+	public void modifyGame(GameVo game) {
+		GameVo origame = gameDao.getgame(game.getGameNum());
+		if(origame == null) {
+			return;
+		}
+		origame.setTitle(game.getTitle());
+		origame.setContent(game.getContent());
+		origame.setLongcontent(game.getLongcontent());
+		origame.setPrice(game.getPrice());
+		try {
+			origame.setLaunch(game.getLaunch());
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		origame.setCompany(game.getCompany());
+		origame.setTags(game.getTags());
+		gameDao.updateGame(origame);
+	}
+
+	@Override
+	public void deleteGame(Integer gameNum) {
+		if(gameNum == null) {
+			return;
+		}
+		GameVo game = gameDao.getgame(gameNum);
+		game.setIsdel("Y");
+		gameDao.updateGame(game);
+		
 	}
 
 }

@@ -29,8 +29,19 @@
 <body>
 	<div class="main-body">
 		<div class="gamelist">
-			<a href="<%=request.getContextPath()%>/game/register">
-            <button type="button" class="btn btn-primary btn-block">제품등록</button>
+            <div class="input-group mb-3">
+                <select class="form-control col-3" name="type">
+                    <option value="1" <c:if test="${pm.criteria.type == 1}">selected</c:if>>제목</option>
+                    <option value="2" <c:if test="${pm.criteria.type == 2}">selected</c:if>>내용</option>
+                    <option value="3" <c:if test="${pm.criteria.type == 3}">selected</c:if>>개발사</option>
+                </select>
+                <input type="text" class="form-control" placeholder="Search">
+                <div class="input-group-append">
+                  <button class="btn btn-success" type="submit">검색</button>
+                </div>
+            </div>
+            <a href="<%=request.getContextPath()%>/game/register">
+                <button type="button" class="btn btn-primary btn-block">제품등록</button>
             </a>
             <table class="gamelist-table">
                 <tr>

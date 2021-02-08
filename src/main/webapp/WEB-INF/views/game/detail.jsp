@@ -193,9 +193,18 @@
 		</div>
 	</div>
 	<div class="maincontent-box">
-	  <div class="longcontent-box">
-	  		${game.longcontent}
-	  </div>
+		<div class="longcontent-box">
+			${game.longcontent}
+		</div>
+		<div class="btn-group">
+		  	<button type="button" class="btn btn-primary">목록</button>
+		  	<a href="<%=request.getContextPath()%>/game/modify?gameNum=${game.gameNum}">
+		  		<button type="button" class="btn btn-primary">수정</button>
+		  	</a>
+		  	<a href="<%=request.getContextPath()%>/game/delete?gameNum=${game.gameNum}">
+		  	<button type="button" class="btn btn-primary">삭제</button>
+		  	</a>
+		</div>
 	</div>
     <!-- Swiper JS -->
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>

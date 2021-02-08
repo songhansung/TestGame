@@ -17,4 +17,8 @@ public interface GameService {
 
 	ArrayList<ImgVo> getImglist(Integer gameNum);
 
+	void modifyGame(GameVo game);
+
+	void deleteGame(Integer gameNum);
+
 }
