@@ -27,7 +27,7 @@ public class GameController {
 	public ModelAndView gameGet(ModelAndView mv,Integer gameNum) {
 		//게임정보를 담는 리스트
 		ArrayList<GameVo> list = gameService.getGameList();
-		ArrayList<ImgVo> imglist = gameService.getImglist(gameNum);
+		ArrayList<ImgVo> imglist = gameService.getImglist();
 		
 		mv.addObject("list", list);
 		mv.addObject("imglist", imglist);
@@ -42,21 +42,24 @@ public class GameController {
 	}
 	@ResponseBody
 	@RequestMapping(value = "/game/register", method = RequestMethod.POST)
-	public ModelAndView registerPost(ModelAndView mv,GameVo game,MultipartFile[] filelist) throws IOException, Exception {
+	public ModelAndView registerPost(ModelAndView mv,GameVo game,MultipartFile[] filelist,MultipartFile Mfilelist) throws IOException, Exception {
 		
 		gameService.registerGame(game);
-		
+		if(Mfilelist != null && Mfilelist.getOriginalFilename().length() >= 0) {
+			String path = UploadFileUtils.uploadFile(uploadPath, Mfilelist.getOriginalFilename(),Mfilelist.getBytes());
+			gameService.registerFile(game.getGameNum(),Mfilelist.getOriginalFilename(),path,"M");
+		}
 		if(filelist != null && filelist.length != 0) {
 			for(MultipartFile file : filelist) {
 				if(file != null && file.getOriginalFilename().length() != 0) {
 					String path = UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(),file.getBytes());
-					gameService.registerFile(game.getGameNum(),file.getOriginalFilename(),path);
-				}
-				
-				
+					gameService.registerFile(game.getGameNum(),file.getOriginalFilename(),path,"S");
+					
+				}	
 			}
 		}
 		
+		mv.addObject("Mfilelist",Mfilelist);
 		mv.addObject("filelist",filelist);
 		mv.setViewName("redirect:/game/game");
 		return mv;

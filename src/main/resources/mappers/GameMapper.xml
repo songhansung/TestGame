@@ -11,8 +11,8 @@
 		values(#{game.title},#{game.content},#{game.longcontent},#{game.price},#{game.launch},#{game.company},#{game.tags})
 	</insert>
 	<insert id="insertFile">
-    	insert into image(gameNum, oriFilename, filename)
-    	values(#{gameNum}, #{filename}, #{path})
+    	insert into image(gameNum, oriFilename, filename, isimg)
+    	values(#{gameNum}, #{filename}, #{path}, #{isimg})
     </insert>
     <select id="getgame" resultType="kr.green.game.vo.GameVo">
     	select * from game where gameNum = #{gameNum} and isdel = 'N'
@@ -25,4 +25,7 @@
 								,launch = #{game.launch},company = #{game.company},tags = #{game.tags},isdel = #{game.isdel}
 								where gameNum = #{game.gameNum}
 	</update>
+	<select id="getImgList" resultType="kr.green.game.vo.ImgVo">
+		select * from image where isimg = 'M' order by gameNum desc limit 0, 10;
+	</select>
   </mapper>

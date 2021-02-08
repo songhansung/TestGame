@@ -125,7 +125,7 @@
 	</style>
 </head>
 <body>
-	<div class="gametitle-box"><span>배틀그라운드</span></div>
+	<div class="gametitle-box"><span>${game.title}</span></div>
 	<div class="swiper-container gallery-top">
 		<div class="swiper-wrapper">
 		<!-- 

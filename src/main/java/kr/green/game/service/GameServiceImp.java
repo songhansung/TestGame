@@ -14,23 +14,22 @@ import kr.green.game.vo.ImgVo;
 public class GameServiceImp implements GameService{
 	@Autowired
 	GameDao gameDao;
-
+	
 	@Override
 	public void registerGame(GameVo game) {
 		gameDao.insertGame(game);
 	}
-
+	
 	@Override
 	public ArrayList<GameVo> getGameList() {
 		ArrayList<GameVo> list = gameDao.getGameList();
 		return list;
 	}
-
+	
 	@Override
-	public void registerFile(int gameNum, String originalFilename, String path) {
-		gameDao.insertFile(gameNum,originalFilename,path);
+	public void registerFile(int gameNum, String originalFilename, String path, String isimg) {
+		gameDao.insertFile(gameNum,originalFilename,path,isimg);
 	}
-
 	@Override
 	public GameVo getgame(Integer gameNum) {
 		if(gameNum == null) {
@@ -39,7 +38,7 @@ public class GameServiceImp implements GameService{
 		GameVo game = gameDao.getgame(gameNum);
 		return game;
 	}
-
+	//게임번호에따른 이미지 불러오는기능
 	@Override
 	public ArrayList<ImgVo> getImglist(Integer gameNum) {
 		if(gameNum == null) {
@@ -47,7 +46,7 @@ public class GameServiceImp implements GameService{
 		}
 		return gameDao.getImglist(gameNum); 
 	}
-
+	// 수정기능
 	@Override
 	public void modifyGame(GameVo game) {
 		GameVo origame = gameDao.getgame(game.getGameNum());
@@ -68,7 +67,7 @@ public class GameServiceImp implements GameService{
 		origame.setTags(game.getTags());
 		gameDao.updateGame(origame);
 	}
-
+	//삭제기능
 	@Override
 	public void deleteGame(Integer gameNum) {
 		if(gameNum == null) {
@@ -79,5 +78,13 @@ public class GameServiceImp implements GameService{
 		gameDao.updateGame(game);
 		
 	}
+	//게임 리스트에 이미지리스트 불러오는기능
+	@Override
+	public ArrayList<ImgVo> getImglist() {
+		ArrayList<ImgVo> imglist = gameDao.getImgList();
+		return imglist;
+	}
+
+	
 
 }

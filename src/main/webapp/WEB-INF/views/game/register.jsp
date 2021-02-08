@@ -69,7 +69,7 @@
 			                <div class="card-body">
 			                    <div class="form-group uploadDiv">
 			                    	<label>메인이미지:</label>
-			                        <input type="file" name="filelist" multiple accept=".gif, .jpg, .png">
+			                        <input type="file" name="Mfilelist" multiple accept=".gif, .jpg, .png">
 		    						<label>서브이미지:</label>
 			                        <input type="file" name="filelist" class="sub" multiple accept=".gif, .jpg, .png">
 			                    </div>

@@ -54,7 +54,13 @@
                <c:forEach items="${list}" var="game">
 	                <tr class="" align="center" onClick="location.href='<%=request.getContextPath()%>/game/detail?gameNum=${game.gameNum}'" style="cursor:pointer;"> 
 	                    <td>${game.gameNum}</td>
-	                    <td><img src="" alt=""></td>
+	                    <td>
+	                    	<c:forEach items="${imglist}" var="img">                
+	                    		<c:if test="${img.isimg eq 'M' && img.gameNum == game.gameNum}">
+	                    			<img src="<%=request.getContextPath()%>/resources/img/${img.filename}" style="width: 200px; height: 100px;">
+	                    		</c:if>
+	                    	 </c:forEach>
+	                    </td>
 	                    <td>${game.title}</td>
 	                    <td>${game.launch}</td>
 	                    <td>${game.company}</td>

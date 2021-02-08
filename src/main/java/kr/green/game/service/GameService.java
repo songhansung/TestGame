@@ -11,7 +11,7 @@ public interface GameService {
 
 	ArrayList<GameVo> getGameList();
 
-	void registerFile(int gameNum, String originalFilename, String path);
+	void registerFile(int gameNum, String originalFilename, String path, String isimg);
 
 	GameVo getgame(Integer gameNum);
 
@@ -20,5 +20,9 @@ public interface GameService {
 	void modifyGame(GameVo game);
 
 	void deleteGame(Integer gameNum);
+
+	ArrayList<ImgVo> getImglist();
+
+	
 
 }
