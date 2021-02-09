@@ -2,6 +2,7 @@ package kr.green.game.service;
 
 import java.util.ArrayList;
 
+import kr.green.game.pagination.Criteria;
 import kr.green.game.vo.GameVo;
 import kr.green.game.vo.ImgVo;
 
@@ -9,7 +10,7 @@ public interface GameService {
 
 	void registerGame(GameVo game);
 
-	ArrayList<GameVo> getGameList();
+	ArrayList<GameVo> getGameList(Criteria cri);
 
 	void registerFile(int gameNum, String originalFilename, String path, String isimg);
 
@@ -22,6 +23,8 @@ public interface GameService {
 	void deleteGame(Integer gameNum);
 
 	ArrayList<ImgVo> getImglist();
+
+	int getTotalCount(Criteria cri);
 
 	
 

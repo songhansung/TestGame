@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.apache.ibatis.annotations.Param;
 
+import kr.green.game.pagination.Criteria;
 import kr.green.game.vo.GameVo;
 import kr.green.game.vo.ImgVo;
 
@@ -11,7 +12,7 @@ public interface GameDao {
 
 	void insertGame(@Param("game")GameVo game);
 
-	ArrayList<GameVo> getGameList();
+	ArrayList<GameVo> getGameList(@Param("cri")Criteria cri);
 
 	void insertFile(@Param("gameNum")int gameNum,@Param("filename") String originalFilename,@Param("path") String path,@Param("isimg") String isimg);
 
@@ -22,6 +23,8 @@ public interface GameDao {
 	void updateGame(@Param("game")GameVo origame);
 
 	ArrayList<ImgVo> getImgList();
+
+	int getTotalCount(@Param("cri")Criteria cri);
 
 	
 

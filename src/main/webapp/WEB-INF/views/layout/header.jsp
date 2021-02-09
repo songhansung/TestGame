@@ -97,6 +97,7 @@
             height: 100%;
             text-align: right;
             float: left;
+            color:white;
         }
         .header-bar .header-right .login-box .login-inbox .login-box-id{
             position: relative;
@@ -109,11 +110,13 @@
             height: 200px;
             position: absolute;
             background-color:rgb(26,23,33);
-            top: 20px;
+            top: 23px;
             left: -20px;
             text-align: center;
             font-weight: bold;
             display: none;
+            z-index:3;
+            
         }
         .header-bar .header-right .login-minibox>a{
             display: block;
@@ -122,6 +125,8 @@
         .header-bar .header-right .login-box .login-inbox .login-box-id .login-id-btn{
             background-color: black;
             border: none;
+            color:white;
+            outline:0;
         }
         .header-bar .header-right .login-box .login-box-img{
             width: 50px;
@@ -182,7 +187,7 @@
 		                        </button>
 		                        <div class="login-minibox">
 		                            <a href="#">마이페이지</a>
-		                            <a href="#">마이페이지</a>
+		                            <a href="#">장바구니</a>
 		                            <a href="#">마이페이지</a>
 		                            <a href="<%=request.getContextPath()%>/signout">로그아웃</a>	                           
 		                        </div>

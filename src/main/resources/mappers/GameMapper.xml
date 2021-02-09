@@ -4,7 +4,17 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="kr.green.game.dao.GameDao">
   	<select id="getGameList" resultType="kr.green.game.vo.GameVo">
-    	select * from game where isdel = 'N' order by gameNum desc
+    	select * from game where isdel = 'N' 
+    	<if test="cri.type == 1">
+    		and title like concat('%',#{cri.search},'%')
+    	</if>
+    	<if test="cri.type == 2">
+    		and longcontent like concat('%',#{cri.search},'%')
+    	</if>
+    	<if test="cri.type == 3">
+    		and company like concat('%',#{cri.search},'%')
+    	</if>
+    	order by gameNum desc limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
   	<insert id="insertGame" useGeneratedKeys="true" keyProperty="game.gameNum" parameterType="kr.green.game.vo.GameVo">
 		insert into game(title,content,longcontent,price,launch,company,tags)
@@ -27,5 +37,18 @@
 	</update>
 	<select id="getImgList" resultType="kr.green.game.vo.ImgVo">
 		select * from image where isimg = 'M' order by gameNum desc limit 0, 10;
+	</select>
+	<select id="getTotalCount" resultType="int">
+		select count(*) from game where isDel = 'N'
+		<if test="cri.type == 1">
+    		and title like concat('%',#{cri.search},'%')
+    	</if>
+    	<if test="cri.type == 2">
+    		and longcontent like concat('%',#{cri.search},'%')
+    	</if>
+    	<if test="cri.type == 3">
+    		and company like concat('%',#{cri.search},'%')
+    	</if>
+		order by gameNum desc
 	</select>
   </mapper>

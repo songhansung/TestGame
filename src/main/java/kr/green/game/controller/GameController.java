@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.green.game.pagination.Criteria;
 import kr.green.game.service.GameService;
 import kr.green.game.utils.UploadFileUtils;
 import kr.green.game.vo.GameVo;
 import kr.green.game.vo.ImgVo;
+import kr.green.game.pagination.PageMaker;
 
 @Controller
 public class GameController {
@@ -24,11 +26,18 @@ public class GameController {
 	private String uploadPath ="D:\\java_SHS\\git\\TestGame\\src\\main\\webapp\\resources\\img";
 	
 	@RequestMapping(value = "/game/game", method = RequestMethod.GET)
-	public ModelAndView gameGet(ModelAndView mv,Integer gameNum) {
-		//게임정보를 담는 리스트
-		ArrayList<GameVo> list = gameService.getGameList();
-		ArrayList<ImgVo> imglist = gameService.getImglist();
+	public ModelAndView gameGet(ModelAndView mv,Integer gameNum,Criteria cri) {
+		int displayPageNum = 2;
+		int totalCount = gameService.getTotalCount(cri);
 		
+		//게임정보를 담는 리스트
+		ArrayList<GameVo> list = gameService.getGameList(cri);
+		//이미지리스트
+		ArrayList<ImgVo> imglist = gameService.getImglist();
+		//페이지정보
+		PageMaker pm = new PageMaker(cri,displayPageNum,totalCount);
+		
+		mv.addObject("pm",pm);
 		mv.addObject("list", list);
 		mv.addObject("imglist", imglist);
 

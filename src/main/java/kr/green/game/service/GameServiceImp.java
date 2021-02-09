@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.green.game.dao.GameDao;
+import kr.green.game.pagination.Criteria;
 import kr.green.game.vo.GameVo;
 import kr.green.game.vo.ImgVo;
 
@@ -21,8 +22,8 @@ public class GameServiceImp implements GameService{
 	}
 	
 	@Override
-	public ArrayList<GameVo> getGameList() {
-		ArrayList<GameVo> list = gameDao.getGameList();
+	public ArrayList<GameVo> getGameList(Criteria cri) {
+		ArrayList<GameVo> list = gameDao.getGameList(cri);
 		return list;
 	}
 	
@@ -83,6 +84,11 @@ public class GameServiceImp implements GameService{
 	public ArrayList<ImgVo> getImglist() {
 		ArrayList<ImgVo> imglist = gameDao.getImgList();
 		return imglist;
+	}
+
+	@Override
+	public int getTotalCount(Criteria cri) {
+		return gameDao.getTotalCount(cri);
 	}
 
 	
