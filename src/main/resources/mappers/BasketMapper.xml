@@ -4,6 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="kr.green.game.dao.BasketDao">
 	  <select id="getBasketList" resultType="kr.green.game.vo.BasketVo">
-	  	select * from basket where isdel = 'N' 
+	  	select * from basket 
+	  	join game on basket.gameNum = game.gameNum
+	  	join (select * from image where isimg = 'M') as img on game.gameNum = img.gameNum
+	  	where id = #{user.id}
 	  </select>
   </mapper>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,15 +36,17 @@
                     <th>가격</th>
                     <th>개발사</th>
                 </tr>
+                <c:forEach items="${bList}" var="game">
                     <tr class="" align="center" onClick="location.href='<%=request.getContextPath()%>/game/detail?gameNum=${game.gameNum}'" style="cursor:pointer;"> 
-                        <td>${bList}</td>
+                        <td>${game.gameNum}</td>
                         <td>                        
-                            <img src="#" style="width: 200px; height: 100px;">                 
+                            <img src="<%=request.getContextPath()%>/resources/img/${game.filename}" style="width: 200px; height: 100px;">                 
                         </td>
                         <td>${game.title}</td>
-                        <td>50000</td>
+                        <td>${game.price}</td>
                         <td>${game.company}</td>
                     </tr>
+                </c:forEach>
             </table>
         </div>
     </div>
