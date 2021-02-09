@@ -3,6 +3,8 @@ package kr.green.game.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,16 +14,24 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.green.game.pagination.Criteria;
+import kr.green.game.service.BasketService;
 import kr.green.game.service.GameService;
+import kr.green.game.service.UserService;
 import kr.green.game.utils.UploadFileUtils;
+import kr.green.game.vo.BasketVo;
 import kr.green.game.vo.GameVo;
 import kr.green.game.vo.ImgVo;
+import kr.green.game.vo.UserVo;
 import kr.green.game.pagination.PageMaker;
 
 @Controller
 public class GameController {
 	@Autowired
 	GameService gameService;
+	@Autowired
+	private UserService userService;
+	@Autowired
+	BasketService basketService;
 	
 	private String uploadPath ="D:\\java_SHS\\git\\TestGame\\src\\main\\webapp\\resources\\img";
 	
@@ -30,7 +40,7 @@ public class GameController {
 		int displayPageNum = 2;
 		int totalCount = gameService.getTotalCount(cri);
 		
-		//게임정보를 담는 리스트
+		//게임정보를 담는 리스트(페이지정보포함)
 		ArrayList<GameVo> list = gameService.getGameList(cri);
 		//이미지리스트
 		ArrayList<ImgVo> imglist = gameService.getImglist();
@@ -74,13 +84,23 @@ public class GameController {
 		return mv;
 	}
 	@RequestMapping(value = "/game/detail", method = RequestMethod.GET)
-	public ModelAndView detailGet(ModelAndView mv,Integer gameNum) {
+	public ModelAndView detailGet(ModelAndView mv,Integer gameNum,HttpServletRequest request) {
 		GameVo game = gameService.getgame(gameNum);
 		ArrayList<ImgVo> imglist = gameService.getImglist(gameNum);
+		UserVo user = userService.getUser(request);
 		
 		mv.addObject("imglist",imglist);
 		mv.addObject("game",game);
 		mv.setViewName("/game/detail");
+		return mv;
+	}
+	@RequestMapping(value = "/game/detail", method = RequestMethod.POST)
+	public ModelAndView detailPost(ModelAndView mv,Integer gameNum,HttpServletRequest request) {
+		UserVo user = userService.getUser(request);
+		GameVo game = gameService.getgame(gameNum);
+		gameService.getbasket(user,game);
+
+		mv.setViewName("redirect:/game/detail");
 		return mv;
 	}
 	@RequestMapping(value = "/game/modify", method = RequestMethod.GET)

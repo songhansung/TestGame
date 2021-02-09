@@ -126,6 +126,7 @@
 </head>
 <body>
 	<div class="gametitle-box"><span>${game.title}</span></div>
+	
 	<div class="swiper-container gallery-top">
 		<div class="swiper-wrapper">
 		<!-- 
@@ -187,7 +188,10 @@
 				<div class="price-box"><span>₩ ${game.price}</span></div>
 				<div class="buy-btn-box row">
 					<button type="button" class="btn btn-warning col-6">구매하기</button>
-					<button type="button" class="btn btn-warning col-6">장바구니</button>
+					<form action="<%=request.getContextPath()%>/game/detail" method="post">
+						<input type="hidden" name="gameNum" value="${game.gameNum}">
+						<button type="submit" class="btn btn-warning col-6">장바구니</button>
+					</form>
 				</div>
 			</div>
 		</div>

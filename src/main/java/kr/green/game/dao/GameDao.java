@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import kr.green.game.pagination.Criteria;
 import kr.green.game.vo.GameVo;
 import kr.green.game.vo.ImgVo;
+import kr.green.game.vo.UserVo;
 
 public interface GameDao {
 
@@ -26,6 +27,6 @@ public interface GameDao {
 
 	int getTotalCount(@Param("cri")Criteria cri);
 
-	
+	void insertBasket(@Param("user")UserVo user,@Param("game")GameVo game);
 
 }

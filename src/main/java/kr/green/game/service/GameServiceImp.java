@@ -10,6 +10,7 @@ import kr.green.game.dao.GameDao;
 import kr.green.game.pagination.Criteria;
 import kr.green.game.vo.GameVo;
 import kr.green.game.vo.ImgVo;
+import kr.green.game.vo.UserVo;
 
 @Service
 public class GameServiceImp implements GameService{
@@ -89,6 +90,12 @@ public class GameServiceImp implements GameService{
 	@Override
 	public int getTotalCount(Criteria cri) {
 		return gameDao.getTotalCount(cri);
+	}
+
+	@Override
+	public void getbasket(UserVo user, GameVo game) {
+		
+		gameDao.insertBasket(user,game);
 	}
 
 	

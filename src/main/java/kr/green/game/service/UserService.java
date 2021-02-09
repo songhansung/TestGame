@@ -10,5 +10,7 @@ public interface UserService {
 
 	UserVo isUser(String id, String pw);
 
+	UserVo getUser(HttpServletRequest request);
+
 
 }

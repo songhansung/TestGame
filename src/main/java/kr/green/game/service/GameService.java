@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import kr.green.game.pagination.Criteria;
 import kr.green.game.vo.GameVo;
 import kr.green.game.vo.ImgVo;
+import kr.green.game.vo.UserVo;
 
 public interface GameService {
 
@@ -26,6 +27,6 @@ public interface GameService {
 
 	int getTotalCount(Criteria cri);
 
-	
+	void getbasket(UserVo user, GameVo game);
 
 }

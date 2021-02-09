@@ -40,4 +40,10 @@ public class UserServiceImp implements UserService{
 		return null;
 	}
 
+	@Override
+	public UserVo getUser(HttpServletRequest request) {
+		
+		return (UserVo)request.getSession().getAttribute("user");
+	}
+
 }
