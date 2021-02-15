@@ -16,34 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user`
+-- Table structure for table `buy`
 --
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `buy`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user` (
+CREATE TABLE `buy` (
+  `buyNum` int NOT NULL AUTO_INCREMENT,
+  `gameNum` int NOT NULL,
   `id` varchar(30) NOT NULL,
-  `name` varchar(40) NOT NULL,
-  `pw` varchar(255) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `phone` int NOT NULL,
-  `money` int NOT NULL DEFAULT '0',
-  `rating` int NOT NULL DEFAULT '1',
-  `mainImg` varchar(255) DEFAULT NULL,
-  `isdel` varchar(10) NOT NULL DEFAULT 'N',
-  PRIMARY KEY (`id`)
+  `isbuy` varchar(20) NOT NULL DEFAULT 'N',
+  PRIMARY KEY (`buyNum`),
+  KEY `gameNum_idx` (`gameNum`),
+  KEY `id2_idx` (`id`),
+  CONSTRAINT `gameNum2` FOREIGN KEY (`gameNum`) REFERENCES `game` (`gameNum`),
+  CONSTRAINT `id2` FOREIGN KEY (`id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `buy`
 --
 
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('gkstjd3540','송한성','$2a$10$2e04WccNSQNu0sesFTsr1OIRGqgBonsxHTFxpjR.4UEbioxS/deni','151651',151515,0,1,NULL,'N'),('thdgkstjd','이순신','$2a$10$4OrNoUOCx0G/qObVRzCL5.g1MwuezXJgckLPvd0e3vnEw1Kt9mqZi','gkstjd6688@naver.com',1052730904,7000,10,NULL,'N');
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+LOCK TABLES `buy` WRITE;
+/*!40000 ALTER TABLE `buy` DISABLE KEYS */;
+/*!40000 ALTER TABLE `buy` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
