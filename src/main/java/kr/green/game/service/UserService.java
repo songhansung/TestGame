@@ -12,5 +12,6 @@ public interface UserService {
 
 	UserVo getUser(HttpServletRequest request);
 
+	void userMoney(int amount, UserVo user);
 
 }

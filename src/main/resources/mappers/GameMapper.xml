@@ -54,4 +54,7 @@
 	<insert id="insertBasket" parameterType="kr.green.game.vo.BasketVo">
 		insert into basket(gameNum,id) values (#{game.gameNum},#{user.id})
 	</insert>
+	<update id="deleteFile">
+		update image set isDel='Y' where gameNum = #{gameNum}
+	</update>
   </mapper>

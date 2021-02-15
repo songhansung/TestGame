@@ -46,4 +46,10 @@ public class UserServiceImp implements UserService{
 		return (UserVo)request.getSession().getAttribute("user");
 	}
 
+	@Override
+	public void userMoney(int amount, UserVo user) {
+		userDao.updateMoney(amount, user);
+		
+	}
+
 }

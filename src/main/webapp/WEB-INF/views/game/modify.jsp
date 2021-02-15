@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,8 +69,8 @@
 			                </div>
 			                <div class="card-body">
 			                    <div class="form-group uploadDiv">
-			                    	<label>메인이미지:</label>
-			                        <input type="file" name="filelist" multiple accept=".gif, .jpg, .png">
+			                    	<label>메인이미지:</label>                    	
+			                        <input type="file" name="Mfilelist" multiple accept=".gif, .jpg, .png"> 
 		    						<label>서브이미지:</label>
 			                        <input type="file" name="filelist" class="sub" multiple accept=".gif, .jpg, .png">
 			                    </div>
@@ -97,6 +98,25 @@
 	    	  var code = $('#summernote').summernote('code');
 	    	  $('textarea[name=longcontent]').val(code);
 	      })
+	    subInputInsert($("input[type='file'].sub"))
+    	function subInputInsert(obj){
+	    	obj.change(function(e){
+	        	var count = 0;
+	        	$("input[type='file'].sub").each(function(){
+	        		if($(this).val() == '')
+	        			count++;
+	        	})	
+	    		if($(this).val() == '' && count == 2){
+	    			$(this).remove();
+	    			return;
+	    		}
+	        	if($(this).val() != '' && count == 0){
+	    			$('.form-group.uploadDiv').append('<input type="file" name="filelist" class="sub" multiple accept=".gif, .jpg, .png">');
+	    			subInputInsert($("input[type='file'].sub").last())			
+	    			return;
+	    		}
+	    	});	
+	    }
     </script>
 </body>
 </html>

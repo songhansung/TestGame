@@ -28,6 +28,7 @@ public class GameServiceImp implements GameService{
 		return list;
 	}
 	
+	//제품등록에서 첨부파일 추가기능
 	@Override
 	public void registerFile(int gameNum, String originalFilename, String path, String isimg) {
 		gameDao.insertFile(gameNum,originalFilename,path,isimg);
@@ -68,6 +69,8 @@ public class GameServiceImp implements GameService{
 		origame.setCompany(game.getCompany());
 		origame.setTags(game.getTags());
 		gameDao.updateGame(origame);
+		//그전 첨부파일 삭제
+		gameDao.deleteFile(origame.getGameNum());
 	}
 	//삭제기능
 	@Override
@@ -96,6 +99,11 @@ public class GameServiceImp implements GameService{
 	public void getbasket(UserVo user, GameVo game) {
 		
 		gameDao.insertBasket(user,game);
+	}
+	//첨부파일 수정목록에서 추가 기능
+	@Override
+	public void modifyFile(int gameNum, String originalFilename, String path, String isimg) {
+		gameDao.insertFile(gameNum,originalFilename,path,isimg);
 	}
 
 	

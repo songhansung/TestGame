@@ -61,8 +61,9 @@ public class BasketVo {
 	@Override
 	public String toString() {
 		return "BasketVo [basketNum=" + basketNum + ", gameNum=" + gameNum + ", id=" + id + ", isdel=" + isdel
-				+ ", title=" + title + ", price=" + price + ", company=" + company + "]";
+				+ ", title=" + title + ", price=" + price + ", company=" + company + ", filename=" + filename + "]";
 	}
+	
 	
 
 }

@@ -29,4 +29,8 @@ public interface GameDao {
 
 	void insertBasket(@Param("user")UserVo user,@Param("game")GameVo game);
 
+	void updateFile(@Param("gameNum")int gameNum,@Param("filename") String originalFilename,@Param("path") String path,@Param("isimg") String isimg);
+
+	void deleteFile(@Param("gameNum")int gameNum);
+
 }

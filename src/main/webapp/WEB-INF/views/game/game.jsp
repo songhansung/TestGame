@@ -59,7 +59,7 @@
 	                    <td>${game.gameNum}</td>
 	                    <td>
 	                    	<c:forEach items="${imglist}" var="img">                
-	                    		<c:if test="${img.isimg eq 'M' && img.gameNum == game.gameNum}">
+	                    		<c:if test="${img.isimg eq 'M' && img.gameNum == game.gameNum && img.isdel eq 'N'}">
 	                    			<img src="<%=request.getContextPath()%>/resources/img/${img.filename}" style="width: 200px; height: 100px;">
 	                    		</c:if>
 	                    	 </c:forEach>

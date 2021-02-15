@@ -29,4 +29,6 @@ public interface GameService {
 
 	void getbasket(UserVo user, GameVo game);
 
+	void modifyFile(int gameNum, String originalFilename, String path, String isimg);
+
 }

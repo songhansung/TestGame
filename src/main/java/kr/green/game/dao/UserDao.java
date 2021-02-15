@@ -10,4 +10,6 @@ public interface UserDao {
 
 	public UserVo getUser(@Param("id")String id);
 
+	public void updateMoney(@Param("money")int amount,@Param("user") UserVo user);
+
 }

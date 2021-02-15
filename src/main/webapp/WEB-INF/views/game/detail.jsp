@@ -187,7 +187,11 @@
 			<div class="buy-box">
 				<div class="price-box"><span>₩ ${game.price}</span></div>
 				<div class="buy-btn-box row">
-					<button type="button" class="btn btn-warning col-6">구매하기</button>
+					<form action="<%=request.getContextPath()%>/game/buy" method="post">
+						<input type="hidden" name="gameNum" value="${game.gameNum}">
+						<input type="hidden" name="user" value="${user}">
+						<button type="submit" class="btn btn-warning col-6">구매하기</button>
+					</form>
 					<form action="<%=request.getContextPath()%>/game/detail" method="post">
 						<input type="hidden" name="gameNum" value="${game.gameNum}">
 						<button type="submit" class="btn btn-warning col-6">장바구니</button>

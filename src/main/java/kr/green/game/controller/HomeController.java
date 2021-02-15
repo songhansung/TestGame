@@ -13,9 +13,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.green.game.service.UserService;
+import kr.green.game.vo.GameVo;
 import kr.green.game.vo.UserVo;
 
 /**
@@ -79,5 +82,27 @@ public class HomeController {
 			mv.setViewName("redirect:/signup");
 		}
 		return mv;
+	}
+	//마이페이지뷰
+	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
+	public ModelAndView mypageGet(ModelAndView mv) {
+		mv.setViewName("/main/mypage");
+		return mv;
+	}
+	//충전뷰
+	@RequestMapping(value = "/game/buy", method = RequestMethod.GET)
+	public ModelAndView buyGet(ModelAndView mv,HttpServletRequest request) {
+		mv.setViewName("/game/buy");
+		return mv;
+	}
+	//충전 에이잭스
+	@ResponseBody
+	@RequestMapping(value = "/charge/point", method = RequestMethod.POST)
+	public String chargePost(@RequestParam("amount")int amount,HttpServletRequest request) {
+		System.out.println(amount);
+		System.out.println(userService.getUser(request));
+		UserVo user = userService.getUser(request);
+		userService.userMoney(amount,user);
+		return "success";
 	}
 }

@@ -19,6 +19,7 @@ import kr.green.game.service.GameService;
 import kr.green.game.service.UserService;
 import kr.green.game.utils.UploadFileUtils;
 import kr.green.game.vo.BasketVo;
+import kr.green.game.vo.BuyVo;
 import kr.green.game.vo.GameVo;
 import kr.green.game.vo.ImgVo;
 import kr.green.game.vo.UserVo;
@@ -98,8 +99,15 @@ public class GameController {
 	public ModelAndView detailPost(ModelAndView mv,Integer gameNum,HttpServletRequest request) {
 		UserVo user = userService.getUser(request);
 		GameVo game = gameService.getgame(gameNum);
+		
 		gameService.getbasket(user,game);
-
+		
+		mv.setViewName("redirect:/game/detail");
+		return mv;
+	}
+	@RequestMapping(value = "/game/buy", method = RequestMethod.POST)
+	public ModelAndView buyPost(ModelAndView mv,HttpServletRequest request,GameVo game) {
+		
 		mv.setViewName("redirect:/game/detail");
 		return mv;
 	}
@@ -108,14 +116,29 @@ public class GameController {
 		GameVo game = gameService.getgame(gameNum);
 		ArrayList<ImgVo> imglist = gameService.getImglist(gameNum);
 		
+		System.out.println(imglist);
 		mv.addObject("imglist",imglist);
 		mv.addObject("game",game);
 		mv.setViewName("/game/modify");
 		return mv;
 	}
 	@RequestMapping(value = "/game/modify", method = RequestMethod.POST)
-	public ModelAndView modifyPost(ModelAndView mv,GameVo game) {
+	public ModelAndView modifyPost(ModelAndView mv,GameVo game,MultipartFile[] filelist,MultipartFile Mfilelist) throws IOException, Exception {
 		gameService.modifyGame(game);
+		
+		if(Mfilelist != null && Mfilelist.getOriginalFilename().length() > 0) {
+			String path = UploadFileUtils.uploadFile(uploadPath, Mfilelist.getOriginalFilename(),Mfilelist.getBytes());
+			gameService.modifyFile(game.getGameNum(),Mfilelist.getOriginalFilename(),path,"M");
+		}
+		if(filelist != null && filelist.length != 0) {
+			for(MultipartFile file : filelist) {
+				if(file != null && file.getOriginalFilename().length() != 0) {
+					String path = UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(),file.getBytes());
+					gameService.modifyFile(game.getGameNum(),file.getOriginalFilename(),path,"S");					
+				}	
+			}
+		}
+		
 		mv.setViewName("redirect:/game/game");
 		return mv;
 	}

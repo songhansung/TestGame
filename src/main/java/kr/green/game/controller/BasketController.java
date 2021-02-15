@@ -35,8 +35,7 @@ public class BasketController {
 		ArrayList<BasketVo> bList = basketService.basketList(user);
 		
 		mv.addObject("bList",bList);
-		
-		System.out.println(bList);
+
 		mv.setViewName("/basket/basket");
 		return mv;
 	}

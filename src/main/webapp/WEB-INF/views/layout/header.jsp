@@ -188,7 +188,7 @@
 		                        <div class="login-minibox">
 		                            <a href="#">마이페이지</a>
 		                            <a href="<%=request.getContextPath()%>/basket">장바구니</a>
-		                            <a href="#">마이페이지</a>
+		                            <a href="<%=request.getContextPath()%>/game/buy">충전하기</a>
 		                            <a href="<%=request.getContextPath()%>/signout">로그아웃</a>	                           
 		                        </div>
 		                    </div>
