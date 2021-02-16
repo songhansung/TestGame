@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.green.game.dao.GameDao;
+import kr.green.game.dao.UserDao;
 import kr.green.game.pagination.Criteria;
 import kr.green.game.vo.BuyVo;
 import kr.green.game.vo.GameVo;
@@ -17,7 +18,8 @@ import kr.green.game.vo.UserVo;
 public class GameServiceImp implements GameService{
 	@Autowired
 	GameDao gameDao;
-	
+	@Autowired
+	UserDao userDao;
 	@Override
 	public void registerGame(GameVo game) {
 		gameDao.insertGame(game);
@@ -108,9 +110,17 @@ public class GameServiceImp implements GameService{
 	}
 
 	@Override
-	public ArrayList<BuyVo> buyGame(GameVo game, UserVo user) {
+	public ArrayList<BuyVo> buyGameList(GameVo game, UserVo user) {
 		ArrayList<BuyVo> buylist = gameDao.getBuyList(game,user);
 		return buylist;
+	}
+
+	@Override
+	public void getBuy(UserVo user, GameVo game) {
+		int money = user.getMoney();
+		int price = game.getPrice();
+		user.setMoney(money-price);
+		userDao.updateUser(user);
 	}
 
 	

@@ -184,12 +184,15 @@
 					</c:if>
 				</c:forEach>	
 			</div>	
-			<div class="text-box">${game.content}</div>
+			<div class="text-box">${user.money}</div>
 			<div class="buy-box">
 				<div class="price-box"><span>₩ ${game.price}</span></div>
-				<div class="buy-btn-box row">						
-						<button type="button" class="btn btn-warning col-6 btn-buy">구매하기</button>
-					<form action="<%=request.getContextPath()%>/game/detail?gameNum=${game.gameNum}" method="post">
+				<div class="buy-btn-box row">
+					<form action="<%=request.getContextPath()%>/game/buy" method="post" >						
+						<button type="submit" class="btn btn-warning col-6 btn-buy">구매하기</button>
+						<input type="hidden" name="gameNum" value="${game.gameNum}">
+					</form>
+					<form action="<%=request.getContextPath()%>/game/detail" method="post">
 						<input type="hidden" name="gameNum" value="${game.gameNum}">
 						<button type="submit" class="btn btn-warning col-6">장바구니</button>
 					</form>
@@ -244,7 +247,7 @@
             },
         });
         $(function(){
-        	$('.btn-buy').click(function() {        		
+        	$('.btn-buy').click(function() {
             	var price = '${game.price}';
             	var monye = '${user.money}';
     			var id = '${user.id}';

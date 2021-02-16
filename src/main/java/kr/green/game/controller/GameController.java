@@ -103,15 +103,20 @@ public class GameController {
 		
 		gameService.getbasket(user,game);
 		
+		mv.addObject("gameNum",gameNum);
 		mv.setViewName("redirect:/game/detail");
 		return mv;
 	}
 	//구매기능
 	
 	@RequestMapping(value = "/game/buy", method = RequestMethod.POST)
-	public ModelAndView buyPost(ModelAndView mv,HttpServletRequest request,GameVo game,UserVo user) {
+	public ModelAndView buyPost(ModelAndView mv,HttpServletRequest request,Integer gameNum) {
+		UserVo user = userService.getUser(request);
+		GameVo game = gameService.getgame(gameNum);
+		gameService.getBuy(user,game);
 		
-		
+		request.getSession().setAttribute("user", user);	
+		mv.addObject("gameNum",gameNum);
 		mv.setViewName("redirect:/game/detail");
 		return mv;
 	}
@@ -153,9 +158,11 @@ public class GameController {
 		mv.setViewName("redirect:/game/game");
 		return mv;
 	}
+	//구매목록
 	@RequestMapping(value = "/library", method = RequestMethod.GET)
-	public ModelAndView libraryGet(ModelAndView mv,HttpServletRequest request,GameVo game,UserVo user) {
-		ArrayList<BuyVo> buyList = gameService.buyGame(game,user);
+	public ModelAndView libraryGet(ModelAndView mv,HttpServletRequest request,GameVo game) {
+		UserVo user = userService.getUser(request);
+		ArrayList<BuyVo> buyList = gameService.buyGameList(game,user);
 		
 		mv.addObject("buyList",buyList);
 		System.out.println(buyList);

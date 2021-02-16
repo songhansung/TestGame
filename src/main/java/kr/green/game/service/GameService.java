@@ -32,6 +32,8 @@ public interface GameService {
 
 	void modifyFile(int gameNum, String originalFilename, String path, String isimg);
 
-	ArrayList<BuyVo> buyGame(GameVo game, UserVo user);
+	ArrayList<BuyVo> buyGameList(GameVo game, UserVo user);
+
+	void getBuy(UserVo user, GameVo game);
 
 }

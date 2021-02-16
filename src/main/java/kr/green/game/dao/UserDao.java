@@ -12,4 +12,6 @@ public interface UserDao {
 
 	public void updateMoney(@Param("money")int amount,@Param("user") UserVo user);
 
+	public void updateUser(@Param("user")UserVo user);
+
 }

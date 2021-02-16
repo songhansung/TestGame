@@ -13,4 +13,8 @@
   	<update id="updateMoney" parameterType="kr.green.game.vo.UserVo">
   		update user set money = money + #{money} where id = #{user.id}
   	</update>
+  	<update id="updateUser">
+  		update user set pw = #{user.pw}, email = #{user.email}, phone = #{user.phone}, money = #{user.money} 
+  		where id = #{user.id}
+  	</update>
 </mapper>

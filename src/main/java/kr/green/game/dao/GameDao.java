@@ -36,5 +36,7 @@ public interface GameDao {
 
 	ArrayList<BuyVo> getBuyList(@Param("game")GameVo game,@Param("user") UserVo user);
 
+	void updateBuy(@Param("user")UserVo user,@Param("game") GameVo game);
+
 
 }

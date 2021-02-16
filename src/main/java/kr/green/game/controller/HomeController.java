@@ -103,6 +103,8 @@ public class HomeController {
 		System.out.println(userService.getUser(request));
 		UserVo user = userService.getUser(request);
 		userService.userMoney(amount,user);
+		request.getSession().setAttribute("user", user);
+		
 		return "success";
 	}
 }
