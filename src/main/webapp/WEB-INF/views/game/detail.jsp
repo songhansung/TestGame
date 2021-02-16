@@ -253,11 +253,11 @@
     			var id = '${user.id}';
     			if(id == ''){
     				alert('로그인하세요')
-    				return;
+    				return false;
     			}
     			if(monye < price){
     				alert('잔액이부족합니다')
-    				return;
+    				return false;
     			}
         	})
         })
