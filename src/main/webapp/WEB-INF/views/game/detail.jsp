@@ -9,6 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 <!-- Link Swiper's CSS -->
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
 <!-- Demo styles -->
 	<style>
 		html,
@@ -126,7 +127,7 @@
 </head>
 <body>
 	<div class="gametitle-box"><span>${game.title}</span></div>
-	
+	<input type="hidden" name="gameNum" value="${game.gameNum}">
 	<div class="swiper-container gallery-top">
 		<div class="swiper-wrapper">
 		<!-- 
@@ -186,13 +187,9 @@
 			<div class="text-box">${game.content}</div>
 			<div class="buy-box">
 				<div class="price-box"><span>₩ ${game.price}</span></div>
-				<div class="buy-btn-box row">
-					<form action="<%=request.getContextPath()%>/game/buy" method="post">
-						<input type="hidden" name="gameNum" value="${game.gameNum}">
-						<input type="hidden" name="user" value="${user}">
-						<button type="submit" class="btn btn-warning col-6">구매하기</button>
-					</form>
-					<form action="<%=request.getContextPath()%>/game/detail" method="post">
+				<div class="buy-btn-box row">						
+						<button type="button" class="btn btn-warning col-6 btn-buy">구매하기</button>
+					<form action="<%=request.getContextPath()%>/game/detail?gameNum=${game.gameNum}" method="post">
 						<input type="hidden" name="gameNum" value="${game.gameNum}">
 						<button type="submit" class="btn btn-warning col-6">장바구니</button>
 					</form>
@@ -246,6 +243,21 @@
               swiper: galleryThumbs,
             },
         });
+        $(function(){
+        	$('.btn-buy').click(function() {        		
+            	var price = '${game.price}';
+            	var monye = '${user.money}';
+    			var id = '${user.id}';
+    			if(id == ''){
+    				alert('로그인하세요')
+    				return;
+    			}
+    			if(monye < price){
+    				alert('잔액이부족합니다')
+    				return;
+    			}
+        	})
+        })
     </script>
 </body>
 </html>

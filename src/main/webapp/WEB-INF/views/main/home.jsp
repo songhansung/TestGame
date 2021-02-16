@@ -24,18 +24,18 @@
 	    }
 	    .main-searchbar{
 	        width: 100%;
-	        height: 100px;
+	        height: 70px;
 	        background-color: violet;
 	        padding: 10px 0 10px 0;
 	    }
 	    
 	    .main-searchbar .searchbar-right{
-	        height: 100%;
+	        margin-top: 5px;
 	        float: right;
 	    }
 	    .slick-items{
 	        width: 1500px;
-	        height: 400px;
+	        height: 600px;
 	        position: relative;
 	        box-sizing: border-box;
 	        padding-left: 50px;
@@ -51,13 +51,13 @@
 	    }
 	    .itmes-btn .left-icon{
 	        position: absolute;
-	        top: 150px;
+	        top: 250px;
 	        font-size: 50px;
 	        text-align: center;
 	    }
 	    .itmes-btn .right-icon{
 	        position: absolute;
-	        top:150px;
+	        top:250px;
 	        left: 1449px;
 	        font-size: 50px;
 	        text-align: center;
@@ -84,12 +84,12 @@
 	        box-sizing: border-box;
 	    }
 	    .main-items .items-box{
-	        width: 800px;
+	        width: 900px;
 	        height: 100%;
 	        float: left;
 	    }
 	    .main-items .items-box a{
-	        height: 400px;
+	        height: 600px;
 	        display: block;
 	    }
 	    .main-items .items-box .items-mainimg{
@@ -99,7 +99,7 @@
 	    }
 	    .main-items .items-subbox{
 	        float: left;
-	        width: 600px;
+	        width: 500px;
 	        height: 100%;
 	    }
 	    .main-items .items-subbox .items-subimg{
@@ -111,7 +111,7 @@
 	    }
 	    .main-items .items-subbox .items-subimg li{
 	        box-sizing: border-box;
-	        height: 200px;
+	        height: 300px;
 	        width: 50%;
 	        float: left;
 	    }

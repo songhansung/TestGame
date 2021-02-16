@@ -90,9 +90,9 @@ public class HomeController {
 		return mv;
 	}
 	//충전뷰
-	@RequestMapping(value = "/game/buy", method = RequestMethod.GET)
+	@RequestMapping(value = "/game/charging", method = RequestMethod.GET)
 	public ModelAndView buyGet(ModelAndView mv,HttpServletRequest request) {
-		mv.setViewName("/game/buy");
+		mv.setViewName("/game/charging");
 		return mv;
 	}
 	//충전 에이잭스

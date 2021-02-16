@@ -186,9 +186,10 @@
 		                        <span>${user.id}</span><i class="fas fa-angle-down"></i>
 		                        </button>
 		                        <div class="login-minibox">
-		                            <a href="#">마이페이지</a>
+		                            <a href="<%=request.getContextPath()%>/mypage">마이페이지</a>
 		                            <a href="<%=request.getContextPath()%>/basket">장바구니</a>
-		                            <a href="<%=request.getContextPath()%>/game/buy">충전하기</a>
+		                            <a href="<%=request.getContextPath()%>/game/charging">충전하기</a>
+		                            <a href="<%=request.getContextPath()%>/library">라이브러리</a>
 		                            <a href="<%=request.getContextPath()%>/signout">로그아웃</a>	                           
 		                        </div>
 		                    </div>

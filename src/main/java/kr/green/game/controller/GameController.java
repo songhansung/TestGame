@@ -95,6 +95,7 @@ public class GameController {
 		mv.setViewName("/game/detail");
 		return mv;
 	}
+	//장바구니 기능
 	@RequestMapping(value = "/game/detail", method = RequestMethod.POST)
 	public ModelAndView detailPost(ModelAndView mv,Integer gameNum,HttpServletRequest request) {
 		UserVo user = userService.getUser(request);
@@ -105,8 +106,11 @@ public class GameController {
 		mv.setViewName("redirect:/game/detail");
 		return mv;
 	}
+	//구매기능
+	
 	@RequestMapping(value = "/game/buy", method = RequestMethod.POST)
-	public ModelAndView buyPost(ModelAndView mv,HttpServletRequest request,GameVo game) {
+	public ModelAndView buyPost(ModelAndView mv,HttpServletRequest request,GameVo game,UserVo user) {
+		
 		
 		mv.setViewName("redirect:/game/detail");
 		return mv;
@@ -138,14 +142,24 @@ public class GameController {
 				}	
 			}
 		}
-		
 		mv.setViewName("redirect:/game/game");
 		return mv;
+		
 	}
+	//삭제기능
 	@RequestMapping(value = "/game/delete", method = RequestMethod.GET)
 	public ModelAndView deleteGet(ModelAndView mv,Integer gameNum) {
 		gameService.deleteGame(gameNum);
 		mv.setViewName("redirect:/game/game");
+		return mv;
+	}
+	@RequestMapping(value = "/library", method = RequestMethod.GET)
+	public ModelAndView libraryGet(ModelAndView mv,HttpServletRequest request,GameVo game,UserVo user) {
+		ArrayList<BuyVo> buyList = gameService.buyGame(game,user);
+		
+		mv.addObject("buyList",buyList);
+		System.out.println(buyList);
+		mv.setViewName("/main/library");
 		return mv;
 	}
 }

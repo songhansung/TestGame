@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import kr.green.game.dao.GameDao;
 import kr.green.game.pagination.Criteria;
+import kr.green.game.vo.BuyVo;
 import kr.green.game.vo.GameVo;
 import kr.green.game.vo.ImgVo;
 import kr.green.game.vo.UserVo;
@@ -104,6 +105,12 @@ public class GameServiceImp implements GameService{
 	@Override
 	public void modifyFile(int gameNum, String originalFilename, String path, String isimg) {
 		gameDao.insertFile(gameNum,originalFilename,path,isimg);
+	}
+
+	@Override
+	public ArrayList<BuyVo> buyGame(GameVo game, UserVo user) {
+		ArrayList<BuyVo> buylist = gameDao.getBuyList(game,user);
+		return buylist;
 	}
 
 	

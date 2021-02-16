@@ -28,6 +28,7 @@ public class BasketController {
 	@Autowired
 	private BasketService basketService;
 	
+	//장바구니 리스트를 가져옴
 	@RequestMapping(value = "/basket", method = RequestMethod.GET)
 	public ModelAndView basketGet(ModelAndView mv,HttpServletRequest request) {
 		

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.apache.ibatis.annotations.Param;
 
 import kr.green.game.pagination.Criteria;
+import kr.green.game.vo.BuyVo;
 import kr.green.game.vo.GameVo;
 import kr.green.game.vo.ImgVo;
 import kr.green.game.vo.UserVo;
@@ -32,5 +33,8 @@ public interface GameDao {
 	void updateFile(@Param("gameNum")int gameNum,@Param("filename") String originalFilename,@Param("path") String path,@Param("isimg") String isimg);
 
 	void deleteFile(@Param("gameNum")int gameNum);
+
+	ArrayList<BuyVo> getBuyList(@Param("game")GameVo game,@Param("user") UserVo user);
+
 
 }
