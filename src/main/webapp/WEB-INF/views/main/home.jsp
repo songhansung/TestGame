@@ -25,14 +25,39 @@
 	    .main-searchbar{
 	        width: 100%;
 	        height: 70px;
-	        background-color: violet;
 	        padding: 10px 0 10px 0;
-	    }
-	    
+	    }	    
 	    .main-searchbar .searchbar-right{
-	        margin-top: 5px;
+	        height: 50px;
+            width: 300px;
+            padding: 0 15px;
+            text-align: center;
 	        float: right;
 	    }
+	    .searchbar-right .searform{
+            box-sizing: border-box;
+            padding-top: 12px;
+            height: 100%;
+            width: 250px;
+            background-color: black;
+            border-radius: 5px;
+        }
+        .searchbar-right .searform .search-btn{
+            background-color: black;
+            border: none;
+        }
+        .searchbar-right .searform .search-btn i{
+            color: white;
+        }
+        .searchbar-right .searform .search-input{
+            display: inline;
+        }
+        .searchbar-right .searform .search-input input{
+            background-color: black;
+            border: none;
+            color: white;
+            outline: none;
+        }
 	    .slick-items{
 	        width: 1500px;
 	        height: 600px;
@@ -65,12 +90,26 @@
 	    .itmes-btn .left-icon {
 	        width: 50px;
 	        height: 100px;
-	        background-color: black;
+	        background:linear-gradient(
+            to left,
+            rgba(20, 20, 20, 0) 10%,
+            rgba(20, 20, 20, 0.25) 25%,
+            rgba(20, 20, 20, 0.5) 50%,
+            rgba(20, 20, 20, 0.75) 75%,
+            rgba(20, 20, 20, 1) 100%
+          );    
 	    }
 	    .itmes-btn .right-icon {
 	        width: 50px;
 	        height: 100px;        
-	        background-color: black;
+	        background:linear-gradient(
+            to right,
+            rgba(20, 20, 20, 0) 10%,
+            rgba(20, 20, 20, 0.25) 25%,
+            rgba(20, 20, 20, 0.5) 50%,
+            rgba(20, 20, 20, 0.75) 75%,
+            rgba(20, 20, 20, 1) 100%
+          );    
 	    }
 	    .itmes-btn .left-icon i,
 	    .itmes-btn .right-icon i{
@@ -137,10 +176,13 @@
 	    <div class="main-body-home">
 	        <div class="main-searchbar">
 	            <div class="searchbar-right">
-	                <form class="form-inline" action="/action_page.php">
-	                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
-	                    <button class="btn btn-success" type="submit">Search</button>
-	                </form>
+	                <form class="searform" action="">
+			            <button class="search-btn"><i class="fas fa-search"></i></button>
+			            <div class="search-input">
+			                <input type="text" placeholder="검색">
+			                <button class="search-btn"><i class="fas fa-times"></i></button>
+			            </div>
+			        </form>
 	            </div>
 	        </div>
 	        <div class="itmes-btn">

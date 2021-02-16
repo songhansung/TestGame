@@ -19,10 +19,12 @@
         }
         .gamelist-table{
             margin-top: 30px;
+            margin-bottom: 30px;
             width: 100%;
             text-align: center;
-            margin-left: 10px;
-            margin-right: 10px;
+        }
+        .pagination{
+        	margin:0;
         }
     </style>
 </head>
