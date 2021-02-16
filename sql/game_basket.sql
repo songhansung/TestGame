@@ -32,7 +32,7 @@ CREATE TABLE `basket` (
   KEY `id_idx` (`id`),
   CONSTRAINT `gameNum` FOREIGN KEY (`gameNum`) REFERENCES `game` (`gameNum`),
   CONSTRAINT `id` FOREIGN KEY (`id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `basket` (
 
 LOCK TABLES `basket` WRITE;
 /*!40000 ALTER TABLE `basket` DISABLE KEYS */;
-INSERT INTO `basket` VALUES (11,14,'thdgkstjd','N'),(12,11,'thdgkstjd','N'),(13,8,'thdgkstjd','N');
+INSERT INTO `basket` VALUES (11,14,'thdgkstjd','N'),(12,11,'thdgkstjd','N'),(13,8,'thdgkstjd','N'),(16,15,'thdgkstjd','N'),(18,14,'gkstjd3540','N');
 /*!40000 ALTER TABLE `basket` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-02-15 17:24:38
+-- Dump completed on 2021-02-16 17:37:25

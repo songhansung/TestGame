@@ -166,7 +166,7 @@ public class GameController {
 		ArrayList<BuyVo> buyList = gameService.buyGameList(game,user);
 		
 		mv.addObject("buyList",buyList);
-		System.out.println(buyList);
+
 		mv.setViewName("/main/library");
 		return mv;
 	}

@@ -26,13 +26,13 @@ CREATE TABLE `buy` (
   `buyNum` int NOT NULL AUTO_INCREMENT,
   `gameNum` int NOT NULL,
   `id` varchar(30) NOT NULL,
-  `isbuy` varchar(20) NOT NULL DEFAULT 'N',
+  `isbuy` varchar(20) NOT NULL DEFAULT 'Y',
   PRIMARY KEY (`buyNum`),
   KEY `gameNum_idx` (`gameNum`),
   KEY `id2_idx` (`id`),
   CONSTRAINT `gameNum2` FOREIGN KEY (`gameNum`) REFERENCES `game` (`gameNum`),
   CONSTRAINT `id2` FOREIGN KEY (`id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,6 +41,7 @@ CREATE TABLE `buy` (
 
 LOCK TABLES `buy` WRITE;
 /*!40000 ALTER TABLE `buy` DISABLE KEYS */;
+INSERT INTO `buy` VALUES (9,16,'thdgkstjd','Y'),(10,15,'thdgkstjd','Y'),(11,16,'thdgkstjd','Y'),(12,16,'thdgkstjd','Y'),(13,15,'thdgkstjd','Y'),(14,14,'thdgkstjd','Y'),(15,13,'thdgkstjd','Y'),(16,10,'thdgkstjd','Y'),(17,16,'thdgkstjd','Y'),(18,15,'thdgkstjd','Y'),(19,15,'thdgkstjd','Y'),(20,16,'thdgkstjd','Y'),(21,15,'thdgkstjd','Y'),(22,15,'thdgkstjd','Y'),(23,15,'thdgkstjd','Y');
 /*!40000 ALTER TABLE `buy` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-02-15 17:24:38
+-- Dump completed on 2021-02-16 17:37:26
