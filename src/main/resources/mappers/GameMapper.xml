@@ -64,4 +64,7 @@
         join user on buy.id = user.id
 	  	where isbuy = 'Y';
 	</select>
+	<insert id="insertBuy" parameterType="kr.green.game.vo.BasketVo">
+		insert into buy(gameNum,id) values(#{game.gameNum},#{user.id})
+	</insert>
   </mapper>

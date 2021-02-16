@@ -114,6 +114,7 @@ public class GameController {
 		UserVo user = userService.getUser(request);
 		GameVo game = gameService.getgame(gameNum);
 		gameService.getBuy(user,game);
+		gameService.plusbuy(user,game);
 		
 		request.getSession().setAttribute("user", user);	
 		mv.addObject("gameNum",gameNum);

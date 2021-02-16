@@ -36,4 +36,6 @@ public interface GameService {
 
 	void getBuy(UserVo user, GameVo game);
 
+	void plusbuy(UserVo user, GameVo game);
+
 }

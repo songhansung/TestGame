@@ -46,17 +46,17 @@
     <div class="main-body">
 		<div class="main-content">
             <div class="game-list-row-box">
-                <div class="game-list-row">
-                	<c:forEach items="${buyList}" var="buy" >
+            	<c:forEach items="${buyList}" var="buy" >
+	                <div class="game-list-row">	                	
 	                    <div class="img-box">              
 	                        <img src="<%=request.getContextPath()%>/resources/img/${buy.filename}" style="height: 100%;width: 100%;">
 	                    </div>	                    
 	                    <div class="sub-box">
 	                        <div class="title-box">${buy.title}</div>
 	                        <div class="review-box">나중에리뷰링크</div>
-	                    </div>
-                    </c:forEach>
-                </div>                
+	                    </div>	                    
+	                </div>
+            	</c:forEach>                
             </div>
         </div>
     </div>

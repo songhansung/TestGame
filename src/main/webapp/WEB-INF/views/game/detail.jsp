@@ -184,7 +184,7 @@
 					</c:if>
 				</c:forEach>	
 			</div>	
-			<div class="text-box">${user.money}</div>
+			<div class="text-box">${game.content}</div>
 			<div class="buy-box">
 				<div class="price-box"><span>₩ ${game.price}</span></div>
 				<div class="buy-btn-box row">
