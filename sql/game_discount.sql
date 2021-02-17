@@ -16,33 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `buy`
+-- Table structure for table `discount`
 --
 
-DROP TABLE IF EXISTS `buy`;
+DROP TABLE IF EXISTS `discount`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `buy` (
-  `buyNum` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `discount` (
+  `disNum` int NOT NULL AUTO_INCREMENT,
   `gameNum` int NOT NULL,
-  `id` varchar(30) NOT NULL,
-  `isbuy` varchar(20) NOT NULL DEFAULT 'Y',
-  PRIMARY KEY (`buyNum`),
-  KEY `gameNum_idx` (`gameNum`),
-  KEY `id2_idx` (`id`),
-  CONSTRAINT `gameNum2` FOREIGN KEY (`gameNum`) REFERENCES `game` (`gameNum`),
-  CONSTRAINT `id2` FOREIGN KEY (`id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `discount` int NOT NULL,
+  `discountTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`disNum`),
+  KEY `gameNum3_idx` (`gameNum`),
+  CONSTRAINT `gameNum3` FOREIGN KEY (`gameNum`) REFERENCES `game` (`gameNum`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `buy`
+-- Dumping data for table `discount`
 --
 
-LOCK TABLES `buy` WRITE;
-/*!40000 ALTER TABLE `buy` DISABLE KEYS */;
-INSERT INTO `buy` VALUES (13,15,'thdgkstjd','Y'),(20,16,'thdgkstjd','Y'),(24,10,'thdgkstjd','Y'),(25,15,'thdgkstjd','Y'),(26,16,'thdgkstjd','Y'),(27,8,'thdgkstjd','Y'),(28,15,'thdgkstjd','Y'),(29,16,'thdgkstjd','Y'),(30,14,'thdgkstjd','Y'),(31,16,'thdgkstjd','Y'),(32,14,'thdgkstjd','Y'),(33,15,'gkstjd3540','Y');
-/*!40000 ALTER TABLE `buy` ENABLE KEYS */;
+LOCK TABLES `discount` WRITE;
+/*!40000 ALTER TABLE `discount` DISABLE KEYS */;
+/*!40000 ALTER TABLE `discount` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-02-17 17:40:21
+-- Dump completed on 2021-02-17 17:40:20
