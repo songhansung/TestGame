@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import kr.green.game.pagination.Criteria;
 import kr.green.game.vo.BuyVo;
+import kr.green.game.vo.DiscountVo;
 import kr.green.game.vo.GameVo;
 import kr.green.game.vo.ImgVo;
 import kr.green.game.vo.UserVo;
@@ -37,6 +38,8 @@ public interface GameDao {
 	ArrayList<BuyVo> getBuyList(@Param("game")GameVo game,@Param("user") UserVo user);
 
 	void insertBuy(@Param("user")UserVo user,@Param("game") GameVo game);
+
+	void insertDiscount(@Param("dis")DiscountVo dis,@Param("game") GameVo game);
 
 
 }

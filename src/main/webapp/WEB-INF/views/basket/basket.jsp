@@ -30,15 +30,13 @@
 		<div class="basket">
             <table class="basket-table">
                 <tr>
-                    <th>제품번호</th>
                     <th>메인이미지</th>
                     <th>제목</th>
                     <th>가격</th>
                     <th>개발사</th>
                 </tr>
-                <c:forEach items="${bList}" var="game">
+                <c:forEach items="${bList}" var="game">           		
                     <tr class="" align="center" onClick="location.href='<%=request.getContextPath()%>/game/detail?gameNum=${game.gameNum}'" style="cursor:pointer;"> 
-                        <td>${game.gameNum}</td>
                         <td>                        
                             <img src="<%=request.getContextPath()%>/resources/img/${game.filename}" style="width: 200px; height: 100px;">                 
                         </td>

@@ -62,9 +62,12 @@
 	  	join game on buy.gameNum = game.gameNum
 	  	join (select * from image where isimg = 'M') as img on game.gameNum = img.gameNum
         join user on buy.id = user.id
-	  	where isbuy = 'Y';
+	  	where user.id = #{user.id} and isbuy = 'Y';
 	</select>
 	<insert id="insertBuy" parameterType="kr.green.game.vo.BasketVo">
 		insert into buy(gameNum,id) values(#{game.gameNum},#{user.id})
+	</insert>
+	<insert id="insertDiscount" parameterType="kr.green.game.vo.DiscountVo">
+		insert into discount(discount) values (#{dis.discount})
 	</insert>
   </mapper>

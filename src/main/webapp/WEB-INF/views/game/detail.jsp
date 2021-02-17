@@ -130,18 +130,6 @@
 	<input type="hidden" name="gameNum" value="${game.gameNum}">
 	<div class="swiper-container gallery-top">
 		<div class="swiper-wrapper">
-		<!-- 
-			<div class="swiper-slide" style="background-image:url(https://swiperjs.com/demos/images/nature-1.jpg)"></div>
-			<div class="swiper-slide" style="background-image:url(https://swiperjs.com/demos/images/nature-2.jpg)"></div>
-			<div class="swiper-slide" style="background-image:url(https://swiperjs.com/demos/images/nature-3.jpg)"></div>
-			<div class="swiper-slide" style="background-image:url(https://swiperjs.com/demos/images/nature-4.jpg)"></div>
-			<div class="swiper-slide" style="background-image:url(https://swiperjs.com/demos/images/nature-5.jpg)"></div>
-			<div class="swiper-slide" style="background-image:url(https://swiperjs.com/demos/images/nature-6.jpg)"></div>
-			<div class="swiper-slide" style="background-image:url(https://swiperjs.com/demos/images/nature-7.jpg)"></div>
-			<div class="swiper-slide" style="background-image:url(https://swiperjs.com/demos/images/nature-8.jpg)"></div>
-			<div class="swiper-slide" style="background-image:url(https://swiperjs.com/demos/images/nature-9.jpg)"></div>
-			<div class="swiper-slide" style="background-image:url(https://swiperjs.com/demos/images/nature-10.jpg)"></div>
-		-->
 		<c:forEach items="${imglist}" var="img">
 			<c:if test="${img.isimg == 'S'}">
 				<div class="swiper-slide" style="background-image:url('<%=request.getContextPath()%>/resources/img/${img.filename}')"></div>
@@ -153,20 +141,7 @@
 		<div class="swiper-button-prev swiper-button-white"></div>
 	</div>
 	<div class="swiper-container gallery-thumbs">
-		<div class="swiper-wrapper">
-		<!-- 
-			<div class="swiper-slide" style="background-image:url(https://swiperjs.com/demos/images/nature-1.jpg)"></div>
-			<div class="swiper-slide" style="background-image:url(https://swiperjs.com/demos/images/nature-2.jpg)"></div>
-			<div class="swiper-slide" style="background-image:url(https://swiperjs.com/demos/images/nature-3.jpg)"></div>
-			<div class="swiper-slide" style="background-image:url(https://swiperjs.com/demos/images/nature-4.jpg)"></div>
-			<div class="swiper-slide" style="background-image:url(https://swiperjs.com/demos/images/nature-5.jpg)"></div>
-			<div class="swiper-slide" style="background-image:url(https://swiperjs.com/demos/images/nature-6.jpg)"></div>
-			<div class="swiper-slide" style="background-image:url(https://swiperjs.com/demos/images/nature-7.jpg)"></div>
-			<div class="swiper-slide" style="background-image:url(https://swiperjs.com/demos/images/nature-8.jpg)"></div>
-			<div class="swiper-slide" style="background-image:url(https://swiperjs.com/demos/images/nature-9.jpg)"></div>
-			<div class="swiper-slide" style="background-image:url(https://swiperjs.com/demos/images/nature-10.jpg)"></div>
-		 -->
-		 
+		<div class="swiper-wrapper">	 
 		<c:forEach items="${imglist}" var="img">
 			<c:if test="${img.isimg == 'S'}">
 				<div class="swiper-slide" style="background-image:url('<%=request.getContextPath()%>/resources/img/${img.filename}')"></div>
@@ -256,6 +231,7 @@
     				return false;
     			}
     			if(monye < price){
+    				console.log(money,price)
     				alert('잔액이부족합니다')
     				return false;
     			}

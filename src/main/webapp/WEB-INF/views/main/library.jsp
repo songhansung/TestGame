@@ -46,7 +46,7 @@
     <div class="main-body">
 		<div class="main-content">
             <div class="game-list-row-box">
-            	<c:forEach items="${buyList}" var="buy" >
+            	<c:forEach items="${buyList}" var="buy" >           		
 	                <div class="game-list-row">	                	
 	                    <div class="img-box">              
 	                        <img src="<%=request.getContextPath()%>/resources/img/${buy.filename}" style="height: 100%;width: 100%;">

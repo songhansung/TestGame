@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import kr.green.game.pagination.Criteria;
 import kr.green.game.vo.BuyVo;
+import kr.green.game.vo.DiscountVo;
 import kr.green.game.vo.GameVo;
 import kr.green.game.vo.ImgVo;
 import kr.green.game.vo.UserVo;
@@ -38,4 +39,5 @@ public interface GameService {
 
 	void plusbuy(UserVo user, GameVo game);
 
+	void getDiscount(DiscountVo dis, GameVo game);
 }

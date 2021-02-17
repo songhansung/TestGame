@@ -179,8 +179,8 @@
 	                <form class="searform" action="">
 			            <button class="search-btn"><i class="fas fa-search"></i></button>
 			            <div class="search-input">
-			                <input type="text" placeholder="검색">
-			                <button class="search-btn"><i class="fas fa-times"></i></button>
+			                <input class="input-text" type="text" placeholder="검색">
+			                <button class="search-btn" onclick="clearInput()"><i class="fas fa-times"></i></button>
 			            </div>
 			        </form>
 	            </div>
@@ -257,5 +257,12 @@
 	        prevArrow:$('i.prev'),
 		});
 	});
+	function clearInput(){
+		var el = document.getElementsByClassName('input-text');
+		for(var i=0; i<el.length; i++){
+			el[i].value = '';
+		}
+		
+	};
 </script>
 </html>

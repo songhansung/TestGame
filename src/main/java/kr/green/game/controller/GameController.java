@@ -20,6 +20,7 @@ import kr.green.game.service.UserService;
 import kr.green.game.utils.UploadFileUtils;
 import kr.green.game.vo.BasketVo;
 import kr.green.game.vo.BuyVo;
+import kr.green.game.vo.DiscountVo;
 import kr.green.game.vo.GameVo;
 import kr.green.game.vo.ImgVo;
 import kr.green.game.vo.UserVo;
@@ -53,6 +54,14 @@ public class GameController {
 		mv.addObject("imglist", imglist);
 
 		mv.setViewName("/game/game");
+		return mv;
+	}
+	@RequestMapping(value = "/game/discount", method = RequestMethod.POST)
+	public ModelAndView discountPost(ModelAndView mv,Integer gameNum,DiscountVo dis) {
+		GameVo game = gameService.getgame(gameNum);
+		gameService.getDiscount(dis,game);
+		
+		mv.setViewName("redirect:/game/game");
 		return mv;
 	}
 	@RequestMapping(value = "/game/register", method = RequestMethod.GET)
@@ -170,4 +179,5 @@ public class GameController {
 		mv.setViewName("/main/library");
 		return mv;
 	}
+	
 }

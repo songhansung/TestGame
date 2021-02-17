@@ -107,4 +107,10 @@ public class HomeController {
 		
 		return "success";
 	}
+	//고객센터 뷰
+	@RequestMapping(value = "/customer", method = RequestMethod.GET)
+	public ModelAndView customerGet(ModelAndView mv,HttpServletRequest request) {
+		mv.setViewName("/main/customer");
+		return mv;
+	}
 }
