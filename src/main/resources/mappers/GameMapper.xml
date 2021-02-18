@@ -31,7 +31,7 @@
 		select * from image where gameNum = #{gameNum} and isdel ='N'
 	</select>
 	<update id="updateGame" parameterType="kr.green.game.vo.GameVo">
-		update game set title=#{game.title},content=#{game.content},longcontent = #{game.longcontent},price = #{game.price}
+		update game set title=#{game.title},content=#{game.content},longcontent = #{game.longcontent},price = #{game.price},
 								,launch = #{game.launch},company = #{game.company},tags = #{game.tags},isdel = #{game.isdel}
 								where gameNum = #{game.gameNum}
 	</update>
@@ -70,4 +70,7 @@
 	<insert id="insertdiscount" parameterType="kr.green.game.vo.DiscountVo" >
 		insert into discount(gameNum,discount,discountTime) values (#{game.gameNum},#{dis.discount},#{dis.discountTime})
 	</insert>
+	<update id="updateDisprice">
+		update game set disprice = #{game.disprice}, isdiscount='Y' where gameNum = #{game.gameNum}
+	</update>
   </mapper>

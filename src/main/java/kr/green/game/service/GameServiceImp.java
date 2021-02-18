@@ -134,6 +134,8 @@ public class GameServiceImp implements GameService{
 	}
 	@Override
 	public void updageSale(ArrayList<Integer> arrayParams, UserVo user, DiscountVo dis) {
+		
+		
 		if(user.getRating() != 10) {
 			return;
 		}
@@ -145,6 +147,12 @@ public class GameServiceImp implements GameService{
 			//할인 정보 추가
 			gameDao.insertdiscount(gameTmp,dis);
 			//게임 가격 할인 비용 및 할인 여부 업데이트
+			int price = gameTmp.getPrice();
+			int sale = dis.getDiscount();
+			double num = sale / 100.0;
+			gameTmp.setDisprice( (int)(price * (1-num)));
+			
+			gameDao.updateDisprice(gameTmp);
 		}
 	}
 }

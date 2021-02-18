@@ -44,4 +44,6 @@ public interface GameDao {
 
 	void insertdiscount(@Param("game")GameVo gameTmp,@Param("dis") DiscountVo dis);
 
+	void updateDisprice(@Param("game")GameVo gameTmp);
+
 }
