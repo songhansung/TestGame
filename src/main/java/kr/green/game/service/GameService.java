@@ -39,5 +39,7 @@ public interface GameService {
 
 	void plusbuy(UserVo user, GameVo game);
 
-	void getDiscount(DiscountVo dis, GameVo game);
+	void updageSale(ArrayList<Integer> arrayParams, UserVo user, DiscountVo dis);
+	
+
 }

@@ -71,7 +71,7 @@
 			                <input type="text" placeholder="할인기간" name="discountTime" style="text-align:right;">
 			            </div>
 			            <div>
-			                <button type="submit" class="btn btn-primary">적용</button>
+			                <button type="button" class="btn btn-primary btn-apply">적용</button>
 			                <button type="button" class="btn btn-primary">취소</button>
 			            </div>
 			        </div>
@@ -84,6 +84,7 @@
                     <th>제목</th>
                     <th>출시일자</th>
                     <th>개발사</th>
+                    <th>가격</th>
                     <th>할인여부</th>
                 </tr>
                <c:forEach items="${list}" var="game">
@@ -99,10 +100,11 @@
 	                    <td onClick="location.href='<%=request.getContextPath()%>/game/detail?gameNum=${game.gameNum}'" style="cursor:pointer;">${game.title}</td>
 	                    <td>${game.launch}</td>
 	                    <td>${game.company}</td>
+	                    <td>${game.price}</td>
 	                    <td>
 	                    	<div class="form-check-inline">
 						      	<label class="form-check-label" for="check1">
-						        	<input type="checkbox" class="form-check-input" id="check1" name="vehicle1" value="something" checked>Option 1
+						        	<input type="checkbox" class="form-check-input" id="cnt" name="cnt" value="${game.gameNum}">
 						      	</label>
 						    </div>
 	                    </td>
@@ -126,8 +128,47 @@
 	    $(function(){
 	        $('.discount-btn').click(function(){
 	            $('.discount-sudbox').toggle();
+	            
+	        })
+	        $('.btn-apply').click(function(){
+	        	ajaxExample();
 	        })
 	    })
+	    function ajaxExample(){
+		    // 사용자 ID를 갖고 온다.
+		    var userId = '${user.id}';
+		 
+		    // name이 같은 체크박스의 값들을 배열에 담는다.
+		    var checkboxValues = [];
+		    $("input[name='cnt']:checked").each(function(i) {
+		        checkboxValues.push($(this).val());
+		    });
+		     
+		    // 사용자 ID(문자열)와 체크박스 값들(배열)을 name/value 형태로 담는다.
+		    var discount = $("input[name='discount']").val();
+		    var discountTime = $("input[name='discountTime']").val();
+		    var allData = {"checkArray": checkboxValues, "discount": discount, "discountTime":discountTime };
+		    console.log(allData);
+		    $.ajax({
+		        url:"<%=request.getContextPath()%>/game/discount",
+		        type:'POST',
+		        data: allData,				
+		      //데이터 전송이 완료되면 출력되는 메시지
+		
+		        success:function(data){
+		            alert("완료!");
+		            //window.opener.location.reload();
+		            //self.close();
+		        },
+		
+		       //에러가 발생되면 출력되는 메시지
+		
+		        error:function(jqXHR, textStatus, errorThrown){
+		            alert("에러 발생~~ \n" + textStatus + " : " + errorThrown);
+		            //self.close();
+		        }
+		    });
+		}
     </script>
 </body>
 </html>

@@ -10,6 +10,7 @@ public class GameVo {
 	private String content;
 	private String longcontent;
 	private int price;
+	private int disprice;
 	private Date launch;
 	private String company;
 	private String tags;
@@ -46,6 +47,12 @@ public class GameVo {
 	}
 	public void setPrice(int price) {
 		this.price = price;
+	}	
+	public int getDisprice() {
+		return disprice;
+	}
+	public void setDisprice(int disprice) {
+		this.disprice = disprice;
 	}
 	public String getLaunch() {
 		SimpleDateFormat simpleFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -95,9 +102,9 @@ public class GameVo {
 	@Override
 	public String toString() {
 		return "GameVo [gameNum=" + gameNum + ", title=" + title + ", content=" + content + ", longcontent="
-				+ longcontent + ", price=" + price + ", launch=" + launch + ", company=" + company + ", tags=" + tags
-				+ ", isdel=" + isdel + ", isdiscount=" + isdiscount + ", origameNum=" + origameNum + ", oder=" + oder
-				+ "]";
+				+ longcontent + ", price=" + price + ", disprice=" + disprice + ", launch=" + launch + ", company="
+				+ company + ", tags=" + tags + ", isdel=" + isdel + ", isdiscount=" + isdiscount + ", origameNum="
+				+ origameNum + ", oder=" + oder + "]";
 	}
 	
 	

@@ -1,6 +1,7 @@
 package kr.green.game.dao;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -41,5 +42,6 @@ public interface GameDao {
 
 	void insertDiscount(@Param("dis")DiscountVo dis,@Param("game") GameVo game);
 
+	void insertdiscount(@Param("game")GameVo gameTmp,@Param("dis") DiscountVo dis);
 
 }

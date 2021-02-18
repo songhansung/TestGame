@@ -1,7 +1,10 @@
 package kr.green.game.controller;
 
+import java.awt.List;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -9,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -56,13 +60,22 @@ public class GameController {
 		mv.setViewName("/game/game");
 		return mv;
 	}
+	@ResponseBody
 	@RequestMapping(value = "/game/discount", method = RequestMethod.POST)
-	public ModelAndView discountPost(ModelAndView mv,Integer gameNum,DiscountVo dis) {
-		GameVo game = gameService.getgame(gameNum);
-		gameService.getDiscount(dis,game);
+	public String discountPost(@RequestParam(value="checkArray[]") ArrayList<Integer> arrayParams,HttpServletRequest request
+			,@RequestParam("discount")int discount, @RequestParam("discountTime")String discountTime) throws ParseException{		
+		UserVo user = userService.getUser(request);
+		DiscountVo dis = new DiscountVo(discount, discountTime);
+		gameService.updageSale(arrayParams, user,dis);
+		//ArrayList<GameVo> list = gameService.getGameList(cri);
+		//GameVo game = gameService.getgame(gameNum);
 		
-		mv.setViewName("redirect:/game/game");
-		return mv;
+		//boolean result = Arrays.equals(arrayParams.toArray(),list.toArray());
+		
+		//gameService.getDisList(arrayParams,user,list);
+		
+		
+		return "success";
 	}
 	@RequestMapping(value = "/game/register", method = RequestMethod.GET)
 	public ModelAndView registerGet(ModelAndView mv) {

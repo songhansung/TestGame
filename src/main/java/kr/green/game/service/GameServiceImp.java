@@ -132,15 +132,19 @@ public class GameServiceImp implements GameService{
 		gameDao.insertBuy(user,game);
 		
 	}
-
 	@Override
-	public void getDiscount(DiscountVo dis, GameVo game) {
-		int discount = dis.getDiscount();
-		int price = game.getPrice();
-		game.setPrice(discount % price);
-		gameDao.insertDiscount(dis, game);
+	public void updageSale(ArrayList<Integer> arrayParams, UserVo user, DiscountVo dis) {
+		if(user.getRating() != 10) {
+			return;
+		}
+		System.out.println(dis);
+		System.out.println(arrayParams);
+		for(Integer tmp : arrayParams) {
+			GameVo gameTmp = gameDao.getgame(tmp);
+			System.out.println(gameTmp);
+			//할인 정보 추가
+			gameDao.insertdiscount(gameTmp,dis);
+			//게임 가격 할인 비용 및 할인 여부 업데이트
+		}
 	}
-
-	
-
 }

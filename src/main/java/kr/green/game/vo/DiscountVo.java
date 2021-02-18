@@ -1,5 +1,7 @@
 package kr.green.game.vo;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DiscountVo {
@@ -7,7 +9,10 @@ public class DiscountVo {
 	private int gameNum;
 	private int discount;
 	private Date discountTime;
-	private String isdiscount;
+	public DiscountVo(int discount2, String discountTime2) throws ParseException {
+		discount = discount2;
+		setDiscountTime(discountTime2);
+	}
 	public int getDisNum() {
 		return disNum;
 	}
@@ -26,21 +31,18 @@ public class DiscountVo {
 	public void setDiscount(int discount) {
 		this.discount = discount;
 	}
-	public Date getDiscountTime() {
-		return discountTime;
+	public String getDiscountTime() {
+		SimpleDateFormat simpleFormat = new SimpleDateFormat("yyyy-MM-dd");
+		String dateString = simpleFormat.format(discountTime);
+		return dateString;
 	}
-	public void setDiscountTime(Date discountTime) {
-		this.discountTime = discountTime;
-	}
-	public String getIsdiscount() {
-		return isdiscount;
-	}
-	public void setIsdiscount(String isdiscount) {
-		this.isdiscount = isdiscount;
+	public void setDiscountTime(String discountTime) throws ParseException {
+		SimpleDateFormat simpleFormat2 = new SimpleDateFormat("yyyyMMdd");
+		this.discountTime = simpleFormat2.parse(discountTime);
 	}
 	@Override
 	public String toString() {
 		return "DiscountVo [disNum=" + disNum + ", gameNum=" + gameNum + ", discount=" + discount + ", discountTime="
-				+ discountTime + ", isdiscount=" + isdiscount + "]";
-	}
+				+ discountTime + "]";
+	}	
 }
