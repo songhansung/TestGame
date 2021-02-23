@@ -47,11 +47,11 @@ public class GameServiceImp implements GameService{
 	}
 	//게임번호에따른 이미지 불러오는기능
 	@Override
-	public ArrayList<ImgVo> getImglist(Integer gameNum) {
-		if(gameNum == null) {
+	public ArrayList<ImgVo> getImglist(Criteria cri) {
+		if(cri == null) {
 			return null;
 		}
-		return gameDao.getImglist(gameNum); 
+		return gameDao.getImglist(cri); 
 	}
 	// 수정기능
 	@Override
@@ -86,12 +86,6 @@ public class GameServiceImp implements GameService{
 		game.setIsdel("Y");
 		gameDao.updateGame(game);
 		
-	}
-	//게임 리스트에 이미지리스트 불러오는기능
-	@Override
-	public ArrayList<ImgVo> getImglist() {
-		ArrayList<ImgVo> imglist = gameDao.getImgList();
-		return imglist;
 	}
 
 	@Override
@@ -155,4 +149,26 @@ public class GameServiceImp implements GameService{
 			gameDao.updateDisprice(gameTmp);
 		}
 	}
+
+	@Override public ArrayList<ImgVo> getImglist(GameVo game) { 
+		if(game ==null) { 
+			return null; 
+		} 
+			return gameDao.getImgAlllist(game); 
+	}
+
+	@Override
+	public ArrayList<DiscountVo> getDisList(ArrayList<GameVo> list) {
+		ArrayList<DiscountVo> disList = new ArrayList<DiscountVo>();
+		for(GameVo tmp : list) {
+			DiscountVo discountVo = gameDao.getDiscount(tmp.getGameNum());
+			if(discountVo != null) {
+				disList.add(discountVo);
+			}
+		}
+				
+				
+		return disList;
+	}	 
+
 }

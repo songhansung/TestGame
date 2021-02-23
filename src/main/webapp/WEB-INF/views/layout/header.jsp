@@ -159,11 +159,11 @@
 	            <div class="box customer">
 	                <a href="<%=request.getContextPath()%>/customer">고객센터</a>
 	            </div>
-	            <%-- <c:if test="${user.rating == 10}"> --%>
+	            <c:if test="${user.rating == 10}">
 		            <div class="box customer">
 		                <a href="<%=request.getContextPath()%>/game/game">제품목록</a>
 		            </div>		           
-	            <%-- </c:if> --%>
+	            </c:if>
 	        </div>
 	        <div class="header-right">
 	        	<c:if test="${user == null}">   

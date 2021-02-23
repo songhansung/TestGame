@@ -49,7 +49,7 @@ public class GameController {
 		//게임정보를 담는 리스트(페이지정보포함)
 		ArrayList<GameVo> list = gameService.getGameList(cri);
 		//이미지리스트
-		ArrayList<ImgVo> imglist = gameService.getImglist();
+		ArrayList<ImgVo> imglist = gameService.getImglist(cri);
 		//페이지정보
 		PageMaker pm = new PageMaker(cri,displayPageNum,totalCount);
 		
@@ -60,6 +60,8 @@ public class GameController {
 		mv.setViewName("/game/game");
 		return mv;
 	}
+	
+	//할인기능
 	@ResponseBody
 	@RequestMapping(value = "/game/discount", method = RequestMethod.POST)
 	public String discountPost(@RequestParam(value="checkArray[]") ArrayList<Integer> arrayParams,HttpServletRequest request
@@ -67,14 +69,7 @@ public class GameController {
 		UserVo user = userService.getUser(request);
 		DiscountVo dis = new DiscountVo(discount, discountTime);
 		gameService.updageSale(arrayParams, user,dis);
-		//ArrayList<GameVo> list = gameService.getGameList(cri);
-		//GameVo game = gameService.getgame(gameNum);
-		
-		//boolean result = Arrays.equals(arrayParams.toArray(),list.toArray());
-		
-		//gameService.getDisList(arrayParams,user,list);
-		
-		
+	
 		return "success";
 	}
 	@RequestMapping(value = "/game/register", method = RequestMethod.GET)
@@ -109,7 +104,7 @@ public class GameController {
 	@RequestMapping(value = "/game/detail", method = RequestMethod.GET)
 	public ModelAndView detailGet(ModelAndView mv,Integer gameNum,HttpServletRequest request) {
 		GameVo game = gameService.getgame(gameNum);
-		ArrayList<ImgVo> imglist = gameService.getImglist(gameNum);
+		ArrayList<ImgVo> imglist = gameService.getImglist(game);
 		UserVo user = userService.getUser(request);
 		
 		mv.addObject("imglist",imglist);
@@ -146,7 +141,7 @@ public class GameController {
 	@RequestMapping(value = "/game/modify", method = RequestMethod.GET)
 	public ModelAndView modifyGet(ModelAndView mv,Integer gameNum) {
 		GameVo game = gameService.getgame(gameNum);
-		ArrayList<ImgVo> imglist = gameService.getImglist(gameNum);
+		ArrayList<ImgVo> imglist = gameService.getImglist(game);
 		
 		System.out.println(imglist);
 		mv.addObject("imglist",imglist);
@@ -190,6 +185,27 @@ public class GameController {
 		mv.addObject("buyList",buyList);
 
 		mv.setViewName("/main/library");
+		return mv;
+	}
+	@RequestMapping(value = "/game/list", method = RequestMethod.GET)
+	public ModelAndView listGet(ModelAndView mv,Criteria cri) {
+		int displayPageNum = 2;
+		int totalCount = gameService.getTotalCount(cri);
+		
+		
+		ArrayList<GameVo> list = gameService.getGameList(cri); 
+		ArrayList<DiscountVo>dislist = gameService.getDisList(list);
+		ArrayList<ImgVo> imglist =gameService.getImglist(cri);
+		 
+		PageMaker pm = new PageMaker(cri,displayPageNum,totalCount);
+		
+		mv.addObject("pm",pm);
+		mv.addObject("list", list);
+		mv.addObject("imglist", imglist);
+		mv.addObject("dislist", dislist);
+		
+		System.out.println(dislist);
+		mv.setViewName("/game/list");
 		return mv;
 	}
 	

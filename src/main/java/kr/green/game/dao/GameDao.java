@@ -22,7 +22,7 @@ public interface GameDao {
 
 	GameVo getgame(@Param("gameNum")Integer gameNum);
 
-	ArrayList<ImgVo> getImglist(@Param("gameNum")Integer gameNum);
+	ArrayList<ImgVo> getImglist(@Param("cri")Criteria cri);
 
 	void updateGame(@Param("game")GameVo origame);
 
@@ -45,5 +45,9 @@ public interface GameDao {
 	void insertdiscount(@Param("game")GameVo gameTmp,@Param("dis") DiscountVo dis);
 
 	void updateDisprice(@Param("game")GameVo gameTmp);
+
+	ArrayList<ImgVo> getImgAlllist(@Param("game")GameVo game);
+
+	DiscountVo getDiscount(@Param("gameNum")int gameNum);
 
 }

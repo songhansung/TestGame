@@ -1,5 +1,6 @@
 package kr.green.game.vo;
 
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,6 +14,15 @@ public class DiscountVo {
 		discount = discount2;
 		setDiscountTime(discountTime2);
 	}
+	
+	public DiscountVo(Integer disNum, Integer gameNum, Integer discount, Timestamp discountTime) {
+		super();
+		this.disNum = disNum;
+		this.gameNum = gameNum;
+		this.discount = discount;
+		this.discountTime = discountTime;
+	}
+
 	public int getDisNum() {
 		return disNum;
 	}

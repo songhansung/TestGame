@@ -10,6 +10,7 @@
         .main-body{      	
             background-color: rgb(60,60,60);
             width: 100%;
+            height: 100%;
         }
         .gamelist{
             width: 1000px;
@@ -47,17 +48,17 @@
 	<div class="main-body">
 		<div class="gamelist">
 			<form action="<%=request.getContextPath()%>/game/game" method="get">
-            <div class="input-group mb-3">
-                <select class="form-control col-3" name="type">
-                    <option value="1" <c:if test="${pm.criteria.type == 1}">selected</c:if>>제목</option>
-                    <option value="2" <c:if test="${pm.criteria.type == 2}">selected</c:if>>내용</option>
-                    <option value="3" <c:if test="${pm.criteria.type == 3}">selected</c:if>>개발사</option>
-                </select>
-                <input type="text" class="form-control" placeholder="Search" name="search" value="${pm.criteria.search}" >
-                <div class="input-group-append">
-                  <button class="btn btn-success" type="submit">검색</button>
-                </div>
-            </div>
+	            <div class="input-group mb-3">
+	                <select class="form-control col-3" name="type">
+	                    <option value="1" <c:if test="${pm.criteria.type == 1}">selected</c:if>>제목</option>
+	                    <option value="2" <c:if test="${pm.criteria.type == 2}">selected</c:if>>내용</option>
+	                    <option value="3" <c:if test="${pm.criteria.type == 3}">selected</c:if>>개발사</option>
+	                </select>
+	                <input type="text" class="form-control" placeholder="Search" name="search" value="${pm.criteria.search}" >
+	                <div class="input-group-append">
+	                  <button class="btn btn-success" type="submit">검색</button>
+	                </div>
+	            </div>
             </form>            
 	            <a href="<%=request.getContextPath()%>/game/register">           	
 			        <button type="button" class="btn btn-primary col-5">제품등록</button>			        

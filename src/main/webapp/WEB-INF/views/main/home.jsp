@@ -176,10 +176,10 @@
 	    <div class="main-body-home">
 	        <div class="main-searchbar">
 	            <div class="searchbar-right">
-	                <form class="searform" action="">
+	                <form class="searform" action="<%=request.getContextPath()%>/game/list" method="get">
 			            <button class="search-btn"><i class="fas fa-search"></i></button>
 			            <div class="search-input">
-			                <input class="input-text" type="text" placeholder="검색">
+			                <input class="input-text" type="text" placeholder="검색" name="search">
 			                <button class="search-btn" onclick="clearInput()"><i class="fas fa-times"></i></button>
 			            </div>
 			        </form>

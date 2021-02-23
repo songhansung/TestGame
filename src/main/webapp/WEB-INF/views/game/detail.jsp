@@ -146,15 +146,14 @@
 			<c:if test="${img.isimg == 'S'}">
 				<div class="swiper-slide" style="background-image:url('<%=request.getContextPath()%>/resources/img/${img.filename}')"></div>
 			</c:if>
-		</c:forEach>
-		
+		</c:forEach>		
 		</div>
 	</div>
 	<div class="sbcontent-box">
 		<div class="sbtext-box">
 			<div class="main-img">
 				<c:forEach items="${imglist}" var="img">
-					<c:if test="${img.isimg == 'M'}">
+					<c:if test="${img.isimg == 'M' && img.isdel =='N'}">
 						<img src="<%=request.getContextPath()%>/resources/img/${img.filename}" >
 					</c:if>
 				</c:forEach>	

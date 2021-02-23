@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.green.game.service.GameService;
 import kr.green.game.service.UserService;
 import kr.green.game.vo.GameVo;
 import kr.green.game.vo.UserVo;
@@ -30,6 +31,9 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	@Autowired
 	private UserService userService;
+	@Autowired
+	GameService gameService;
+	
 	//메인뷰
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView openTilesView(ModelAndView mv) {

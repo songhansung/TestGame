@@ -28,16 +28,23 @@
     	select * from game where gameNum = #{gameNum} and isdel = 'N'
 	</select>
 	<select id="getImglist" resultType="kr.green.game.vo.ImgVo">
-		select * from image where gameNum = #{gameNum} and isdel ='N'
+		select * from game 
+		join (select * from image where isimg = 'M' and isdel = 'N') as img 
+    	on game.gameNum = img.gameNum 
+    	where title like concat('%',#{cri.search},'%') 
+    	order by title desc limit #{cri.pageStart}, #{cri.perPageNum};
+	</select>
+	<select id="getImgAlllist" resultType="kr.green.game.vo.ImgVo">
+    	select * from image
+    	join (select * from game where isdel = 'N') as game
+    	on image.gameNum = game.gameNum
+    	where image.gameNum = #{game.gameNum}
 	</select>
 	<update id="updateGame" parameterType="kr.green.game.vo.GameVo">
 		update game set title=#{game.title},content=#{game.content},longcontent = #{game.longcontent},price = #{game.price},
 								,launch = #{game.launch},company = #{game.company},tags = #{game.tags},isdel = #{game.isdel}
 								where gameNum = #{game.gameNum}
 	</update>
-	<select id="getImgList" resultType="kr.green.game.vo.ImgVo">
-		select * from image where isimg = 'M' order by gameNum desc limit 0, 10;
-	</select>
 	<select id="getTotalCount" resultType="int">
 		select count(*) from game where isDel = 'N'
 		<if test="cri.type == 1">
@@ -73,4 +80,7 @@
 	<update id="updateDisprice">
 		update game set disprice = #{game.disprice}, isdiscount='Y' where gameNum = #{game.gameNum}
 	</update>
+	<select id="getDiscount" resultType="kr.green.game.vo.DiscountVo">
+		select * from discount where gameNum = #{gameNum} and discountTime > now();
+	</select>
   </mapper>

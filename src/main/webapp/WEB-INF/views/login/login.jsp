@@ -54,29 +54,29 @@
         }
     </style>
 </head>
-<body>
-	<div class="login">
-        <div class="header"></div>
-		<div class="login-body">
-            <div class="login-box">
-				<div class="login-img">
-				    <a href="<%=request.getContextPath()%>/">
-				        <img src="https://store.akamai.steamstatic.com/public/shared/images/header/logo_steam.svg?t=962016" height="80" width="250">
-				    </a>
-				</div>
-				<form action="<%=request.getContextPath()%>/login" class="login-form" method="post">
-				    <label for="">로그인 후 이용바랍니다.</label>
-				    <div class="form-group">
-				      <input type="text" class="form-control" placeholder="ID" id="id" name="id">
-				    </div>
-				    <div class="form-group">
-				      <input type="password" class="form-control" placeholder="Password" id="pw" name="pw">
-				    </div>
-				    <button type="submit" class="btn btn-dark btn-block">로그인</button>
-				</form>				
-            </div>
-        </div>
-		<div class="footer"></div>
-    </div>
-</body>
+	<body>
+		<div class="login">
+	        <div class="header"></div>
+			<div class="login-body">
+	            <div class="login-box">
+					<div class="login-img">
+					    <a href="<%=request.getContextPath()%>/">
+					        <img src="https://store.akamai.steamstatic.com/public/shared/images/header/logo_steam.svg?t=962016" height="80" width="250">
+					    </a>
+					</div>
+					<form action="<%=request.getContextPath()%>/login" class="login-form" method="post">
+					    <label for="">로그인 후 이용바랍니다.</label>
+					    <div class="form-group">
+					      <input type="text" class="form-control" placeholder="ID" id="id" name="id">
+					    </div>
+					    <div class="form-group">
+					      <input type="password" class="form-control" placeholder="Password" id="pw" name="pw">
+					    </div>
+					    <button type="submit" class="btn btn-dark btn-block">로그인</button>
+					</form>				
+	            </div>
+	        </div>
+			<div class="footer"></div>
+	    </div>
+	</body>
 </html>

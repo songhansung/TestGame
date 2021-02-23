@@ -19,13 +19,11 @@ public interface GameService {
 
 	GameVo getgame(Integer gameNum);
 
-	ArrayList<ImgVo> getImglist(Integer gameNum);
+	ArrayList<ImgVo> getImglist(Criteria cri);
 
 	void modifyGame(GameVo game);
 
 	void deleteGame(Integer gameNum);
-
-	ArrayList<ImgVo> getImglist();
 
 	int getTotalCount(Criteria cri);
 
@@ -40,6 +38,9 @@ public interface GameService {
 	void plusbuy(UserVo user, GameVo game);
 
 	void updageSale(ArrayList<Integer> arrayParams, UserVo user, DiscountVo dis);
-	
 
+	ArrayList<ImgVo> getImglist(GameVo game);
+
+	ArrayList<DiscountVo> getDisList(ArrayList<GameVo> list);
+	
 }
