@@ -63,6 +63,10 @@
 			font-size: 30px;
 			margin-left: auto;
 			margin-right: auto;
+			margin-top: 10px;
+			margin-bottom: 10px;
+			color: white;
+			font-size: 26px;
 		}
 		.sbcontent-box{
 			width: 70%;
@@ -110,7 +114,7 @@
 			box-sizing: border-box;
 		}
 		.sbcontent-box .sbtext-box .buy-box .buy-btn-box{
-			text-align: center;
+			text-align: right;
 			margin: 0;
 			padding-right: 30px;
 			padding-left: 30px;
@@ -161,14 +165,14 @@
 			<div class="text-box">${game.content}</div>
 			<div class="buy-box">
 				<div class="price-box"><span>₩ ${game.price}</span></div>
-				<div class="buy-btn-box row">
+				<div class="buy-btn-box">
 					<form action="<%=request.getContextPath()%>/game/buy" method="post" >						
-						<button type="submit" class="btn btn-warning col-6 btn-buy">구매하기</button>
+						<button type="submit" class="btn btn-warning btn-buy">구매하기</button>
 						<input type="hidden" name="gameNum" value="${game.gameNum}">
 					</form>
 					<form action="<%=request.getContextPath()%>/game/detail" method="post">
 						<input type="hidden" name="gameNum" value="${game.gameNum}">
-						<button type="submit" class="btn btn-warning col-6">장바구니</button>
+						<button type="submit" class="btn btn-warning">장바구니</button>
 					</form>
 				</div>
 			</div>
@@ -222,15 +226,17 @@
         });
         $(function(){
         	$('.btn-buy').click(function() {
+        		
             	var price = '${game.price}';
+            	price = parseInt(price);
             	var monye = '${user.money}';
+            	monye = parseInt(monye);
     			var id = '${user.id}';
     			if(id == ''){
     				alert('로그인하세요')
     				return false;
-    			}
+    			}    			
     			if(monye < price){
-    				console.log(money,price)
     				alert('잔액이부족합니다')
     				return false;
     			}

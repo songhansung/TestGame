@@ -16,6 +16,7 @@
             width: 1000px;
             color: white;
             margin: 0 auto;
+            padding-top: 20px;
 			
         }
         .gamelist-table{
@@ -42,12 +43,17 @@
 	        background-color: burlywood;
 	        display: none;
 	    }
+	    .discount-sudbox .sudbox-input{
+	    	width: 100%;
+	    	height: 100px;
+	    	margin-top: 20px;
+	    }
     </style>
 </head>
 <body>
 	<div class="main-body">
 		<div class="gamelist">
-			<form action="<%=request.getContextPath()%>/game/game" method="get">
+			<form action="<%=request.getContextPath()%>/game/game" method="get" class="list-form">
 	            <div class="input-group mb-3">
 	                <select class="form-control col-3" name="type">
 	                    <option value="1" <c:if test="${pm.criteria.type == 1}">selected</c:if>>제목</option>
@@ -67,11 +73,11 @@
 			        <button type="button" class="btn btn-primary discount-btn col">할인등록</button>
 			        <form action="<%=request.getContextPath()%>/game/discount" method="post">
 			        <div class="discount-sudbox">
-			            <div>
+			            <div class="sudbox-input">
 			                <input type="text" placeholder="할인율" name="discount" style="text-align:right;">
 			                <input type="text" placeholder="할인기간" name="discountTime" style="text-align:right;">
 			            </div>
-			            <div>
+			            <div class="sudbox-btn">
 			                <button type="button" class="btn btn-primary btn-apply">적용</button>
 			                <button type="button" class="btn btn-primary">취소</button>
 			            </div>

@@ -50,6 +50,8 @@
         }
         .header-bar .header-center .box a{
             line-height: 80px;
+            color: white;
+            text-decoration: none;
         }
         .header-bar .header-right{
             /* background-color: blue; */
@@ -70,6 +72,10 @@
             margin-right: 40px;
             font-weight: bold;
         }
+        .header-bar .header-right .box.login >a{
+        	color: white;
+        	text-decoration: none;
+        }
         .header-bar .header-right .box.link-join{
             background-color: rgb(11,196,226);
             box-sizing: border-box;
@@ -86,6 +92,8 @@
             display: block;
             text-align: center;
             height: 100%;
+            color: white;
+            text-decoration: none;
         }
         .header-bar .header-right .login-box{
             float: right;

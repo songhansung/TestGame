@@ -203,8 +203,7 @@ public class GameController {
 		mv.addObject("list", list);
 		mv.addObject("imglist", imglist);
 		mv.addObject("dislist", dislist);
-		
-		System.out.println(dislist);
+
 		mv.setViewName("/game/list");
 		return mv;
 	}

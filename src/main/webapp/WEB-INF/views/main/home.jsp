@@ -176,7 +176,7 @@
 	    <div class="main-body-home">
 	        <div class="main-searchbar">
 	            <div class="searchbar-right">
-	                <form class="searform" action="<%=request.getContextPath()%>/game/list" method="get">
+	                <form class="searform" type="submit" action="<%=request.getContextPath()%>/game/list" method="get">
 			            <button class="search-btn"><i class="fas fa-search"></i></button>
 			            <div class="search-input">
 			                <input class="input-text" type="text" placeholder="검색" name="search">

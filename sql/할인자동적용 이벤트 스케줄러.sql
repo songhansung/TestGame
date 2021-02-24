@@ -1,0 +1,7 @@
+DROP EVENT IF EXISTS evt_AutoScheduler;
+CREATE
+EVENT evt_AutoScheduler On SCHEDULE EVERY 1 MINUTE STARTS '2020-12-29 00:00:01'
+DO CALL select_discount();
+
+select * from INFORMATION_SCHEMA.EVENTS;
+

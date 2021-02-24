@@ -84,7 +84,9 @@
 		    </div>
 		  	<div class="btn-group">
 			  	<button type="submit" class="btn btn-primary">수정</button>
-			  	<button type="button" class="btn btn-primary">취소</button>
+			  	<a href="<%=request.getContextPath()%>/game/detail?gameNum=${game.gameNum}">
+			  		<button type="button" class="btn btn-primary">취소</button>
+			  	</a>
 			</div>
 		</form>
     </div>

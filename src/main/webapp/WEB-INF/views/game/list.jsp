@@ -84,6 +84,7 @@
         	width: 100%;
         	height: 50%;
         	line-height: 49px;
+        	color: white;
         }
         .main-content .game-list-row-box .game-list-row .sub-box .review-box{
         	width: 100%;
