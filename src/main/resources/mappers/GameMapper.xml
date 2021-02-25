@@ -38,7 +38,13 @@
     	select * from image
     	join (select * from game where isdel = 'N') as game
     	on image.gameNum = game.gameNum
-    	where image.gameNum = #{game.gameNum}
+    	where image.gameNum = #{game.gameNum} and image.isdel = 'N' and image.isimg = 'S'
+	</select>
+	<select id="getMimgList" resultType="kr.green.game.vo.ImgVo">
+    	select * from image
+    	join (select * from game where isdel = 'N') as game
+    	on image.gameNum = game.gameNum
+    	where image.gameNum = #{game.gameNum} and image.isdel = 'N' and image.isimg = 'M'
 	</select>
 	<update id="updateGame" parameterType="kr.green.game.vo.GameVo">
 		update game set title=#{game.title},content=#{game.content},longcontent = #{game.longcontent},price = #{game.price}
@@ -64,6 +70,9 @@
 	<update id="deleteFile">
 		update image set isDel='Y' where gameNum = #{gameNum}
 	</update>
+	<!-- <delete id="reDeleteFile">
+		DELETE FROM image WHERE isdel = 'Y';
+	</delete> -->
 	<select id="getBuyList" resultType="kr.green.game.vo.BuyVo">
 		select * from buy
 	  	join game on buy.gameNum = game.gameNum

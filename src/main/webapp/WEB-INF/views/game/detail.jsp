@@ -156,7 +156,7 @@
 	<div class="sbcontent-box">
 		<div class="sbtext-box">
 			<div class="main-img">
-				<c:forEach items="${imglist}" var="img">
+				<c:forEach items="${Mlist}" var="img">
 					<c:if test="${img.isimg == 'M' && img.isdel =='N'}">
 						<img src="<%=request.getContextPath()%>/resources/img/${img.filename}" >
 					</c:if>
@@ -198,6 +198,7 @@
     <!-- Initialize Swiper -->
     <script>
     	var count = '${imglist.size()}';
+
     		if(count >= 4)
         		count = 4;		
 

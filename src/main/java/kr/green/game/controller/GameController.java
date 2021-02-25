@@ -105,8 +105,11 @@ public class GameController {
 	public ModelAndView detailGet(ModelAndView mv,Integer gameNum,HttpServletRequest request) {
 		GameVo game = gameService.getgame(gameNum);
 		ArrayList<ImgVo> imglist = gameService.getImglist(game);
-		UserVo user = userService.getUser(request);
+		ArrayList<ImgVo> Mlist = gameService.getMList(game);
 		
+		//메인이미지 리스트
+		mv.addObject("Mlist", Mlist);
+		//서브이미지 리스트
 		mv.addObject("imglist",imglist);
 		mv.addObject("game",game);
 		mv.setViewName("/game/detail");
@@ -185,7 +188,6 @@ public class GameController {
 		ArrayList<BuyVo> buyList = gameService.buyGameList(game,user);
 		
 		mv.addObject("buyList",buyList);
-
 		mv.setViewName("/main/library");
 		return mv;
 	}

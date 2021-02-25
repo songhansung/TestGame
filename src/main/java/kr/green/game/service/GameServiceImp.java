@@ -70,6 +70,8 @@ public class GameServiceImp implements GameService{
 		gameDao.updateGame(origame);
 		//그전 첨부파일 삭제
 		gameDao.deleteFile(origame.getGameNum());
+		//그전 데이터 DB삭제
+		/* gameDao.reDeleteFile(origame.getGameNum()); */
 	}
 	//삭제기능
 	@Override
@@ -164,6 +166,14 @@ public class GameServiceImp implements GameService{
 				
 				
 		return disList;
+	}
+
+	@Override
+	public ArrayList<ImgVo> getMList(GameVo game) {
+		if(game == null) {
+			return null;
+		}
+		return gameDao.getMimgList(game);
 	}	 
 
 }

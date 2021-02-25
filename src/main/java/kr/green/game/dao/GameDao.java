@@ -50,4 +50,8 @@ public interface GameDao {
 
 	DiscountVo getDiscount(@Param("gameNum")int gameNum);
 
+	ArrayList<ImgVo> getMimgList(@Param("game")GameVo game);
+
+	/* void reDeleteFile(@Param("gameNum")int gameNum); */
+
 }
