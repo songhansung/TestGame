@@ -60,6 +60,25 @@ public class GameController {
 		mv.setViewName("/game/game");
 		return mv;
 	}
+	//메인등록하기위해 M으로
+	@RequestMapping(value = "/game/game", method = RequestMethod.POST)
+	public ModelAndView gamePost(ModelAndView mv,Integer gameNum) {
+		GameVo game = gameService.getgame(gameNum);
+		gameService.getMainView(game);
+
+		mv.addObject("game", game);
+		mv.setViewName("redirect:/game/game");
+		return mv;
+	}
+	@RequestMapping(value = "/game/game2", method = RequestMethod.POST)
+	public ModelAndView game2Post(ModelAndView mv,Integer gameNum) {
+		GameVo game = gameService.getgame(gameNum);
+		gameService.getMaindelete(game);
+
+		mv.addObject("game", game);
+		mv.setViewName("redirect:/game/game");
+		return mv;
+	}
 	
 	//할인기능
 	@ResponseBody

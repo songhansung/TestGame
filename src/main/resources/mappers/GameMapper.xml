@@ -92,4 +92,10 @@
 	<select id="getDiscount" resultType="kr.green.game.vo.DiscountVo">
 		select * from discount where gameNum = #{gameNum} and discountTime > now();
 	</select>
+	<update id="updateMainView">
+		update game set mainview = 'M', isdel='N' where gameNum = #{game.gameNum}
+	</update>
+	<update id="updateMaindelete">
+		update game set mainview = 'N', isdel='N' where gameNum = #{game.gameNum}
+	</update>
   </mapper>

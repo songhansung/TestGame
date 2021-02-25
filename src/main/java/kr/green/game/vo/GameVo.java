@@ -19,6 +19,7 @@ public class GameVo {
 	private String isdiscount;
 	private int origameNum;
 	private int oder;
+	private String mainview;
 	public int getGameNum() {
 		return gameNum;
 	}
@@ -106,13 +107,17 @@ public class GameVo {
 	public void setOder(int oder) {
 		this.oder = oder;
 	}
+	public String getMainview() {
+		return mainview;
+	}
+	public void setMainview(String mainview) {
+		this.mainview = mainview;
+	}
 	@Override
 	public String toString() {
 		return "GameVo [gameNum=" + gameNum + ", title=" + title + ", content=" + content + ", longcontent="
 				+ longcontent + ", price=" + price + ", disprice=" + disprice + ", launch=" + launch + ", company="
 				+ company + ", tags=" + tags + ", isdel=" + isdel + ", isdiscount=" + isdiscount + ", origameNum="
-				+ origameNum + ", oder=" + oder + "]";
+				+ origameNum + ", oder=" + oder + ", mainveiw=" + mainview + "]";
 	}
-	
-	
 }

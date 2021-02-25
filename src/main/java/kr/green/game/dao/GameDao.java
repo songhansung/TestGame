@@ -52,6 +52,11 @@ public interface GameDao {
 
 	ArrayList<ImgVo> getMimgList(@Param("game")GameVo game);
 
+	void updateMainView(@Param("game")GameVo game);
+
+	void updateMaindelete(@Param("game")GameVo game);
+
+
 	/* void reDeleteFile(@Param("gameNum")int gameNum); */
 
 }

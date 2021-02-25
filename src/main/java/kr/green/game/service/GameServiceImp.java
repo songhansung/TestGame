@@ -174,6 +174,24 @@ public class GameServiceImp implements GameService{
 			return null;
 		}
 		return gameDao.getMimgList(game);
-	}	 
+	}
+	//메인등록여부 M으로변경
+	@Override
+	public void getMainView(GameVo game) {
+		if(game == null) {
+			return;
+		}
+		gameDao.updateMainView(game);
+	}
+	//메인등록여부 N으로 변경
+	@Override
+	public void getMaindelete(GameVo game) {
+		if(game == null) {
+			return;
+		}
+		gameDao.updateMaindelete(game);
+		
+	}
+
 
 }

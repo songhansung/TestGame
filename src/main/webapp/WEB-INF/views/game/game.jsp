@@ -102,6 +102,7 @@
                     <th>개발사</th>
                     <th>가격</th>
                     <th>할인여부</th>
+                    <th>메인상단여부</th>
                 </tr>
                <c:forEach items="${list}" var="game">
 	                <tr class="gamelist-items" align="center"> 
@@ -124,6 +125,21 @@
 						      	</label>
 						    </div>
 	                    </td>
+	                    
+	                    <th>
+	                    	<form action="<%=request.getContextPath()%>/game/game" method="post">
+	                    		<c:if test="${game.mainview == 'N'}">
+		                    		<button class="btn btn-success" type="submit">등록</button>
+		                    		<input type="hidden" name="gameNum" value="${game.gameNum}">
+	                    		</c:if>	                    		
+	                    	</form>
+	                    	<form action="<%=request.getContextPath()%>/game/game2" method="post">
+	                    		<c:if test="${game.mainview == 'M'}">
+		                    		<button class="btn btn-success" type="submit">취소</button>
+		                    		<input type="hidden" name="gameNum" value="${game.gameNum}">
+	                    		</c:if>	                    		
+	                    	</form>
+	                    </th>
 	                </tr>
                 </c:forEach>
             </table>
