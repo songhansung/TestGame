@@ -34,6 +34,12 @@
             text-align: center;
 	        float: right;
 	    }
+	    .main-title{
+	    	color: white;
+	    	font-size: 26px;
+	    	padding-left: 50px;
+	    	padding-bottom: 10px;
+	    }
 	    .searchbar-right .searform{
             box-sizing: border-box;
             padding-top: 12px;
@@ -162,11 +168,11 @@
    			margin-bottom: 0;
    		}
    		.test{
-        width: 100%;
-        height: 500px;
-        background-color: coral;
-        margin-top: 25px;
-    }
+	        width: 100%;
+	        height: 500px;
+	        background-color: coral;
+	        margin-top: 25px;
+    	}
 </style>
 <script src="https://kit.fontawesome.com/3a4fdcd1c5.js" crossorigin="anonymous"></script>
 </head>
@@ -185,6 +191,7 @@
 			        </form>
 	            </div>
 	        </div>
+	        <div class="main-title"><span>추천제품</span></div>
 	        <div class="itmes-btn">
 	            <div class="left-icon"><i class="fas fa-chevron-left prev"></i></div>
 	            <div class="right-icon"><i class="fas fa-chevron-right next"></i></div>

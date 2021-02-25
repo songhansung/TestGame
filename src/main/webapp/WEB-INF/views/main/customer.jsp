@@ -18,13 +18,14 @@
 	.cs_list{
 		width:100%;
         display: flex;
+        margin-bottom: 0;
 	}
     .cs_list >li{
         list-style: none;
         margin: 0 auto;
         width: 390px;
         height: 290px;
-        background-color: black;
+        background-color: rgb(18,18,18);
     }
     .cs_list >li .h2,.h3{
         text-align: center;

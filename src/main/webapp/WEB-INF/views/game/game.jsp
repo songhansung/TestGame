@@ -24,6 +24,15 @@
             margin-bottom: 30px;
             width: 100%;
             text-align: center;
+            border-collapse: collapse;
+  			border-spacing: 0 20px;
+  			border-top: 1px solid white;
+  			
+        }
+        .gamelist-table th, td{
+			border-bottom: 1px solid white;
+			padding: 10px;
+			background-color: rgb(18,18,18);
         }
         .pagination{
         	margin:0;
@@ -95,7 +104,7 @@
                     <th>할인여부</th>
                 </tr>
                <c:forEach items="${list}" var="game">
-	                <tr class="" align="center"> 
+	                <tr class="gamelist-items" align="center"> 
 	                    <td>${game.gameNum}</td>
 	                    <td onClick="location.href='<%=request.getContextPath()%>/game/detail?gameNum=${game.gameNum}'" style="cursor:pointer;">
 	                    	<c:forEach items="${imglist}" var="img">                

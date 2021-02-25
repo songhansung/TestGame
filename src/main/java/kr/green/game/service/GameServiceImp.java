@@ -64,12 +64,7 @@ public class GameServiceImp implements GameService{
 		origame.setContent(game.getContent());
 		origame.setLongcontent(game.getLongcontent());
 		origame.setPrice(game.getPrice());
-		try {
-			origame.setLaunch(game.getLaunch());
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		origame.setLaunch(game.getLaunch());
 		origame.setCompany(game.getCompany());
 		origame.setTags(game.getTags());
 		gameDao.updateGame(origame);

@@ -33,7 +33,7 @@
                         <input type="text" class="form-control" id="price" placeholder="가격" name="price">
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="출시일자" id="launch" name="launch">
+                        <input type="text" class="form-control" placeholder="출시일자(ex:20xx-xx-xx	)" id="launch" name="launch">
                     </div>
                     <div class="input-group-append col">
                         <select class="form-control" id="company" name="company">
@@ -67,12 +67,15 @@
 			                    <h4 class="m-0 font-weight-bold text-primary">이미지업로드</h4>
 			                </div>
 			                <div class="card-body">
+			                
 			                    <div class="form-group uploadDiv">
 			                    	<label>메인이미지:</label>
 			                        <input type="file" name="Mfilelist" multiple accept=".gif, .jpg, .png">
+			                        
 		    						<label>서브이미지:</label>
 			                        <input type="file" name="filelist" class="sub" multiple accept=".gif, .jpg, .png">
 			                    </div>
+			                
 			                    <div class="uploadResult">
 			                        <ul></ul>
 			                    </div>

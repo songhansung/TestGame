@@ -135,8 +135,8 @@
 	<div class="swiper-container gallery-top">
 		<div class="swiper-wrapper">
 		<c:forEach items="${imglist}" var="img">
-			<c:if test="${img.isimg == 'S'}">
-				<div class="swiper-slide" style="background-image:url('<%=request.getContextPath()%>/resources/img/${img.filename}')"></div>
+			<c:if test="${img.isimg == 'S' && img.isdel == 'N'}">
+				<div class="swiper-slide" style="background-image:url('<%=request.getContextPath()%>/resources/img/${img.filename}');"></div>
 			</c:if>
 		</c:forEach>
 		</div>
@@ -147,7 +147,7 @@
 	<div class="swiper-container gallery-thumbs">
 		<div class="swiper-wrapper">	 
 		<c:forEach items="${imglist}" var="img">
-			<c:if test="${img.isimg == 'S'}">
+			<c:if test="${img.isimg == 'S' && img.isdel == 'N'}">
 				<div class="swiper-slide" style="background-image:url('<%=request.getContextPath()%>/resources/img/${img.filename}')"></div>
 			</c:if>
 		</c:forEach>		
@@ -198,9 +198,10 @@
     <!-- Initialize Swiper -->
     <script>
     	var count = '${imglist.size()}';
-    	if(count >= 4)
-    		count = 4;
-    		
+    		if(count >= 4)
+        		count = 4;		
+
+    	 		
     	var galleryThumbs = new Swiper('.gallery-thumbs', {
         	spaceBetween: 10,
             slidesPerView: count,

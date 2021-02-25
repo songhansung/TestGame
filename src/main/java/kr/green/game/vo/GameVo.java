@@ -1,8 +1,9 @@
 package kr.green.game.vo;
 
+import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+
 
 public class GameVo {
 	private int gameNum;
@@ -54,14 +55,20 @@ public class GameVo {
 	public void setDisprice(int disprice) {
 		this.disprice = disprice;
 	}
-	public String getLaunch() {
-		SimpleDateFormat simpleFormat = new SimpleDateFormat("yyyy-MM-dd");
-		String dateString = simpleFormat.format(launch);
-		return dateString;
+	public Date getLaunch() {
+		//SimpleDateFormat simpleFormat = new SimpleDateFormat("yyyy-MM-dd");
+		//String dateString = simpleFormat.format(launch);
+		return launch;
+	}
+	public void setLaunch(Date launch) {
+		this.launch = launch;
 	}
 	public void setLaunch(String launch) throws ParseException {
-		SimpleDateFormat simpleFormat2 = new SimpleDateFormat("yyyyMMdd");
-		this.launch = simpleFormat2.parse(launch);
+		//SimpleDateFormat simpleFormat2 = new SimpleDateFormat("yyyyMMdd");
+		//this.launch = (Date) simpleFormat2.parse(launch);
+		//System.out.println(launch);
+		//System.out.println(this.launch);
+		this.launch = Date.valueOf(launch);
 	}
 	public String getCompany() {
 		return company;

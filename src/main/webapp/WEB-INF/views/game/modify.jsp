@@ -68,9 +68,9 @@
 			                    <h4 class="m-0 font-weight-bold text-primary">이미지업로드</h4>
 			                </div>
 			                <div class="card-body">
-			                    <div class="form-group uploadDiv">
+			                    <div class="form-group uploadDiv">			                    
 			                    	<label>메인이미지:</label>                    	
-			                        <input type="file" name="Mfilelist" multiple accept=".gif, .jpg, .png"> 
+			                        <input type="file" name="Mfilelist" value="" accept=".gif, .jpg, .png">
 		    						<label>서브이미지:</label>
 			                        <input type="file" name="filelist" class="sub" multiple accept=".gif, .jpg, .png">
 			                    </div>

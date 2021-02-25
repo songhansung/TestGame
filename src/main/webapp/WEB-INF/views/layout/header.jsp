@@ -162,9 +162,6 @@
 	                <a href="#">상점</a>
 	            </div>
 	            <div class="box customer">
-	                <a href="#">고객센터</a>
-	            </div>
-	            <div class="box customer">
 	                <a href="<%=request.getContextPath()%>/customer">고객센터</a>
 	            </div>
 	            <c:if test="${user.rating == 10}">

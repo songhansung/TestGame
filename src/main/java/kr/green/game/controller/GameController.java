@@ -142,9 +142,9 @@ public class GameController {
 	public ModelAndView modifyGet(ModelAndView mv,Integer gameNum) {
 		GameVo game = gameService.getgame(gameNum);
 		ArrayList<ImgVo> imglist = gameService.getImglist(game);
-		
-		System.out.println(imglist);
+
 		mv.addObject("imglist",imglist);
+		System.out.println(imglist);
 		mv.addObject("game",game);
 		mv.setViewName("/game/modify");
 		return mv;
@@ -152,6 +152,7 @@ public class GameController {
 	@RequestMapping(value = "/game/modify", method = RequestMethod.POST)
 	public ModelAndView modifyPost(ModelAndView mv,GameVo game,MultipartFile[] filelist,MultipartFile Mfilelist) throws IOException, Exception {
 		gameService.modifyGame(game);
+		ArrayList<ImgVo> imglist = gameService.getImglist(game);
 		
 		if(Mfilelist != null && Mfilelist.getOriginalFilename().length() > 0) {
 			String path = UploadFileUtils.uploadFile(uploadPath, Mfilelist.getOriginalFilename(),Mfilelist.getBytes());
@@ -165,6 +166,7 @@ public class GameController {
 				}	
 			}
 		}
+		mv.addObject("imglist",imglist);
 		mv.setViewName("redirect:/game/game");
 		return mv;
 		

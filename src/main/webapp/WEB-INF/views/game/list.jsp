@@ -62,7 +62,6 @@
         .main-content .game-list-row-box .game-list-row{
             width: 900px;
             height: 120px;
-            border: 1px solid black;
             margin: 0 auto;
             padding: 10px;
             box-sizing: border-box;
@@ -73,7 +72,7 @@
             width: 300px;
         }
         .main-content .game-list-row-box .game-list-row .sub-box{
-            background-color: black;
+            background-color: rgb(18,18,18);
             width: 600px;
             height: 100%;
             
