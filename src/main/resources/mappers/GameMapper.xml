@@ -98,4 +98,16 @@
 	<update id="updateMaindelete">
 		update game set mainview = 'N', isdel='N' where gameNum = #{game.gameNum}
 	</update>
+	<select id="selectMList" resultType="kr.green.game.vo.GameVo">
+		select * from game
+    	join (select * from image where isdel = 'N') as img
+    	on game.gameNum = img.gameNum
+    	where game.mainview = 'M' and game.isdel = 'N' group by game.gameNum;
+	</select>
+	<select id="selectmsList" resultType="kr.green.game.vo.ImgVo">
+		select * from image
+    	join (select * from game where isdel = 'N') as game
+    	on image.gameNum = game.gameNum
+    	where image.isdel = 'N' and game.mainview = 'M';
+	</select>
   </mapper>

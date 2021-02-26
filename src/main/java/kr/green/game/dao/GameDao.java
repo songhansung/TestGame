@@ -56,6 +56,10 @@ public interface GameDao {
 
 	void updateMaindelete(@Param("game")GameVo game);
 
+	ArrayList<GameVo> selectMList(@Param("game") ArrayList<GameVo> game);
+
+	ArrayList<ImgVo> selectmsList(@Param("game")ArrayList<GameVo> list);
+
 
 	/* void reDeleteFile(@Param("gameNum")int gameNum); */
 

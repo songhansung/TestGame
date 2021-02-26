@@ -191,58 +191,32 @@
 			        </form>
 	            </div>
 	        </div>
-	        <div class="main-title"><span>추천제품</span></div>
+	        
+	        <div class="main-title"><span>추천상품</span></div>
+	        
 	        <div class="itmes-btn">
 	            <div class="left-icon"><i class="fas fa-chevron-left prev"></i></div>
 	            <div class="right-icon"><i class="fas fa-chevron-right next"></i></div>
-	        </div>
-	        <div class="slick-items">
-	            <div class="main-items">
-	                <div class="items-box">
-	                    <a href="#">
-	                        <img src="https://img9.yna.co.kr/etc/inner/KR/2019/04/08/AKR20190408066300073_01_i_P2.jpg" alt="" style="width:100%; height: 100%;">
-	                    </a>
-	                </div>
-	                <div class="items-subbox">
-	                    <ul class="items-subimg">
-	                        <li><img src="https://img9.yna.co.kr/etc/inner/KR/2019/04/08/AKR20190408066300073_01_i_P2.jpg" alt="" style="width:100%; height: 100%;"></li>
-	                        <li><img src="https://img9.yna.co.kr/etc/inner/KR/2019/04/08/AKR20190408066300073_01_i_P2.jpg" alt="" style="width:100%; height: 100%;"></li>
-	                        <li><img src="https://img9.yna.co.kr/etc/inner/KR/2019/04/08/AKR20190408066300073_01_i_P2.jpg" alt="" style="width:100%; height: 100%;"></li>
-	                        <li><img src="https://img9.yna.co.kr/etc/inner/KR/2019/04/08/AKR20190408066300073_01_i_P2.jpg" alt="" style="width:100%; height: 100%;"></li>
-	                    </ul>
-	                </div>
-	            </div>
-	            <div class="main-items">
-	                <div class="items-box">
-	                    <a href="#">
-	                        <img src="https://img9.yna.co.kr/etc/inner/KR/2019/04/08/AKR20190408066300073_01_i_P2.jpg" alt="" style="width:100%; height: 100%;">
-	                    </a>
-	                </div>
-	                <div class="items-subbox">
-	                    <ul class="items-subimg">
-	                        <li><img src="https://img9.yna.co.kr/etc/inner/KR/2019/04/08/AKR20190408066300073_01_i_P2.jpg" alt="" style="width:100%; height: 100%;"></li>
-	                        <li><img src="https://img9.yna.co.kr/etc/inner/KR/2019/04/08/AKR20190408066300073_01_i_P2.jpg" alt="" style="width:100%; height: 100%;"></li>
-	                        <li><img src="https://img9.yna.co.kr/etc/inner/KR/2019/04/08/AKR20190408066300073_01_i_P2.jpg" alt="" style="width:100%; height: 100%;"></li>
-	                        <li><img src="https://img9.yna.co.kr/etc/inner/KR/2019/04/08/AKR20190408066300073_01_i_P2.jpg" alt="" style="width:100%; height: 100%;"></li>
-	                    </ul>
-	                </div>
-	            </div>
-	            <div class="main-items">
-	                <div class="items-box">
-	                    <a href="#">
-	                        <img src="https://img9.yna.co.kr/etc/inner/KR/2019/04/08/AKR20190408066300073_01_i_P2.jpg" alt="" style="width:100%; height: 100%;">
-	                    </a>
-	                </div>
-	                <div class="items-subbox">
-	                    <ul class="items-subimg">
-	                        <li><img src="https://img9.yna.co.kr/etc/inner/KR/2019/04/08/AKR20190408066300073_01_i_P2.jpg" alt="" style="width:100%; height: 100%;"></li>
-	                        <li><img src="https://img9.yna.co.kr/etc/inner/KR/2019/04/08/AKR20190408066300073_01_i_P2.jpg" alt="" style="width:100%; height: 100%;"></li>
-	                        <li><img src="https://img9.yna.co.kr/etc/inner/KR/2019/04/08/AKR20190408066300073_01_i_P2.jpg" alt="" style="width:100%; height: 100%;"></li>
-	                        <li><img src="https://img9.yna.co.kr/etc/inner/KR/2019/04/08/AKR20190408066300073_01_i_P2.jpg" alt="" style="width:100%; height: 100%;"></li>
-	                    </ul>
-	                </div>
-	            </div>
-	        </div>
+	        </div>		    
+		        <div class="slick-items">
+		        <c:forEach items="${msimg}" var="sVo">   	        	
+		            <div class="main-items">
+		                <div class="items-box">               	
+		                    <a href="#">
+		                        <img src="<%=request.getContextPath()%>/resources/img/${sVo.main.filename}" alt="" style="width:100%; height: 100%;">
+		                    </a>
+		                </div>
+	                    <div class="items-subbox">
+		                    <ul class="items-subimg">
+		                    	<c:forEach items="${sVo.sub}" var="sub">
+		                        	<li><img src="<%=request.getContextPath()%>/resources/img/${sub.filename}" alt="" style="width:100%; height: 100%;"></li>
+		                        </c:forEach>
+		                    </ul>
+		                </div>
+		                
+		            </div>
+		            </c:forEach>
+		        </div>		    	     
 	        <div class="test"></div>
 	    </div>	    
     </div>

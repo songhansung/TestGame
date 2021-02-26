@@ -6,6 +6,7 @@ import kr.green.game.pagination.Criteria;
 import kr.green.game.vo.BuyVo;
 import kr.green.game.vo.DiscountVo;
 import kr.green.game.vo.GameVo;
+import kr.green.game.vo.ImgSlideVo;
 import kr.green.game.vo.ImgVo;
 import kr.green.game.vo.UserVo;
 
@@ -48,6 +49,13 @@ public interface GameService {
 	void getMainView(GameVo game);
 
 	void getMaindelete(GameVo game);
+
+	ArrayList<GameVo> seletMList(ArrayList<GameVo> game);
+
+	ArrayList<ImgVo> getImgmslist(ArrayList<GameVo> list);
+
+	ArrayList<ImgSlideVo> getImgSlideList(ArrayList<ImgVo> mimg);
+
 
 	
 }

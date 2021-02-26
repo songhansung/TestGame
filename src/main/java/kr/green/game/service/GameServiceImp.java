@@ -12,6 +12,7 @@ import kr.green.game.pagination.Criteria;
 import kr.green.game.vo.BuyVo;
 import kr.green.game.vo.DiscountVo;
 import kr.green.game.vo.GameVo;
+import kr.green.game.vo.ImgSlideVo;
 import kr.green.game.vo.ImgVo;
 import kr.green.game.vo.UserVo;
 
@@ -151,7 +152,7 @@ public class GameServiceImp implements GameService{
 		if(game ==null) { 
 			return null; 
 		} 
-			return gameDao.getImgAlllist(game); 
+		return gameDao.getImgAlllist(game); 
 	}
 
 	@Override
@@ -163,8 +164,6 @@ public class GameServiceImp implements GameService{
 				disList.add(discountVo);
 			}
 		}
-				
-				
 		return disList;
 	}
 
@@ -193,5 +192,42 @@ public class GameServiceImp implements GameService{
 		
 	}
 
+	@Override
+	public ArrayList<GameVo> seletMList(ArrayList<GameVo> game) {
+		ArrayList<GameVo> gamelist = gameDao.selectMList(game);		
+		/*
+		 * for(GameVo tmp : gamelist) { System.out.println(tmp); }
+		 */
+		return gamelist;
+	}
+
+	@Override
+	public ArrayList<ImgVo> getImgmslist(ArrayList<GameVo> list) {
+		ArrayList<ImgVo> msList = gameDao.selectmsList(list);
+		/* for(ImgVo tmp : msList) { System.out.println(tmp);} */
+		return msList;
+	}
+
+	@Override
+	public ArrayList<ImgSlideVo> getImgSlideList(ArrayList<ImgVo> mimg) {
+		ArrayList<ImgSlideVo> list = new ArrayList<ImgSlideVo>();
+		ImgSlideVo isVo = null;
+
+		for(ImgVo tmp : mimg) {
+			if(tmp.getIsimg().equals("M")) {
+				if(isVo != null) {
+					list.add(isVo);
+				}
+				isVo = new ImgSlideVo();
+				isVo.setMain(tmp);
+			}else {
+				if(isVo.getSub().size() < 4) {
+					isVo.add(tmp);
+				}
+			}
+		}
+		list.add(isVo);
+		return list;
+	}
 
 }

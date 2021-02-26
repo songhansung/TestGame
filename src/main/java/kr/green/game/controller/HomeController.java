@@ -1,8 +1,6 @@
 package kr.green.game.controller;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.green.game.service.GameService;
 import kr.green.game.service.UserService;
 import kr.green.game.vo.GameVo;
+import kr.green.game.vo.ImgSlideVo;
+import kr.green.game.vo.ImgVo;
 import kr.green.game.vo.UserVo;
 
 /**
@@ -36,9 +35,21 @@ public class HomeController {
 	
 	//메인뷰
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView openTilesView(ModelAndView mv) {
+	public ModelAndView openTilesView(ModelAndView mv,Integer gameNum,ArrayList<GameVo> game) {
+		
+		ArrayList<GameVo> list = gameService.seletMList(game);
+		ArrayList<ImgVo> mimg = gameService.getImgmslist(list);
+		ArrayList<ImgSlideVo> imgSlideList = gameService.getImgSlideList(mimg);
+		
 		mv.setViewName("/main/home");
+		mv.addObject("msimg",imgSlideList);
+		mv.addObject("mimg",mimg);
+		mv.addObject("list",list);
 		mv.addObject("setHeader","타일즈");
+		
+		/*
+		 * for(ImgVo tmp : mimg) { System.out.println(tmp); }
+		 */
 		return mv;
 	}
 	//로그인뷰
