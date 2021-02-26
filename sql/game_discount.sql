@@ -26,11 +26,11 @@ CREATE TABLE `discount` (
   `disNum` int NOT NULL AUTO_INCREMENT,
   `gameNum` int NOT NULL,
   `discount` int NOT NULL,
-  `discountTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `discountTime` datetime NOT NULL,
   PRIMARY KEY (`disNum`),
   KEY `gameNum3_idx` (`gameNum`),
   CONSTRAINT `gameNum3` FOREIGN KEY (`gameNum`) REFERENCES `game` (`gameNum`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,6 +39,7 @@ CREATE TABLE `discount` (
 
 LOCK TABLES `discount` WRITE;
 /*!40000 ALTER TABLE `discount` DISABLE KEYS */;
+INSERT INTO `discount` VALUES (25,16,30,'2021-03-02 00:00:00');
 /*!40000 ALTER TABLE `discount` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-02-17 17:40:20
+-- Dump completed on 2021-02-26 17:23:17
