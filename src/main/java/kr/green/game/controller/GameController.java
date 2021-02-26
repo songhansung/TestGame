@@ -125,6 +125,7 @@ public class GameController {
 		GameVo game = gameService.getgame(gameNum);
 		ArrayList<ImgVo> imglist = gameService.getImglist(game);
 		ArrayList<ImgVo> Mlist = gameService.getMList(game);
+		UserVo user = userService.getUser(request);
 		
 		//메인이미지 리스트
 		mv.addObject("Mlist", Mlist);

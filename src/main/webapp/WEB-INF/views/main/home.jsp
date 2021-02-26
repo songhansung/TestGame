@@ -20,7 +20,6 @@
 	        width: 1500px;
 	        height: 100%;
 	        margin: 0 auto;
-	        background-color: rgb(60,60,60);
 	    }
 	    .main-searchbar{
 	        width: 100%;
@@ -202,7 +201,7 @@
 		        <c:forEach items="${msimg}" var="sVo">   	        	
 		            <div class="main-items">
 		                <div class="items-box">               	
-		                    <a href="#">
+		                    <a href="<%=request.getContextPath()%>/game/detail?gameNum=${sVo.main.gameNum}">
 		                        <img src="<%=request.getContextPath()%>/resources/img/${sVo.main.filename}" alt="" style="width:100%; height: 100%;">
 		                    </a>
 		                </div>
@@ -229,7 +228,7 @@
 			dots: true,
 			speed : 300 /* 이미지가 슬라이딩시 걸리는 시간 */,
 			infinite: true,
-			autoplaySpeed: 1000 /* 이미지가 다른 이미지로 넘어 갈때의 텀 */,
+			autoplaySpeed: 2000 /* 이미지가 다른 이미지로 넘어 갈때의 텀 */,
 			arrows: true,
 			slidesToShow: 1,
 			slidesToScroll: 1,

@@ -207,27 +207,33 @@ public class GameServiceImp implements GameService{
 		/* for(ImgVo tmp : msList) { System.out.println(tmp);} */
 		return msList;
 	}
-
+	//메인화면 이미지 출력
 	@Override
 	public ArrayList<ImgSlideVo> getImgSlideList(ArrayList<ImgVo> mimg) {
 		ArrayList<ImgSlideVo> list = new ArrayList<ImgSlideVo>();
 		ImgSlideVo isVo = null;
 
 		for(ImgVo tmp : mimg) {
+			//Isimg에 M이랑 비교하여
 			if(tmp.getIsimg().equals("M")) {
+				//isVo 가 널이아니면 isVo를 가지고 list를 추가
 				if(isVo != null) {
 					list.add(isVo);
 				}
+				//isVo에 새로운 SlideVo를 생성 하여 Main에 저장
 				isVo = new ImgSlideVo();
 				isVo.setMain(tmp);
+				//M이 아닐시 sub에 사이즈는 4보다 작다 나머지를 isVo에 저장
 			}else {
 				if(isVo.getSub().size() < 4) {
 					isVo.add(tmp);
 				}
 			}
 		}
+		//반복문이 끝나면 리스트에 isVo를 add에 저장
 		list.add(isVo);
 		return list;
 	}
+
 
 }
