@@ -146,6 +146,7 @@ public class GameServiceImp implements GameService{
 		gameDao.insertBuy(user,game);
 		
 	}
+	//할인기능
 	@Override
 	public void updageSale(ArrayList<Integer> arrayParams, UserVo user, DiscountVo dis) {
 		
