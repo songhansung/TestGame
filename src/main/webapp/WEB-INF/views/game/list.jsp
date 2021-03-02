@@ -118,7 +118,7 @@
 			            <button class="search-btn"><i class="fas fa-search"></i></button>			         
 			            <div class="search-input">
 			                <input class="input-text" type="text" placeholder="검색" value="${pm.criteria.search}" name="search">
-			                <button class="search-btn" onclick="clearInput()"><i class="fas fa-times"></i></button>
+			                <button class="search-btn" onclick="clearInput()" type="button"><i class="fas fa-times"></i></button>
 			            </div>
 			        </form>
 	            </div>

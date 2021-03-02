@@ -3,12 +3,14 @@ package kr.green.game.service;
 import java.text.ParseException;
 import java.util.ArrayList;
 
+import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.green.game.dao.GameDao;
 import kr.green.game.dao.UserDao;
 import kr.green.game.pagination.Criteria;
+import kr.green.game.vo.BasketVo;
 import kr.green.game.vo.BuyVo;
 import kr.green.game.vo.DiscountVo;
 import kr.green.game.vo.GameVo;
@@ -90,11 +92,20 @@ public class GameServiceImp implements GameService{
 	public int getTotalCount(Criteria cri) {
 		return gameDao.getTotalCount(cri);
 	}
-
+	//장바구니 추가 기능
 	@Override
-	public void getbasket(UserVo user, GameVo game) {
-		
+	public boolean getbasket(UserVo user, GameVo game) {
+		//장바구니에 검색하여
+		BasketVo tmp = gameDao.getBasket(game.getGameNum(),user.getId());
+		//장바구니에 담겨있으면
+		if(tmp != null) {
+		//리턴함
+			return false;
+		}
+		System.out.println(tmp);
+		//장바구니에 추가
 		gameDao.insertBasket(user,game);
+		return true;
 	}
 	//첨부파일 수정목록에서 추가 기능
 	@Override
@@ -103,9 +114,20 @@ public class GameServiceImp implements GameService{
 	}
 
 	@Override
-	public ArrayList<BuyVo> buyGameList(GameVo game, UserVo user) {
-		ArrayList<BuyVo> buylist = gameDao.getBuyList(game,user);
+	public ArrayList<BuyVo> buyGameList(UserVo user) {
+		ArrayList<BuyVo> buylist = gameDao.getBuyList(user);
 		return buylist;
+	}
+	@Override
+	public int buyGameList(GameVo game, UserVo user) {
+		ArrayList<BuyVo> buylist = gameDao.getBuyList(user);
+		int cnt = 0;
+		for(BuyVo tmp : buylist) {
+			if(tmp.getGameNum() == game.getGameNum()) {
+				cnt++;
+			}
+		}
+		return cnt;
 	}
 
 	@Override
@@ -234,6 +256,5 @@ public class GameServiceImp implements GameService{
 		list.add(isVo);
 		return list;
 	}
-
 
 }

@@ -166,14 +166,19 @@
 			<div class="buy-box">
 				<div class="price-box"><span>₩ ${game.price}</span></div>
 				<div class="buy-btn-box">
-					<form action="<%=request.getContextPath()%>/game/buy" method="post" >						
-						<button type="submit" class="btn btn-warning btn-buy">구매하기</button>
-						<input type="hidden" name="gameNum" value="${game.gameNum}">
-					</form>
-					<form action="<%=request.getContextPath()%>/game/detail" method="post">
-						<input type="hidden" name="gameNum" value="${game.gameNum}">
-						<button type="submit" class="btn btn-warning">장바구니</button>
-					</form>
+					<c:if test="${buylist == 0}">					
+						<form action="<%=request.getContextPath()%>/game/buy" method="post" >						
+							<button type="submit" class="btn btn-warning btn-buy">구매하기</button>
+							<input type="hidden" name="gameNum" value="${game.gameNum}">
+						</form>
+						<form action="<%=request.getContextPath()%>/game/detail" method="post">
+							<input type="hidden" name="gameNum" value="${game.gameNum}">
+							<button type="submit" class="btn btn-warning btn-bsk" value="${bsk}">장바구니</button>
+						</form>
+					</c:if>					
+					<c:if test="${buylist != 0}">
+						<div>이제품은 구매하셨습니다</div>
+					</c:if>									
 				</div>
 			</div>
 		</div>
@@ -243,7 +248,16 @@
     				return false;
     			}
         	})
+        	$('.btn-bsk').click(function() {
+				var ex = '${bsk}'
+				if(ex == 'true'){
+					alert('장바구니에 담았습니다')
+				}else{
+					alert('이미담겨져 있습니다.')
+				}
+			})
         })
     </script>
+    
 </body>
 </html>

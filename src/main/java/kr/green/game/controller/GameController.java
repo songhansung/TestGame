@@ -126,12 +126,16 @@ public class GameController {
 		ArrayList<ImgVo> imglist = gameService.getImglist(game);
 		ArrayList<ImgVo> Mlist = gameService.getMList(game);
 		UserVo user = userService.getUser(request);
-		
+		int buylist = gameService.buyGameList(game, user);
+		boolean bsk = gameService.getbasket(user,game);
 		//메인이미지 리스트
 		mv.addObject("Mlist", Mlist);
 		//서브이미지 리스트
 		mv.addObject("imglist",imglist);
 		mv.addObject("game",game);
+		mv.addObject("buylist",buylist);
+		mv.addObject("bsk",bsk);
+		System.out.println(buylist);
 		mv.setViewName("/game/detail");
 		return mv;
 	}
@@ -141,9 +145,12 @@ public class GameController {
 		UserVo user = userService.getUser(request);
 		GameVo game = gameService.getgame(gameNum);
 		
-		gameService.getbasket(user,game);
+		boolean bsk = gameService.getbasket(user,game);
 		
 		mv.addObject("gameNum",gameNum);
+		System.out.println(bsk);
+		mv.addObject("bsk",bsk);
+		
 		mv.setViewName("redirect:/game/detail");
 		return mv;
 	}
@@ -203,9 +210,9 @@ public class GameController {
 	}
 	//구매목록
 	@RequestMapping(value = "/library", method = RequestMethod.GET)
-	public ModelAndView libraryGet(ModelAndView mv,HttpServletRequest request,GameVo game) {
+	public ModelAndView libraryGet(ModelAndView mv,HttpServletRequest request) {
 		UserVo user = userService.getUser(request);
-		ArrayList<BuyVo> buyList = gameService.buyGameList(game,user);
+		ArrayList<BuyVo> buyList = gameService.buyGameList(user);
 		
 		mv.addObject("buyList",buyList);
 		mv.setViewName("/main/library");

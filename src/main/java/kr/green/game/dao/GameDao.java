@@ -6,6 +6,7 @@ import java.util.Date;
 import org.apache.ibatis.annotations.Param;
 
 import kr.green.game.pagination.Criteria;
+import kr.green.game.vo.BasketVo;
 import kr.green.game.vo.BuyVo;
 import kr.green.game.vo.DiscountVo;
 import kr.green.game.vo.GameVo;
@@ -36,7 +37,7 @@ public interface GameDao {
 
 	void deleteFile(@Param("gameNum")int gameNum);
 
-	ArrayList<BuyVo> getBuyList(@Param("game")GameVo game,@Param("user") UserVo user);
+	ArrayList<BuyVo> getBuyList(@Param("user") UserVo user);
 
 	void insertBuy(@Param("user")UserVo user,@Param("game") GameVo game);
 
@@ -59,6 +60,11 @@ public interface GameDao {
 	ArrayList<GameVo> selectMList(@Param("game") ArrayList<GameVo> game);
 
 	ArrayList<ImgVo> selectmsList(@Param("game")ArrayList<GameVo> list);
+
+	BasketVo getBasket(@Param("gameNum")int gameNum,@Param("id") String id);
+
+
+
 
 
 	/* void reDeleteFile(@Param("gameNum")int gameNum); */

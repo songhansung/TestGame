@@ -28,11 +28,13 @@ public interface GameService {
 
 	int getTotalCount(Criteria cri);
 
-	void getbasket(UserVo user, GameVo game);
+	boolean getbasket(UserVo user, GameVo game);
 
 	void modifyFile(int gameNum, String originalFilename, String path, String isimg);
 
-	ArrayList<BuyVo> buyGameList(GameVo game, UserVo user);
+	ArrayList<BuyVo> buyGameList(UserVo user);
+	
+	int buyGameList(GameVo game, UserVo user);
 
 	void getBuy(UserVo user, GameVo game);
 
@@ -55,6 +57,7 @@ public interface GameService {
 	ArrayList<ImgVo> getImgmslist(ArrayList<GameVo> list);
 
 	ArrayList<ImgSlideVo> getImgSlideList(ArrayList<ImgVo> mimg);
+
 
 	
 }

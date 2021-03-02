@@ -76,7 +76,7 @@
 	<select id="getBuyList" resultType="kr.green.game.vo.BuyVo">
 		select * from buy
 	  	join game on buy.gameNum = game.gameNum
-	  	join (select * from image where isimg = 'M') as img on game.gameNum = img.gameNum
+	  	join (select * from image where isimg = 'M' and isdel= 'N') as img on game.gameNum = img.gameNum
         join user on buy.id = user.id
 	  	where user.id = #{user.id} and isbuy = 'Y';
 	</select>
@@ -109,5 +109,8 @@
     	join (select * from game where isdel = 'N') as game
     	on image.gameNum = game.gameNum
     	where image.isdel = 'N' and game.mainview = 'M';
+	</select>
+	<select id="getBasket" resultType="kr.green.game.vo.BasketVo">
+    	select * from basket where basket.gameNum = #{gameNum} and basket.id = #{id} and isdel = 'N'
 	</select>
   </mapper>
