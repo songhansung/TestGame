@@ -145,6 +145,7 @@
 	        float: left;
 	        width: 500px;
 	        height: 100%;
+	        background-color: black;	        
 	    }
 	    .main-items .items-subbox .items-subimg{
 	        box-sizing: border-box;
@@ -155,10 +156,46 @@
 	    }
 	    .main-items .items-subbox .items-subimg li{
 	        box-sizing: border-box;
-	        height: 300px;
+	        height: 200px;
 	        width: 50%;
 	        float: left;
 	    }
+	    .main-items .items-subbox .items-contents{
+        	height: 200px;
+        	padding-top: 10px;
+        	margin-right: 10px;
+   		}
+   		.main-items .items-subbox .items-contents .items-title{
+   			color: white;
+   			text-align: right;
+   			font-size: 22px;
+   		}
+   		.main-items .items-subbox .items-contents .items-price{
+   			color: white;
+   			text-align: right;
+   			font-size: 16px;
+   		}
+   		.main-items .items-subbox .items-contents .items-discount{
+   			color: white;
+   			text-align: right;
+   			font-size: 16px;
+   		}
+   		.main-items .items-subbox .items-contents .items-discount .right-box{
+   			float: right;
+        	line-height: 29px; 
+   		}
+   		.main-items .items-subbox .items-contents .items-discount .right-box .sale-img{
+   			display: inline-block;
+        	width: 90px;
+        	height: 30px;
+        	background-color: white;
+        	text-align: center;
+        	border-radius: 4px;
+        	color: blue;
+   		}
+   		.main-items .items-subbox .items-contents .items-discount .right-box .sale-img span+span{
+   			margin-left: 10px;
+   		}
 	    .slick-dots{
        		background-color: rgb(60,60,60);
        		position: none;
@@ -171,6 +208,10 @@
 	        height: 500px;
 	        background-color: coral;
 	        margin-top: 25px;
+    	}
+    	.slick-list{
+        box-shadow: 0px 0px 30px #000;
+        z-index: 5;
     	}
 </style>
 <script src="https://kit.fontawesome.com/3a4fdcd1c5.js" crossorigin="anonymous"></script>
@@ -211,8 +252,28 @@
 		                        	<li><img src="<%=request.getContextPath()%>/resources/img/${sub.filename}" alt="" style="width:100%; height: 100%;"></li>
 		                        </c:forEach>
 		                    </ul>
-		                </div>
-		                
+		                    <div class="items-subbox">
+			                    <div class="items-contents">
+			                    	<div class="items-title">
+			                    		<span>${sVo.main.title}</span>
+			                        </div>			                        
+			                        <div class="items-discount">
+			                        	<c:if test="${sVo.main.discount == 0}">		                        	
+				                        	<div class="right-box">                        	
+			                        			<span>₩ ${sVo.main.price}</span>
+			                        		</div>
+		                        		</c:if>
+		                        		<c:if test="${sVo.main.discount != 0}">
+			                        		<div class="right-box">
+				                        		<div class="sale-img"><span>sale</span><span>${sVo.main.discount}%</span></div>
+				                        		<span style="text-decoration:line-through;">₩ ${sVo.main.price}</span>
+				                        		<span>₩ ${sVo.main.disprice}</span>
+			                        		</div>
+		                        		</c:if>		                        
+			                        </div>
+			                    </div>
+			                </div>
+		                </div>		                
 		            </div>
 		            </c:forEach>
 		        </div>		    	     

@@ -86,7 +86,9 @@ public class GameController {
 	public String discountPost(@RequestParam(value="checkArray[]") ArrayList<Integer> arrayParams,HttpServletRequest request
 			,@RequestParam("discount")int discount, @RequestParam("discountTime")String discountTime) throws ParseException{		
 		UserVo user = userService.getUser(request);
-		DiscountVo dis = new DiscountVo(discount, discountTime);
+		DiscountVo dis = new DiscountVo();
+		dis.setDiscount(discount);
+		dis.setDiscountTime(discountTime);
 		gameService.updageSale(arrayParams, user,dis);
 	
 		return "success";
@@ -135,7 +137,7 @@ public class GameController {
 		mv.addObject("game",game);
 		mv.addObject("buylist",buylist);
 		mv.addObject("bsk",bsk);
-		System.out.println(buylist);
+		/* System.out.println(buylist); */
 		mv.setViewName("/game/detail");
 		return mv;
 	}
@@ -148,7 +150,7 @@ public class GameController {
 		boolean bsk = gameService.getbasket(user,game);
 		
 		mv.addObject("gameNum",gameNum);
-		System.out.println(bsk);
+		/* System.out.println(bsk); */
 		mv.addObject("bsk",bsk);
 		
 		mv.setViewName("redirect:/game/detail");
@@ -174,7 +176,6 @@ public class GameController {
 		ArrayList<ImgVo> imglist = gameService.getImglist(game);
 
 		mv.addObject("imglist",imglist);
-		System.out.println(imglist);
 		mv.addObject("game",game);
 		mv.setViewName("/game/modify");
 		return mv;

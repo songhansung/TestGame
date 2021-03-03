@@ -90,7 +90,9 @@
 		update game set disprice = #{game.disprice}, isdiscount='Y' where gameNum = #{game.gameNum}
 	</update>
 	<select id="getDiscount" resultType="kr.green.game.vo.DiscountVo">
-		select * from discount where gameNum = #{gameNum} and discountTime > now();
+		select * from discount 
+		join (select * from game where isdel = 'N') as game on discount.gameNum = game.gameNum
+		where discount.gameNum = #{gameNum} and discountTime > now();
 	</select>
 	<update id="updateMainView">
 		update game set mainview = 'M', isdel='N' where gameNum = #{game.gameNum}
@@ -106,8 +108,8 @@
 	</select>
 	<select id="selectmsList" resultType="kr.green.game.vo.ImgVo">
 		select * from image
-    	join (select * from game where isdel = 'N') as game
-    	on image.gameNum = game.gameNum
+    	join (select * from game where isdel = 'N') as game on image.gameNum = game.gameNum
+    	LEFT join (select * from discount) as dis on game.gameNum = dis.gameNum
     	where image.isdel = 'N' and game.mainview = 'M';
 	</select>
 	<select id="getBasket" resultType="kr.green.game.vo.BasketVo">

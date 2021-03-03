@@ -5,6 +5,8 @@ import java.util.ArrayList;
 public class ImgSlideVo {
 	ImgVo main;
 	ArrayList<ImgVo> sub;
+	ArrayList<GameVo> contents;
+	ArrayList<DiscountVo> discount;
 	
 	public ImgSlideVo() {
 		sub = new ArrayList<ImgVo>();
@@ -24,7 +26,22 @@ public class ImgSlideVo {
 	}
 	public void add(ImgVo tmp) {
 		sub.add(tmp);
+	}		
+	public ArrayList<GameVo> getContents() {
+		return contents;
 	}
+
+	public void setContents(ArrayList<GameVo> contents) {
+		this.contents = contents;
+	}
+	public ArrayList<DiscountVo> getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(ArrayList<DiscountVo> discount) {
+		this.discount = discount;
+	}
+
 	@Override
 	public String toString() {
 		return "ImgSlideVo [main=" + main + ", sub=" + sub + "]";

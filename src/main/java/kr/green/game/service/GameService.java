@@ -56,7 +56,7 @@ public interface GameService {
 
 	ArrayList<ImgVo> getImgmslist(ArrayList<GameVo> list);
 
-	ArrayList<ImgSlideVo> getImgSlideList(ArrayList<ImgVo> mimg);
+	ArrayList<ImgSlideVo> getImgSlideList(ArrayList<ImgVo> mimg, ArrayList<GameVo> list, ArrayList<DiscountVo> dis);
 
 
 	

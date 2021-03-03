@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.green.game.service.GameService;
 import kr.green.game.service.UserService;
+import kr.green.game.vo.DiscountVo;
 import kr.green.game.vo.GameVo;
 import kr.green.game.vo.ImgSlideVo;
 import kr.green.game.vo.ImgVo;
@@ -39,10 +40,14 @@ public class HomeController {
 		
 		ArrayList<GameVo> list = gameService.seletMList(game);
 		ArrayList<ImgVo> mimg = gameService.getImgmslist(list);
-		ArrayList<ImgSlideVo> imgSlideList = gameService.getImgSlideList(mimg);
+		ArrayList<DiscountVo> dis = gameService.getDisList(list);
+		ArrayList<ImgSlideVo> imgSlideList = gameService.getImgSlideList(mimg,list,dis);
+		
 		
 		mv.setViewName("/main/home");
 		mv.addObject("msimg",imgSlideList);
+		System.out.println(imgSlideList);
+		System.out.println(dis);
 		mv.addObject("mimg",mimg);
 		mv.addObject("list",list);
 		mv.addObject("setHeader","타일즈");

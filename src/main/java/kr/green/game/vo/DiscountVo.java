@@ -10,18 +10,14 @@ public class DiscountVo {
 	private int gameNum;
 	private int discount;
 	private Date discountTime;
-	public DiscountVo(int discount2, String discountTime2) throws ParseException {
-		discount = discount2;
-		setDiscountTime(discountTime2);
-	}
-	
-	public DiscountVo(Integer disNum, Integer gameNum, Integer discount, Timestamp discountTime) {
-		super();
-		this.disNum = disNum;
-		this.gameNum = gameNum;
-		this.discount = discount;
-		this.discountTime = discountTime;
-	}
+	/*
+	 * public DiscountVo(int discount2, String discountTime2) throws ParseException
+	 * { discount = discount2; setDiscountTime(discountTime2); }
+	 * 
+	 * public DiscountVo(Integer disNum, Integer gameNum, Integer discount,
+	 * Timestamp discountTime) { super(); this.disNum = disNum; this.gameNum =
+	 * gameNum; this.discount = discount; this.discountTime = discountTime; }
+	 */
 
 	public int getDisNum() {
 		return disNum;

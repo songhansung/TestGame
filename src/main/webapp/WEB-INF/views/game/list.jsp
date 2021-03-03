@@ -93,8 +93,7 @@
         .main-content .game-list-row-box .game-list-row .sub-box .review-box .right-box{
         	float: right;
         	margin-right: 20px;
-        	line-height: 29px;
-        	
+        	line-height: 29px;       	
         }
         .main-content .game-list-row-box .game-list-row .sub-box .review-box .sale-img{
         	display: inline-block;
