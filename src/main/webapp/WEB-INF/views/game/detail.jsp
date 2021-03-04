@@ -250,6 +250,11 @@
         	})
         	$('.btn-bsk').click(function() {
 				var ex = '${bsk}'
+				var id = '${user.id}';
+				if(id == ''){
+					alert('로그인하세요')
+					return;
+				}
 				if(ex == 'true'){
 					alert('장바구니에 담았습니다')
 				}else{

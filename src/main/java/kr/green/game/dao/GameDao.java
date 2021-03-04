@@ -10,6 +10,7 @@ import kr.green.game.vo.BasketVo;
 import kr.green.game.vo.BuyVo;
 import kr.green.game.vo.DiscountVo;
 import kr.green.game.vo.GameVo;
+import kr.green.game.vo.ImgSlideVo;
 import kr.green.game.vo.ImgVo;
 import kr.green.game.vo.UserVo;
 
@@ -57,11 +58,17 @@ public interface GameDao {
 
 	void updateMaindelete(@Param("game")GameVo game);
 
-	ArrayList<GameVo> selectMList(@Param("game") ArrayList<GameVo> game);
+	ArrayList<GameVo> selectMList();
 
 	ArrayList<ImgVo> selectmsList(@Param("game")ArrayList<GameVo> list);
 
 	BasketVo getBasket(@Param("gameNum")int gameNum,@Param("id") String id);
+
+	ArrayList<GameVo> selectDiscountGameList(@Param("count") int count);
+
+	ArrayList<ImgVo> selectDiscountImgList(@Param("count") int count);
+
+	ArrayList<ImgSlideVo> selectNewList(int count);
 
 
 

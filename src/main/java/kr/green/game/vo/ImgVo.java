@@ -11,6 +11,8 @@ public class ImgVo {
 	private int price;
 	private int disprice;
 	private int discount;
+	private String content;
+	private String isdiscount;
 	public int getImgNum() {
 		return imgNum;
 	}
@@ -72,12 +74,28 @@ public class ImgVo {
 	public void setDiscount(int discount) {
 		this.discount = discount;
 	}
+	
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public String getIsdiscount() {
+		return isdiscount;
+	}
+	public void setIsdiscount(String isdiscount) {
+		this.isdiscount = isdiscount;
+	}
 	@Override
 	public String toString() {
 		return "ImgVo [imgNum=" + imgNum + ", gameNum=" + gameNum + ", oriFilename=" + oriFilename + ", filename="
 				+ filename + ", isimg=" + isimg + ", isdel=" + isdel + ", title=" + title + ", price=" + price
-				+ ", disprice=" + disprice + ", discount=" + discount + "]";
+				+ ", disprice=" + disprice + ", discount=" + discount + ", content=" + content + ", isdiscount="
+				+ isdiscount + "]";
 	}
+
+
 
 	
 }

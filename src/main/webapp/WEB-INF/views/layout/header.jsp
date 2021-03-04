@@ -123,7 +123,7 @@
             text-align: center;
             font-weight: bold;
             display: none;
-            z-index:3;
+            z-index:4;
             
         }
         .header-bar .header-right .login-minibox>a{

@@ -38,6 +38,7 @@
 	    	font-size: 26px;
 	    	padding-left: 50px;
 	    	padding-bottom: 10px;
+	    	font-weight: bold;
 	    }
 	    .searchbar-right .searform{
             box-sizing: border-box;
@@ -65,7 +66,17 @@
         }
 	    .slick-items{
 	        width: 1500px;
-	        height: 600px;
+	        position: relative;
+	        box-sizing: border-box;
+	        padding-left: 50px;
+	        padding-right: 50px;
+	    }
+	    .slick-items.main{
+	    	margin-bottom: 140px;
+	  		padding-bottom: 10px;
+	    }
+	    .slick-items.sub{
+	        width: 1500px;
 	        position: relative;
 	        box-sizing: border-box;
 	        padding-left: 50px;
@@ -159,11 +170,13 @@
 	        height: 200px;
 	        width: 50%;
 	        float: left;
+	        padding: 5px;
 	    }
 	    .main-items .items-subbox .items-contents{
         	height: 200px;
         	padding-top: 10px;
-        	margin-right: 10px;
+        	padding-right: 10px;
+        	padding-left: 10px;
    		}
    		.main-items .items-subbox .items-contents .items-title{
    			color: white;
@@ -179,6 +192,10 @@
    			color: white;
    			text-align: right;
    			font-size: 16px;
+   			height: 34px;
+   		}
+   		.main-items .items-subbox .items-contents .items-sudcon{
+   			color: white;
    		}
    		.main-items .items-subbox .items-contents .items-discount .right-box{
    			float: right;
@@ -198,7 +215,7 @@
    		}
 	    .slick-dots{
        		background-color: rgb(60,60,60);
-       		position: none;
+       		/* position: inherit; */
    		}
    		.slick-dotted.slick-slider{
    			margin-bottom: 0;
@@ -209,10 +226,130 @@
 	        background-color: coral;
 	        margin-top: 25px;
     	}
-    	.slick-list{
-        box-shadow: 0px 0px 30px #000;
-        z-index: 5;
+    	.slick-items.main .slick-list{
+	        box-shadow: 0px 0px 30px #000;
+	        z-index: 2;
     	}
+    	.discount-title{
+    		height:48px;
+    		width:100%;
+    		margin-top: 120px;
+    		color: white;
+    		font-size: 26px;
+    		padding-left: 50px;
+    		font-weight: bold;
+    	}
+    	.main-items.sub{
+    		box-shadow: 0px 0px 12px #000;	
+    		padding: 0;
+    		z-index: 3;
+    		margin: 0;
+    		margin: 10px
+    	}
+    	/* .main-items.sub+.main-items.sub{
+    		padding-left: 20px;
+    		z-index: 2;
+    	} */
+    	.slick-items.sub .slick-list{
+    		z-index: 2;
+    	}
+    	.slick-items.sub .slick-dots{
+    
+    	}
+    	.items-box.sub{
+	        width: calc(300%/3);
+	    }
+	    .items-box.sub > a{
+	        height: 450px;
+	    }
+	    .items-box.sub+.items-box.sub{
+	        padding-left: 20px;
+	    }
+	    .items-box.sub .sub-contents{
+	    	width:100%;
+	    	height: 150px;
+        	color: white;
+        	z-index: 5;
+        	background-color: black;
+        	padding-top: 20px;
+        	padding-right: 10px;
+    	}
+    	.items-box.sub .sub-contents .sub-title{
+    		font-size: 30px;
+    		text-align: right;
+    	}
+    	.items-box.sub .sub-contents .items-discount{
+    		color: white;
+   			text-align: right;
+   			font-size: 22px;
+   			height: 34px;
+    	}
+    	.items-box.sub .sub-contents .items-discount .right-box{
+   			float: right;
+        	line-height: 29px; 
+   		}
+   		.items-box.sub .sub-contents .items-discount .right-box .sale-img{
+   			display: inline-block;
+        	width: 90px;
+        	height: 30px;
+        	background-color: white;
+        	text-align: center;
+        	border-radius: 4px;
+        	color: blue;
+        	font-size: 16px;
+   		}
+   		.items-box.sub .sub-contents .items-discount .right-box .sale-img span+span{
+   			margin-left: 10px;
+   		}
+    	.test{
+    		height: 300px;
+    		width: 500px;
+    		background-color: white;
+    	}
+    	.home-page-content{
+            width: 1500px;
+            height: 1000px;
+            position: relative;
+            box-sizing: border-box;
+            padding-left: 50px;
+            padding-right: 50px;
+            margin-top: 140px;
+        }
+        .leftcol-menu{
+            width: 900px;
+        }
+        .leftcol-menu >div{
+            display: inline;
+        }
+        .home-leftcol{
+            width: 900px;   
+            float: left;
+            box-sizing: border-box;
+        }
+        .home-rightcol{
+            width: 500px;
+            height: 800px;
+            background-color: red;
+            float: right;
+            box-sizing: border-box;
+        }
+        .home-leftcol .game-list-row{
+            width: 100%;
+            display: flex;
+        }
+        .home-leftcol .game-list-row .img-box{
+            flex: 3;
+            height: 150px;
+            background-color: green;
+        }   
+        .home-leftcol .game-list-row .sub-box{
+            flex: 7;
+            height: 150px;
+            background-color: indianred;
+        }
+        .home-rightcol >ul >li{
+        	list-style: none;
+        }
 </style>
 <script src="https://kit.fontawesome.com/3a4fdcd1c5.js" crossorigin="anonymous"></script>
 </head>
@@ -232,13 +369,13 @@
 	            </div>
 	        </div>
 	        
-	        <div class="main-title"><span>추천상품</span></div>
+	        <div class="main-title"><span>특집 및 추천제품</span></div>
 	        
 	        <div class="itmes-btn">
-	            <div class="left-icon"><i class="fas fa-chevron-left prev"></i></div>
-	            <div class="right-icon"><i class="fas fa-chevron-right next"></i></div>
+	            <div class="left-icon"><i class="fas fa-chevron-left prev main"></i></div>
+	            <div class="right-icon"><i class="fas fa-chevron-right next main"></i></div>
 	        </div>		    
-		        <div class="slick-items">
+		        <div class="slick-items main">
 		        <c:forEach items="${msimg}" var="sVo">   	        	
 		            <div class="main-items">
 		                <div class="items-box">               	
@@ -271,32 +408,115 @@
 			                        		</div>
 		                        		</c:if>		                        
 			                        </div>
+			                        <div class="items-sudcon">
+			                        	<span>${sVo.main.content}</span>
+			                        </div>			                       
 			                    </div>
 			                </div>
 		                </div>		                
 		            </div>
 		            </c:forEach>
-		        </div>		    	     
-	        <div class="test"></div>
+		        </div>
+		        <div class="discount-title">
+	        		<span>특별 할인상품</span>
+	        	</div>			    	     
+	        	<div class="itmes-btn">
+		            <div class="left-icon"><i class="fas fa-chevron-left prev sub"></i></div>
+		            <div class="right-icon"><i class="fas fa-chevron-right next sub"></i></div>
+	        	</div>	        		    
+		        <div class="slick-items sub">
+	               	<c:forEach items="${sublist}" var="sVo">    		
+			            <div class="main-items sub">         		            
+			                <div class="items-box sub">               	
+			                    <a href="<%=request.getContextPath()%>/game/detail?gameNum=${sVo.main.gameNum}">
+			                        <img src="<%=request.getContextPath()%>/resources/img/${sVo.main.filename}" alt="" style="width:100%; height: 100%;">
+			                    </a>
+			                    <div class="sub-contents">
+			                    	<div class="sub-title">
+		                        		<span>${sVo.main.title}</span>
+		                        	</div>
+		                        	<div class="items-discount">
+			                        	<c:if test="${sVo.main.discount == 0}">		                        	
+				                        	<div class="right-box">                        	
+			                        			<span>₩ ${sVo.main.price}</span>
+			                        		</div>
+		                        		</c:if>
+		                        		<c:if test="${sVo.main.discount != 0}">
+			                        		<div class="right-box">
+				                        		<div class="sale-img"><span>sale</span><span>${sVo.main.discount}%</span></div>
+				                        		<span style="text-decoration:line-through;">₩ ${sVo.main.price}</span>
+				                        		<span>₩ ${sVo.main.disprice}</span>
+			                        		</div>
+		                        		</c:if>		                        
+			                        </div>
+		                    	</div>		                    		
+			                </div>       			            
+			            </div>
+		            </c:forEach>			            			                   
+		     	</div>
+		     	
+		     	<div class="home-page-content">	     		
+		     		<div class="leftcol-menu">
+			            <div class="home-tap">신작</div>
+			            <div class="home-tap">인기</div>
+			        </div>
+
+			        <div class="home-leftcol">
+			            <div class="game-list-row">
+			                <div class="img-box">
+								
+			                </div>
+			                <div class="sub-box">
+								
+			                </div>
+			            </div>
+			        </div>
+
+			        <div class="home-rightcol">
+			            <div class="rightcol-title"><span>타이틀입니다</span></div>
+			            <div class="rightcol-title"><span>타이틀입니다</span></div>
+			            <div class="rightcol-title"><span>타이틀입니다</span></div>
+			            <ul>
+			                <li>1</li>
+			                <li>2</li>
+			                <li>3</li>
+			                <li>4</li>
+			            </ul>
+			        </div>
+			    </div>			    
 	    </div>	    
     </div>
 </body>
 <script type="text/javascript">
 	//메인상단 슬라이더
 	$(document).ready(function () {
-		$('.slick-items').slick({
+		$('.slick-items.main').slick({
 			autoplay : true,
 			dots: true,
 			speed : 300 /* 이미지가 슬라이딩시 걸리는 시간 */,
 			infinite: true,
-			autoplaySpeed: 2000 /* 이미지가 다른 이미지로 넘어 갈때의 텀 */,
+			autoplaySpeed: 3000 /* 이미지가 다른 이미지로 넘어 갈때의 텀 */,
 			arrows: true,
 			slidesToShow: 1,
 			slidesToScroll: 1,
 			fade: false,
-	        nextArrow:$('i.next'),
-	        prevArrow:$('i.prev'),
+	        nextArrow:$('i.next.main'),
+	        prevArrow:$('i.prev.main'),
 		});
+		 $('.slick-items.sub').slick({
+			autoplay : false,
+			dots: true,
+			speed : 300 /* 이미지가 슬라이딩시 걸리는 시간 */,
+			infinite: true,
+			autoplaySpeed: 6000 /* 이미지가 다른 이미지로 넘어 갈때의 텀 */,
+			arrows: true,
+			slidesToShow: 3,
+			slidesToScroll: 3,
+			fade: false,
+	        nextArrow:$('i.next.sub'),
+	        prevArrow:$('i.prev.sub'),
+		});
+		
 	});
 	function clearInput(){
 		var el = document.getElementsByClassName('input-text');
@@ -305,5 +525,6 @@
 		}
 		
 	};
+	
 </script>
 </html>

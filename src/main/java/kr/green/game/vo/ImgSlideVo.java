@@ -5,11 +5,12 @@ import java.util.ArrayList;
 public class ImgSlideVo {
 	ImgVo main;
 	ArrayList<ImgVo> sub;
-	ArrayList<GameVo> contents;
-	ArrayList<DiscountVo> discount;
+	GameVo contents;
+	DiscountVo discount;
 	
 	public ImgSlideVo() {
 		sub = new ArrayList<ImgVo>();
+
 	}
 	
 	public ImgVo getMain() {
@@ -27,18 +28,20 @@ public class ImgSlideVo {
 	public void add(ImgVo tmp) {
 		sub.add(tmp);
 	}		
-	public ArrayList<GameVo> getContents() {
+	
+	public GameVo getContents() {
 		return contents;
 	}
 
-	public void setContents(ArrayList<GameVo> contents) {
+	public void setContents(GameVo contents) {
 		this.contents = contents;
 	}
-	public ArrayList<DiscountVo> getDiscount() {
+
+	public DiscountVo getDiscount() {
 		return discount;
 	}
 
-	public void setDiscount(ArrayList<DiscountVo> discount) {
+	public void setDiscount(DiscountVo discount) {
 		this.discount = discount;
 	}
 
@@ -46,6 +49,9 @@ public class ImgSlideVo {
 	public String toString() {
 		return "ImgSlideVo [main=" + main + ", sub=" + sub + "]";
 	}
+
+	
+
 		
 	
 }

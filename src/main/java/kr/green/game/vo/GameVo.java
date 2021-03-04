@@ -20,6 +20,9 @@ public class GameVo {
 	private int origameNum;
 	private int oder;
 	private String mainview;
+	private int discount;
+	private String isimg;
+	private String filename;
 	public int getGameNum() {
 		return gameNum;
 	}
@@ -113,11 +116,31 @@ public class GameVo {
 	public void setMainview(String mainview) {
 		this.mainview = mainview;
 	}
+	public int getDiscount() {
+		return discount;
+	}
+	public void setDiscount(int discount) {
+		this.discount = discount;
+	}
+	public String getIsimg() {
+		return isimg;
+	}
+	public void setIsimg(String isimg) {
+		this.isimg = isimg;
+	}
+	public String getFilename() {
+		return filename;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
 	@Override
 	public String toString() {
 		return "GameVo [gameNum=" + gameNum + ", title=" + title + ", content=" + content + ", longcontent="
 				+ longcontent + ", price=" + price + ", disprice=" + disprice + ", launch=" + launch + ", company="
 				+ company + ", tags=" + tags + ", isdel=" + isdel + ", isdiscount=" + isdiscount + ", origameNum="
-				+ origameNum + ", oder=" + oder + ", mainveiw=" + mainview + "]";
+				+ origameNum + ", oder=" + oder + ", mainview=" + mainview + ", discount=" + discount + ", isimg="
+				+ isimg + ", filename=" + filename + "]";
 	}
+
 }

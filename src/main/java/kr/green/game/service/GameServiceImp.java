@@ -95,6 +95,9 @@ public class GameServiceImp implements GameService{
 	//장바구니 추가 기능
 	@Override
 	public boolean getbasket(UserVo user, GameVo game) {
+		if(user == null) {
+			return false;
+		}
 		//장바구니에 검색하여
 		BasketVo tmp = gameDao.getBasket(game.getGameNum(),user.getId());
 		//장바구니에 담겨있으면
@@ -120,6 +123,9 @@ public class GameServiceImp implements GameService{
 	}
 	@Override
 	public int buyGameList(GameVo game, UserVo user) {
+		if(user == null) {
+			return 0;
+		}
 		ArrayList<BuyVo> buylist = gameDao.getBuyList(user);
 		int cnt = 0;
 		for(BuyVo tmp : buylist) {
@@ -217,8 +223,8 @@ public class GameServiceImp implements GameService{
 	}
 
 	@Override
-	public ArrayList<GameVo> seletMList(ArrayList<GameVo> game) {
-		ArrayList<GameVo> gamelist = gameDao.selectMList(game);		
+	public ArrayList<GameVo> seletMList() {
+		ArrayList<GameVo> gamelist = gameDao.selectMList();		
 		/*
 		 * for(GameVo tmp : gamelist) { System.out.println(tmp); }
 		 */
@@ -233,7 +239,7 @@ public class GameServiceImp implements GameService{
 	}
 	//메인화면 이미지 출력
 	@Override
-	public ArrayList<ImgSlideVo> getImgSlideList(ArrayList<ImgVo> mimg, ArrayList<GameVo> list,ArrayList<DiscountVo> dis) {
+	public ArrayList<ImgSlideVo> getImgSlideList(ArrayList<ImgVo> mimg) {
 		ArrayList<ImgSlideVo> imglist = new ArrayList<ImgSlideVo>();
 		ImgSlideVo isVo = null;
 
@@ -258,5 +264,35 @@ public class GameServiceImp implements GameService{
 		imglist.add(isVo);
 		return imglist;
 	}
+
+
+	@Override
+	public ArrayList<ImgSlideVo> seletDistcountList(int count) {
+		
+		ArrayList<ImgVo> discountImgList = gameDao.selectDiscountImgList(count);
+		
+		return getImgSlideList(discountImgList);
+	}
+
+	@Override
+	public ArrayList<ImgSlideVo> getNewList(int count) {
+		
+		ArrayList<ImgSlideVo> newList = gameDao.selectNewList(count);
+		
+		return newList;
+	}
+
+
+//	@Override
+//	public ArrayList<ImgSlideVo> getImgsubSlideList(ArrayList<GameVo> sublist) {
+//		ArrayList<ImgSlideVo> imglist = new ArrayList<ImgSlideVo>();
+//		ImgSlideVo isVo = null;
+//		for(GameVo tmp : sublist) {
+//			
+//		}
+//		imglist.add(isVo);		
+//		return imglist;
+//	}
+
 
 }

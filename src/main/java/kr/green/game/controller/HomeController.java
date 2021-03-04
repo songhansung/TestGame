@@ -38,19 +38,34 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView openTilesView(ModelAndView mv,Integer gameNum,ArrayList<GameVo> game) {
 		
-		ArrayList<GameVo> list = gameService.seletMList(game);
+		ArrayList<GameVo> list = gameService.seletMList(); 
 		ArrayList<ImgVo> mimg = gameService.getImgmslist(list);
-		ArrayList<DiscountVo> dis = gameService.getDisList(list);
-		ArrayList<ImgSlideVo> imgSlideList = gameService.getImgSlideList(mimg,list,dis);
+		/* ArrayList<DiscountVo> dis = gameService.getDisList(list); */
+		//메인 슬라이드
+		ArrayList<ImgSlideVo> imgSlideList = gameService.getImgSlideList(mimg);
 		
+		//할인 슬라이드 ()안에숫자는 최대가져오는수
+		ArrayList<ImgSlideVo> sublist = gameService.seletDistcountList(12);
+		ArrayList<ImgSlideVo> taplist = gameService.getNewList(6);
+//		for(ImgSlideVo tmp: taplist)
+//			System.out.println(tmp);
+//		ArrayList<ImgSlideVo> imgsubSlideList = gameService.getImgsubSlideList(sublist);
 		
 		mv.setViewName("/main/home");
 		mv.addObject("msimg",imgSlideList);
-		System.out.println(imgSlideList);
-		System.out.println(dis);
+		/*
+		 * System.out.println(imgSlideList); System.out.println(dis);
+		 */
+//		mv.addObject("subimg",imgsubSlideList);
 		mv.addObject("mimg",mimg);
-		mv.addObject("list",list);
+		/* mv.addObject("list",list); */
+		mv.addObject("sublist",sublist);
+		mv.addObject("taplist",taplist);
+		System.out.println(taplist);
 		mv.addObject("setHeader","타일즈");
+//		System.out.println(sublist);
+		/* System.out.println(game); */
+//		System.out.println(imgsubSlideList);
 		
 		/*
 		 * for(ImgVo tmp : mimg) { System.out.println(tmp); }

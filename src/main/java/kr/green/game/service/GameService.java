@@ -52,11 +52,17 @@ public interface GameService {
 
 	void getMaindelete(GameVo game);
 
-	ArrayList<GameVo> seletMList(ArrayList<GameVo> game);
+	ArrayList<GameVo> seletMList();
 
 	ArrayList<ImgVo> getImgmslist(ArrayList<GameVo> list);
 
-	ArrayList<ImgSlideVo> getImgSlideList(ArrayList<ImgVo> mimg, ArrayList<GameVo> list, ArrayList<DiscountVo> dis);
+	ArrayList<ImgSlideVo> getImgSlideList(ArrayList<ImgVo> mimg);
+
+	ArrayList<ImgSlideVo> seletDistcountList(int count);
+
+	ArrayList<ImgSlideVo> getNewList(int count);
+
+	/* ArrayList<ImgSlideVo> getImgsubSlideList(ArrayList<GameVo> sublist); */
 
 
 	
