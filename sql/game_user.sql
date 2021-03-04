@@ -42,7 +42,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('gkstjd3540','송한성','$2a$10$2e04WccNSQNu0sesFTsr1OIRGqgBonsxHTFxpjR.4UEbioxS/deni','151651',151515,82000,1,NULL,'N'),('thdgkstjd','이순신','$2a$10$4OrNoUOCx0G/qObVRzCL5.g1MwuezXJgckLPvd0e3vnEw1Kt9mqZi','gkstjd6688@naver.com',1052730904,15000,10,NULL,'N');
+INSERT INTO `user` VALUES ('gkstjd3540','송한성','$2a$10$2e04WccNSQNu0sesFTsr1OIRGqgBonsxHTFxpjR.4UEbioxS/deni','151651',151515,82000,1,NULL,'N'),('thdgkstjd','이순신','$2a$10$4OrNoUOCx0G/qObVRzCL5.g1MwuezXJgckLPvd0e3vnEw1Kt9mqZi','gkstjd6688@naver.com',1052730904,8000,10,NULL,'N');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-02-26 17:23:17
+-- Dump completed on 2021-03-04 17:47:28
