@@ -460,18 +460,34 @@
 			            <div class="home-tap">신작</div>
 			            <div class="home-tap">인기</div>
 			        </div>
-
+					<c:forEach items="${taplist}" var="sVo">
 			        <div class="home-leftcol">
-			            <div class="game-list-row">
+			            <div class="game-list-row" OnClick="location.href ='<%=request.getContextPath()%>/game/detail?gameNum=${sVo.main.gameNum}'" style="cursor:pointer;">
 			                <div class="img-box">
-								
+								<img src="<%=request.getContextPath()%>/resources/img/${sVo.main.filename}" alt="" style="width:100%; height: 100%;">
 			                </div>
 			                <div class="sub-box">
-								
+								<div class="sub-title">
+		                        	<span>${sVo.main.title}</span>
+		                        </div>
+		                        <div class="items-discount">
+		                        	<c:if test="${sVo.main.discount == 0}">		                        	
+			                        	<div class="right-box">                        	
+		                        			<span>₩ ${sVo.main.price}</span>
+		                        		</div>
+	                        		</c:if>
+	                        		<c:if test="${sVo.main.discount != 0}">
+		                        		<div class="right-box">
+			                        		<div class="sale-img"><span>sale</span><span>${sVo.main.discount}%</span></div>
+			                        		<span style="text-decoration:line-through;">₩ ${sVo.main.price}</span>
+			                        		<span>₩ ${sVo.main.disprice}</span>
+		                        		</div>
+	                        		</c:if>		                        
+		                        </div>
 			                </div>
 			            </div>
 			        </div>
-
+					</c:forEach>
 			        <div class="home-rightcol">
 			            <div class="rightcol-title"><span>타이틀입니다</span></div>
 			            <div class="rightcol-title"><span>타이틀입니다</span></div>
@@ -484,7 +500,7 @@
 			            </ul>
 			        </div>
 			    </div>			    
-	    </div>	    
+	    </div>	   	    
     </div>
 </body>
 <script type="text/javascript">

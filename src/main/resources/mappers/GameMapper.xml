@@ -127,7 +127,7 @@
         LEFT join (select * from discount) as dis on image.gameNum = dis.gameNum
     	where image.isimg = 'M' and image.isdel = 'N' limit 0,#{count};
 	</select>
-	<select id="selectNewList" resultType="kr.green.game.vo.GameVo">
+	<select id="selectNewList" resultType="kr.green.game.vo.ImgVo">
     	select * from game
     	join (select * from image where isdel = 'N') as img on game.gameNum = img.gameNum
         LEFT join (select * from discount) as dis on game.gameNum = dis.gameNum

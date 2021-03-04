@@ -47,6 +47,9 @@ public class HomeController {
 		//할인 슬라이드 ()안에숫자는 최대가져오는수
 		ArrayList<ImgSlideVo> sublist = gameService.seletDistcountList(12);
 		ArrayList<ImgSlideVo> taplist = gameService.getNewList(6);
+		
+	
+		
 //		for(ImgSlideVo tmp: taplist)
 //			System.out.println(tmp);
 //		ArrayList<ImgSlideVo> imgsubSlideList = gameService.getImgsubSlideList(sublist);
