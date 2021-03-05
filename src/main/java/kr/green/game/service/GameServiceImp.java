@@ -275,12 +275,22 @@ public class GameServiceImp implements GameService{
 	}
 
 	@Override
-	public ArrayList<ImgSlideVo> getNewList(int count) {
+	public ArrayList<ImgSlideVo> getTapmainlist(int count) {
 		
-		ArrayList<ImgVo> newList = gameDao.selectNewList(count);
-//		System.out.println(newList);		
-		return getImgSlideList(newList);
+		ArrayList<ImgVo> tapmainlist = gameDao.selectTapmainlist(count);
+		
+		return getImgSlideList(tapmainlist);
 	}
+
+	@Override
+	public ArrayList<ImgSlideVo> getTapsublist(int count) {
+		
+		ArrayList<ImgVo> tapsublist = gameDao.selectTapsublist(count);
+		
+		return getImgSlideList(tapsublist);
+	}
+
+	
 
 
 

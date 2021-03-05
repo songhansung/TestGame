@@ -5,12 +5,12 @@ import java.util.ArrayList;
 public class ImgSlideVo {
 	ImgVo main;
 	ArrayList<ImgVo> sub;
+
 	GameVo contents;
 	DiscountVo discount;
 	
 	public ImgSlideVo() {
 		sub = new ArrayList<ImgVo>();
-
 	}
 	
 	public ImgVo getMain() {
@@ -18,7 +18,8 @@ public class ImgSlideVo {
 	}
 	public void setMain(ImgVo main) {
 		this.main = main;
-	}
+	}	
+
 	public ArrayList<ImgVo> getSub() {
 		return sub;
 	}

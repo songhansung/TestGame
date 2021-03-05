@@ -46,12 +46,12 @@ public class HomeController {
 		
 		//할인 슬라이드 ()안에숫자는 최대가져오는수
 		ArrayList<ImgSlideVo> sublist = gameService.seletDistcountList(12);
-		ArrayList<ImgSlideVo> taplist = gameService.getNewList(6);
-		
-	
-		
-//		for(ImgSlideVo tmp: taplist)
-//			System.out.println(tmp);
+		ArrayList<ImgSlideVo> tapmainlist = gameService.getTapmainlist(6);
+		ArrayList<ImgSlideVo> tapsublist = gameService.getTapsublist(50);
+		/*
+		 * for(ImgVo tmp : tapsublist) { System.out.println(tmp); }
+		 */
+
 //		ArrayList<ImgSlideVo> imgsubSlideList = gameService.getImgsubSlideList(sublist);
 		
 		mv.setViewName("/main/home");
@@ -63,12 +63,10 @@ public class HomeController {
 		mv.addObject("mimg",mimg);
 		/* mv.addObject("list",list); */
 		mv.addObject("sublist",sublist);
-		mv.addObject("taplist",taplist);
-		System.out.println(taplist);
+		mv.addObject("tapmainlist",tapmainlist);
+		mv.addObject("tapsublist",tapsublist);
 		mv.addObject("setHeader","타일즈");
-//		System.out.println(sublist);
-		/* System.out.println(game); */
-//		System.out.println(imgsubSlideList);
+		
 		
 		/*
 		 * for(ImgVo tmp : mimg) { System.out.println(tmp); }

@@ -315,6 +315,9 @@
             padding-right: 50px;
             margin-top: 140px;
         }
+        .home-page-content .tap-wrap{
+        	position: relative;
+        }
         .leftcol-menu{
             width: 900px;
         }
@@ -325,30 +328,59 @@
             width: 900px;   
             float: left;
             box-sizing: border-box;
+            padding: 5px;
         }
         .home-rightcol{
-            width: 500px;
-            height: 800px;
-            background-color: red;
+            width: 470px;
+            height: 900px;
+            background-color: rgb(18,18,18);
             float: right;
             box-sizing: border-box;
+            position: absolute;
+            left: 900px;
+            margin-left: 20px;
+            box-shadow: 0px 0px 12px #000;  
+            color: white;
+            padding: 10px       
+        }
+        .home-rightcol.disnone{
+            display: none;
         }
         .home-leftcol .game-list-row{
             width: 100%;
-            display: flex;
+            display: flex;         	
+         	box-sizing: border-box;
+         	box-shadow: 0px 0px 12px #000;
+        }
+        .home-leftcol .game-list-row .sub-box{
+        	
+        }
+        .home-leftcol .game-list-row:hover .sub-box{
+        	background-color: rgb(18,18,18);              	
+        }
+        .home-leftcol .game-list-row .sub-box .sub-title{
+        	font-size: 28px;
         }
         .home-leftcol .game-list-row .img-box{
             flex: 3;
             height: 150px;
-            background-color: green;
         }   
         .home-leftcol .game-list-row .sub-box{
             flex: 7;
             height: 150px;
-            background-color: indianred;
+            background-color: black;
+            color: white;           
         }
         .home-rightcol >ul >li{
         	list-style: none;
+        	box-sizing: border-box;
+	        height: 190px;
+	        width: 450px;
+	        padding: 5px;
+        }
+        .home-rightcol .rightcol-title{
+        	font-size: 26px;
+        	text-align: right;
         }
 </style>
 <script src="https://kit.fontawesome.com/3a4fdcd1c5.js" crossorigin="anonymous"></script>
@@ -460,45 +492,48 @@
 			            <div class="home-tap">신작</div>
 			            <div class="home-tap">인기</div>
 			        </div>
-					<c:forEach items="${taplist}" var="sVo">
-			        <div class="home-leftcol">
-			            <div class="game-list-row" OnClick="location.href ='<%=request.getContextPath()%>/game/detail?gameNum=${sVo.main.gameNum}'" style="cursor:pointer;">
-			                <div class="img-box">
-								<img src="<%=request.getContextPath()%>/resources/img/${sVo.main.filename}" alt="" style="width:100%; height: 100%;">
-			                </div>
-			                <div class="sub-box">
-								<div class="sub-title">
-		                        	<span>${sVo.main.title}</span>
-		                        </div>
-		                        <div class="items-discount">
-		                        	<c:if test="${sVo.main.discount == 0}">		                        	
-			                        	<div class="right-box">                        	
-		                        			<span>₩ ${sVo.main.price}</span>
-		                        		</div>
-	                        		</c:if>
-	                        		<c:if test="${sVo.main.discount != 0}">
-		                        		<div class="right-box">
-			                        		<div class="sale-img"><span>sale</span><span>${sVo.main.discount}%</span></div>
-			                        		<span style="text-decoration:line-through;">₩ ${sVo.main.price}</span>
-			                        		<span>₩ ${sVo.main.disprice}</span>
-		                        		</div>
-	                        		</c:if>		                        
-		                        </div>
-			                </div>
-			            </div>
+					<c:forEach items="${tapmainlist}" var="sVo">	
+					<div class="tap-wrap">			
+				        <div class="home-leftcol">			        	
+				            <div class="game-list-row" OnClick="location.href ='<%=request.getContextPath()%>/game/detail?gameNum=${sVo.main.gameNum}'" style="cursor:pointer;">			   
+				                <div class="img-box">
+									<img src="<%=request.getContextPath()%>/resources/img/${sVo.main.filename}" alt="" style="width:100%; height: 100%;">
+				                </div>
+				                <div class="sub-box">
+									<div class="sub-title">
+			                        	<span>${sVo.main.title}</span>
+			                        </div>
+			                        <div class="items-discount">
+			                        	<c:if test="${sVo.main.discount == 0}">		                        	
+				                        	<div class="right-box">                        	
+			                        			<span>₩ ${sVo.main.price}</span>
+			                        		</div>
+		                        		</c:if>
+		                        		<c:if test="${sVo.main.discount != 0}">
+			                        		<div class="right-box">
+				                        		<div class="sale-img"><span>sale</span><span>${sVo.main.discount}%</span></div>
+				                        		<span style="text-decoration:line-through;">₩ ${sVo.main.price}</span>
+				                        		<span>₩ ${sVo.main.disprice}</span>
+			                        		</div>
+		                        		</c:if>		                        
+			                        </div>
+				                </div>
+				            </div>
+				        </div>
+				        <c:forEach items="${tapsublist}" var="sSo">
+				        <c:if test="${sVo.main.gameNum == sSo.main.gameNum}">		        
+				        <div class="home-rightcol disnone">
+				            <div class="rightcol-title"><span>${sSo.main.title}</span></div>
+				            <ul class="tap-imgbox">
+				                <c:forEach items="${sSo.sub}" var="sub">
+			                        	<li><img src="<%=request.getContextPath()%>/resources/img/${sub.filename}" alt="" style="width:100%; height: 100%;"></li>
+			                    </c:forEach>
+				            </ul>
+				        </div>
+				        </c:if>
+				        </c:forEach>
 			        </div>
-					</c:forEach>
-			        <div class="home-rightcol">
-			            <div class="rightcol-title"><span>타이틀입니다</span></div>
-			            <div class="rightcol-title"><span>타이틀입니다</span></div>
-			            <div class="rightcol-title"><span>타이틀입니다</span></div>
-			            <ul>
-			                <li>1</li>
-			                <li>2</li>
-			                <li>3</li>
-			                <li>4</li>
-			            </ul>
-			        </div>
+					</c:forEach>			        
 			    </div>			    
 	    </div>	   	    
     </div>
@@ -540,7 +575,16 @@
 			el[i].value = '';
 		}
 		
-	};
+	};	
+	$(function () {
+        $('.home-leftcol').hover(function () {
+            $(this).siblings('.home-rightcol').toggleClass('disnone');
+            $(this).width('915px');
+        },function(){
+        	$(this).siblings('.home-rightcol').toggleClass('disnone');
+        	$(this).width('890px');
+        })
+    })
 	
 </script>
 </html>

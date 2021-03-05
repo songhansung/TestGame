@@ -60,7 +60,9 @@ public interface GameService {
 
 	ArrayList<ImgSlideVo> seletDistcountList(int count);
 
-	ArrayList<ImgSlideVo> getNewList(int count);
+	ArrayList<ImgSlideVo> getTapmainlist(int count);
+
+	ArrayList<ImgSlideVo> getTapsublist(int count);
 
 	/* ArrayList<ImgSlideVo> getImgsubSlideList(ArrayList<GameVo> sublist); */
 

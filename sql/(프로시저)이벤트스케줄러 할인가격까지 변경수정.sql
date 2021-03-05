@@ -5,14 +5,12 @@ begin
 	declare _count int default 0;
     declare _i int default 0;
     declare _gameNum int default 0;
-    declare _discountTime date default 0;
     declare _disprice int default 0;
     
 	DELETE FROM game.discount where discountTime <= now();
     
     set _count = (select count(*) from discount);
-    set _discountTime = (select discountTime from discount);
-    
+
     
     update game set isdiscount = 'N';
     while _i < _count do
