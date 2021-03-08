@@ -1,5 +1,8 @@
 package kr.green.game.vo;
 
+import java.sql.Date;
+import java.text.ParseException;
+
 public class ImgVo {
 	private int imgNum;
 	private int gameNum;
@@ -13,6 +16,17 @@ public class ImgVo {
 	private int discount;
 	private String content;
 	private String isdiscount;
+	private Date launch;
+	
+	public Date getLaunch() {
+		return launch;
+	}
+	public void setLaunch(Date launch) {
+		this.launch = launch;
+	}
+	public void setLaunch(String launch) throws ParseException {
+		this.launch = Date.valueOf(launch);
+	}
 	public int getImgNum() {
 		return imgNum;
 	}
@@ -92,8 +106,9 @@ public class ImgVo {
 		return "ImgVo [imgNum=" + imgNum + ", gameNum=" + gameNum + ", oriFilename=" + oriFilename + ", filename="
 				+ filename + ", isimg=" + isimg + ", isdel=" + isdel + ", title=" + title + ", price=" + price
 				+ ", disprice=" + disprice + ", discount=" + discount + ", content=" + content + ", isdiscount="
-				+ isdiscount + "]";
+				+ isdiscount + ", launch=" + launch + "]";
 	}
+
 
 
 

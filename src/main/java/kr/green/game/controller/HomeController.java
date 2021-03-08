@@ -51,7 +51,7 @@ public class HomeController {
 		/*
 		 * for(ImgVo tmp : tapsublist) { System.out.println(tmp); }
 		 */
-
+		System.out.println(tapsublist);
 //		ArrayList<ImgSlideVo> imgsubSlideList = gameService.getImgsubSlideList(sublist);
 		
 		mv.setViewName("/main/home");

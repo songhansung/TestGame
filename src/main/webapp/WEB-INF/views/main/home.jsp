@@ -81,6 +81,9 @@
 	        box-sizing: border-box;
 	        padding-left: 50px;
 	        padding-right: 50px;
+	    }s
+	    .slick-items.sub >a >img:hover{
+	    	transform: scale(1.07);
 	    }
 	    .itmes-btn{
 	        position: relative;
@@ -332,14 +335,15 @@
         }
         .home-rightcol{
             width: 470px;
-            height: 900px;
+            height: 950px;
             background-color: rgb(18,18,18);
             float: right;
             box-sizing: border-box;
             position: absolute;
             left: 900px;
+            top:5px;
             margin-left: 20px;
-            box-shadow: 0px 0px 12px #000;  
+            box-shadow: 5px 5px #000;  
             color: white;
             padding: 10px       
         }
@@ -353,8 +357,29 @@
          	box-shadow: 0px 0px 12px #000;
         }
         .home-leftcol .game-list-row .sub-box{
-        	
+        	padding: 10px
         }
+        .home-leftcol .game-list-row .sub-box .items-discount{
+        	float: right;
+        	margin-top: 50px;
+        }
+        .home-leftcol .game-list-row .sub-box .items-discount .right-box{
+   			float: right;
+        	line-height: 29px; 
+   		}
+        .home-leftcol .game-list-row .sub-box .items-discount .right-box .sale-img{
+   			display: inline-block;
+        	width: 90px;
+        	height: 30px;
+        	background-color: white;
+        	text-align: center;
+        	border-radius: 4px;
+        	color: blue;
+        	font-size: 16px;
+   		}
+   		.home-leftcol .game-list-row .sub-box .items-discount .right-box .sale-img span+span{
+   			margin-left: 10px;
+   		}
         .home-leftcol .game-list-row:hover .sub-box{
         	background-color: rgb(18,18,18);              	
         }
@@ -381,6 +406,9 @@
         .home-rightcol .rightcol-title{
         	font-size: 26px;
         	text-align: right;
+        }
+        .home-rightcol .rightcol-title .launch-box{
+        	font-size: 16px;
         }
 </style>
 <script src="https://kit.fontawesome.com/3a4fdcd1c5.js" crossorigin="anonymous"></script>
@@ -489,8 +517,8 @@
 		     	
 		     	<div class="home-page-content">	     		
 		     		<div class="leftcol-menu">
-			            <div class="home-tap">신작</div>
-			            <div class="home-tap">인기</div>
+			            <div class="home-tap"><span>신작</span></div>
+			            <div class="home-tap"><span>인기</span></div>
 			        </div>
 					<c:forEach items="${tapmainlist}" var="sVo">	
 					<div class="tap-wrap">			
@@ -523,7 +551,15 @@
 				        <c:forEach items="${tapsublist}" var="sSo">
 				        <c:if test="${sVo.main.gameNum == sSo.main.gameNum}">		        
 				        <div class="home-rightcol disnone">
-				            <div class="rightcol-title"><span>${sSo.main.title}</span></div>
+				            <div class="rightcol-title">
+				            	<div class="title-box">
+				            		<span>${sSo.main.title}</span>
+				            	</div>
+				            	<div class="launch-box">
+				            		<span>출시일자 : </span><span>${sSo.main.launch}</span>
+				            	</div>				            	
+				            </div>
+				            
 				            <ul class="tap-imgbox">
 				                <c:forEach items="${sSo.sub}" var="sub">
 			                        	<li><img src="<%=request.getContextPath()%>/resources/img/${sub.filename}" alt="" style="width:100%; height: 100%;"></li>
@@ -578,13 +614,15 @@
 	};	
 	$(function () {
         $('.home-leftcol').hover(function () {
-            $(this).siblings('.home-rightcol').toggleClass('disnone');
+        	$('.home-leftcol').siblings('.home-rightcol').addClass('disnone');
+        	$('.home-leftcol').width('890px');
+            $(this).siblings('.home-rightcol').removeClass('disnone');
             $(this).width('915px');
         },function(){
-        	$(this).siblings('.home-rightcol').toggleClass('disnone');
-        	$(this).width('890px');
+        	
         })
     })
-	
+	$('.home-leftcol').first().siblings('.home-rightcol').removeClass('disnone');
+    $('.home-leftcol').first().width('915px');
 </script>
 </html>

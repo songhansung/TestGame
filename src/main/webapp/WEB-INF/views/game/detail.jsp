@@ -107,7 +107,7 @@
 			padding-top: 50px;
 			padding-bottom: 50px;
 		}
-		.sbcontent-box .sbtext-box .buy-box .price-box{
+		.sbcontent-box .sbtext-box .buy-box .price-box,.disprice-box{
 			font-size: 20px;
 			padding-right: 30px;
 			text-align: right;
@@ -164,7 +164,17 @@
 			</div>	
 			<div class="text-box">${game.content}</div>
 			<div class="buy-box">
-				<div class="price-box"><span>₩ ${game.price}</span></div>
+				<c:if test="${game.disprice == 0}"> 
+				<div class="price-box">
+					<span>₩ ${game.price}</span>
+				</div>
+				</c:if>
+				<c:if test="${game.disprice != 0}">
+				<div class="disprice-box">
+					<span style="text-decoration:line-through;">₩ ${game.price}</span>
+					<span>₩ ${game.disprice}</span>
+				</div>
+				</c:if>
 				<div class="buy-btn-box">
 					<c:if test="${buylist == 0}">					
 						<form action="<%=request.getContextPath()%>/game/buy" method="post" >						
