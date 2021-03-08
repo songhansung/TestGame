@@ -106,6 +106,11 @@
         .main-content .game-list-row-box .game-list-row .sub-box .review-box .sale-img span+span{
         	margin-left: 10px;
         }
+        .search-none{
+        	font-size: 26px;
+        	color: white;
+        	text-align: center;
+        }
 	</style>
 </head>
 <body>
@@ -118,15 +123,19 @@
 			            <div class="search-input">
 			                <input class="input-text" type="text" placeholder="검색" value="${pm.criteria.search}" name="search">
 			                <button class="search-btn" onclick="clearInput()" type="button"><i class="fas fa-times"></i></button>
-			            </div>
+			            </div>			            	
 			        </form>
 	            </div>
 	        </div>
 		</div>
+		<c:if test="${list.size() == 0}">
+			<div class="search-none">
+				<span>검색 결과가 없습니다.</span>
+			</div>
+		</c:if>		
 		<div class="main-content">
 			<div class="game-list-row-box">
-            	<c:forEach items="${list}" var="game">
-            	
+            	<c:forEach items="${list}" var="game">          	
             		<a href="<%=request.getContextPath()%>/game/detail?gameNum=${game.gameNum}">        		
 		                <div class="game-list-row">	                	
 		                    <div class="img-box">
@@ -157,10 +166,9 @@
 		                        		</div>
 		                        	</c:if>
 		                        </div>
-		                    </div>	                    
+		                    </div>		                                        
 		                </div>
-	                </a>
-	            
+	                </a>                            	            
             	</c:forEach>              
             </div>
 		</div>

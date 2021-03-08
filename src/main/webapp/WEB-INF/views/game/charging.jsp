@@ -31,6 +31,8 @@
         font-size: 30px;
         line-height: 100px;
         color: black;
+        border-top-left-radius: 2em;
+        border-top-right-radius: 2em;
     }
     .box-radio-input{
         color: black;

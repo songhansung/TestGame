@@ -118,14 +118,13 @@
 	                    <td>${game.launch}</td>
 	                    <td>${game.company}</td>
 	                    <td>${game.price}</td>
-	                    <td>
+	                    <td>	                    	
 	                    	<div class="form-check-inline">
 						      	<label class="form-check-label" for="check1">
 						        	<input type="checkbox" class="form-check-input" id="cnt" name="cnt" value="${game.gameNum}">
 						      	</label>
 						    </div>
-	                    </td>
-	                    
+	                    </td>     
 	                    <th>
 	                    	<form action="<%=request.getContextPath()%>/game/game" method="post">
 	                    		<c:if test="${game.mainview == 'N'}">
@@ -185,8 +184,7 @@
 		        url:"<%=request.getContextPath()%>/game/discount",
 		        type:'POST',
 		        data: allData,				
-		      //데이터 전송이 완료되면 출력되는 메시지
-		
+		      //데이터 전송이 완료되면 출력되는 메시지		
 		        success:function(data){
 		            alert("완료!");
 		            //window.opener.location.reload();

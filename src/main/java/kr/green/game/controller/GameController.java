@@ -50,9 +50,11 @@ public class GameController {
 		ArrayList<GameVo> list = gameService.getGameList(cri);
 		//이미지리스트
 		ArrayList<ImgVo> imglist = gameService.getImglist(cri);
-		//페이지정보
+		//페이지정보	
 		PageMaker pm = new PageMaker(cri,displayPageNum,totalCount);
 		
+		ArrayList<DiscountVo> dis = gameService.getDisList(list);
+		mv.addObject("dis",dis);
 		mv.addObject("pm",pm);
 		mv.addObject("list", list);
 		mv.addObject("imglist", imglist);

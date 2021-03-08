@@ -240,7 +240,9 @@
 			${game.longcontent}
 		</div>
 		<div class="btn-group">
-		  	<button type="button" class="btn btn-primary">목록</button>
+			<a href="<%=request.getContextPath()%>/">
+		  		<button type="button" class="btn btn-primary">목록</button>
+		  	</a>
 		  	<c:if test="${user.rating == 10}">
 		  	<a href="<%=request.getContextPath()%>/game/modify?gameNum=${game.gameNum}">
 		  		<button type="button" class="btn btn-primary">수정</button>

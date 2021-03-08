@@ -159,7 +159,7 @@
 	        </div>
 	        <div class="header-center">
 	            <div class="box customer">
-	                <a href="#">상점</a>
+	                <a href="<%=request.getContextPath()%>/">상점</a>
 	            </div>
 	            <div class="box customer">
 	                <a href="<%=request.getContextPath()%>/customer">고객센터</a>
