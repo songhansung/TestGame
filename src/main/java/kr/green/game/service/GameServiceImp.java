@@ -141,12 +141,16 @@ public class GameServiceImp implements GameService{
 		int money = user.getMoney();
 		int price = game.getPrice();
 		int disprice = game.getDisprice();	
-		if(money < price) {
-			return;
-		}
-		if(disprice == '0') {
+		
+		if(disprice == 0) {
+			if(money < price) {
+				return;
+			}
 			user.setMoney(money-price);	
 		}else {
+			if(money < disprice) {
+				return;
+			}
 			user.setMoney(money-disprice);
 		}		
 		userDao.updateUser(user);

@@ -293,15 +293,27 @@
             	var price = '${game.price}';
             	price = parseInt(price);
             	var monye = '${user.money}';
+            	var disprice = '${game.disprice}'
+            	disprice = parseInt(disprice);
             	monye = parseInt(monye);
+     
     			var id = '${user.id}';
     			if(id == ''){
     				alert('로그인하세요')
     				return false;
-    			}    			
-    			if(monye < price){
-    				alert('잔액이부족합니다')
-    				return false;
+    			}
+    			if(disprice == 0){
+	    			if(monye < price){
+	    				alert('잔액이부족합니다')
+	    				return false;
+	    			}
+	    			alert('구매완료')
+    			}else{
+    				if(monye < disprice){
+    					alert('잔액이부족합니다')
+    					return false;
+    				}
+    				alert('구매완료')
     			}
         	})
         	$('.btn-bsk').click(function() {
