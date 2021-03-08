@@ -295,6 +295,13 @@ public class GameServiceImp implements GameService{
 		return getImgSlideList(tapsublist);
 	}
 
+	@Override
+	public DiscountVo getDiscount(GameVo game) {
+		DiscountVo gameDis = gameDao.selectDiscount(game);
+		
+		return gameDis;
+	}
+
 	
 
 

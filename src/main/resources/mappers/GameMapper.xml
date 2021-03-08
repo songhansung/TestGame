@@ -151,5 +151,11 @@
 			LEFT join (select * from discount) as dis on game.gameNum = dis.gameNum
 			where game.isdel = 'N' order by DATE(launch)DESC,imgNum asc limit 0,#{count};
 	</select>
+	<select id="selectDiscount" resultType="kr.green.game.vo.DiscountVo">
+		select * from discount
+    	join (select * from game where isdel = 'N') as game
+    	on discount.gameNum = game.gameNum
+    	where discount.gameNum = #{game.gameNum};
+	</select>
 	
   </mapper>

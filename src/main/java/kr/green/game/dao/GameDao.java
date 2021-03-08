@@ -72,6 +72,8 @@ public interface GameDao {
 
 	ArrayList<ImgVo> selectTapsublist(@Param("count")int count);
 
+	DiscountVo selectDiscount(@Param("game")GameVo game);
+
 
 
 

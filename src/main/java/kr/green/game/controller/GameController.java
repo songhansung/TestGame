@@ -128,6 +128,7 @@ public class GameController {
 		ArrayList<ImgVo> imglist = gameService.getImglist(game);
 		ArrayList<ImgVo> Mlist = gameService.getMList(game);
 		UserVo user = userService.getUser(request);
+		DiscountVo dis = gameService.getDiscount(game);
 		int buylist = gameService.buyGameList(game, user);
 		boolean bsk = gameService.getbasket(user,game);
 		//메인이미지 리스트
@@ -137,6 +138,8 @@ public class GameController {
 		mv.addObject("game",game);
 		mv.addObject("buylist",buylist);
 		mv.addObject("bsk",bsk);
+		mv.addObject("dis",dis);
+		mv.addObject("user",user);
 		/* System.out.println(buylist); */
 		mv.setViewName("/game/detail");
 		return mv;

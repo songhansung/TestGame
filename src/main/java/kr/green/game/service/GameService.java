@@ -64,6 +64,8 @@ public interface GameService {
 
 	ArrayList<ImgSlideVo> getTapsublist(int count);
 
+	DiscountVo getDiscount(GameVo game);
+
 	/* ArrayList<ImgSlideVo> getImgsubSlideList(ArrayList<GameVo> sublist); */
 
 

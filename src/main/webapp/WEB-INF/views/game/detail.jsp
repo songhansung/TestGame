@@ -71,7 +71,6 @@
 		.sbcontent-box{
 			width: 70%;
 			height: 200px;
-			background-color: beige;
 			margin-left: auto;
 			margin-right: auto;
 		
@@ -79,13 +78,11 @@
 		.sbcontent-box .sbtext-box{
 			height: 200px;
 			display:flex;
+			background-color: black;
 		}
 		.sbcontent-box .sbtext-box .main-img{
 			flex-basis: 25%;
-			height: 100%;
-			background-color: brown;
-			padding-top: 15px;
-      		padding-bottom: 15px;
+			height: 100%;			
 		}
 		.sbcontent-box .sbtext-box .main-img img{
 			width: 100%;
@@ -94,38 +91,76 @@
 		.sbcontent-box .sbtext-box .text-box{
 			flex-basis: 50%;
 			height: 100%;
-			background-color: cornflowerblue;
 			box-sizing: border-box;
-			padding: 15px 20px 15px 20px;
+			padding: 15px 20px 15px 0px;
+			color: white;
+			border-bottom: 1px solid white;
+			margin-left: 20px
 		}
 		.sbcontent-box .sbtext-box .buy-box{
 			flex-basis: 25%;
-			width: 100%;
-			height: 100%;
-			background-color: indianred;
 			box-sizing: border-box;
-			padding-top: 50px;
-			padding-bottom: 50px;
+			padding-top: 15px;
+			padding-bottom: 15px;
+			padding-right: 10px;
+			color: white;
+			border-bottom: 1px solid white;
 		}
 		.sbcontent-box .sbtext-box .buy-box .price-box,.disprice-box{
 			font-size: 20px;
-			padding-right: 30px;
 			text-align: right;
-			box-sizing: border-box;
+			box-sizing: border-box;			
 		}
 		.sbcontent-box .sbtext-box .buy-box .buy-btn-box{
-			text-align: right;
-			margin: 0;
-			padding-right: 30px;
-			padding-left: 30px;
+			margin-top: 50px;
+		}
+		.sbcontent-box .sbtext-box .buy-box .buy-btn-box form{
+			display: inline-block;
+			float: right;
+		}
+		.sbcontent-box .sbtext-box .buy-box .buy-btn-box form+form{
+			margin-right: 5px;
 		}
 		.sbcontent-box .sbtext-box .buy-box .buy-btn-box button{
-			font-weight: bold;
+			font-weight: bold;			
 		}
 		.maincontent-box{
 			width: 70%;
 			margin-left: auto;
 			margin-right: auto;
+			padding-top: 10px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+			padding-bottom: 10px;
+			border-top: 1px solid black;
+		}
+		.dispirce-box {
+			height: 30px;
+			font-size: 20px;
+		}
+		.discount-box,.sub-disprice{
+			float: right;
+			line-height: 30px;
+		}
+		.discount-box{
+			background-color: white;
+			height: 30px;
+			width: 60px;
+			margin-right: 5px;
+			text-align: center;
+        	border-radius: 4px;
+        	color: blue;
+        	font-size: 16px;
+		}
+		.ifbuy-box{
+			float: right;
+			font-size: 18px;
+			font-weight: bold;
+			margin-top: 10px;
+		}
+		.longcontent-box{
+			border-bottom: 1px solid black;
+			margin-bottom: 10px;
 		}
 	</style>
 </head>
@@ -170,10 +205,17 @@
 				</div>
 				</c:if>
 				<c:if test="${game.disprice != 0}">
-				<div class="disprice-box">
+				<div class="price-box">
+					<div>
 					<span style="text-decoration:line-through;">₩ ${game.price}</span>
-					<span>₩ ${game.disprice}</span>
+					</div>					
 				</div>
+				<div class="dispirce-box">
+					<div class="sub-disprice">
+					<span>₩ ${game.disprice}</span>
+					</div>
+					<div class="discount-box">${dis.discount}%</div>
+					</div>	
 				</c:if>
 				<div class="buy-btn-box">
 					<c:if test="${buylist == 0}">					
@@ -187,7 +229,7 @@
 						</form>
 					</c:if>					
 					<c:if test="${buylist != 0}">
-						<div>이제품은 구매하셨습니다</div>
+						<div class="ifbuy-box">이제품은 구매하셨습니다</div>
 					</c:if>									
 				</div>
 			</div>
@@ -199,12 +241,14 @@
 		</div>
 		<div class="btn-group">
 		  	<button type="button" class="btn btn-primary">목록</button>
+		  	<c:if test="${user.rating == 10}">
 		  	<a href="<%=request.getContextPath()%>/game/modify?gameNum=${game.gameNum}">
 		  		<button type="button" class="btn btn-primary">수정</button>
 		  	</a>
 		  	<a href="<%=request.getContextPath()%>/game/delete?gameNum=${game.gameNum}">
 		  	<button type="button" class="btn btn-primary">삭제</button>
 		  	</a>
+		  	</c:if>
 		</div>
 	</div>
     <!-- Swiper JS -->
