@@ -7,6 +7,15 @@
 	  	select * from basket 
 	  	join game on basket.gameNum = game.gameNum
 	  	join (select * from image where isimg = 'M' and isdel = 'N') as img on game.gameNum = img.gameNum
-	  	where id = #{user.id} and game.isdel = 'N' order by basket.basketNum desc;
+	  	where id = #{user.id} and game.isdel = 'N' and basket.isdel = 'N' order by basket.basketNum desc;
 	  </select>
+	  <select id="selectBuylist" resultType="kr.green.game.vo.BuyVo">
+	  	select * from buy 
+	  	join game on buy.gameNum = game.gameNum
+	  	join (select * from basket where isdel = 'N' and basket.id = #{user.id}) as basket on game.gameNum = basket.gameNum
+	  	where buy.id = #{user.id} and game.isdel = 'N' group by game.gameNum order by buy.buyNum desc;
+	  </select>
+	  <update id="updatebasket">
+		update basket set isdel = 'Y' where basket.gameNum = #{tmp.gameNum} and basket.id = #{tmp.id};
+	</update>
   </mapper>
