@@ -10,7 +10,7 @@
 	.main-body{      	
         background-color: rgb(60,60,60);
         width: 100%;
-        height: 100%;
+        height: 1500px;
 	}
 	.coustomerbody{
 		width: 1000px;

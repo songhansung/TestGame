@@ -39,6 +39,13 @@
     .input-group-append > label{
     	width: 150px;
     }
+    .form-group.last{
+    	margin-bottom: 0;
+    }
+    .form-group.objbox{
+    	margin-bottom: 0;
+    	margin-top: 20px;
+    }
 </style>
 </head>
 <body>
@@ -68,12 +75,12 @@
 					</div>
 				</div>
 			</div>
-			<div class="form-group">
+			<div class="form-group last">
 			 	<label>문의 내용(필수)</label>
 			 	<textarea rows="12" class="form-control" name="content" readonly>${cus.content}</textarea>
 			</div>
 			<c:if test="${cus.objcontent != null}">
-				<div class="form-group">
+				<div class="form-group objbox">
 				 	<label>답변 내용(필수)</label>
 				 	<textarea rows="12" class="form-control" name="objcontent" readonly>${cus.objcontent}</textarea>
 				</div>

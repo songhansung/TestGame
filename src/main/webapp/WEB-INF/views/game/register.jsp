@@ -89,10 +89,26 @@
     </div>
     <script>
     $('#summernote').summernote({
-        placeholder: 'Hello Bootstrap 4',
+        placeholder: '내용',
         tabsize: 2,
-        height: 300
-      });
+        height: 300,
+        toolbar: [
+			    // [groupName, [list of button]]
+			    ['fontname', ['fontname']],
+			    ['fontsize', ['fontsize']],
+			    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+			    ['color', ['forecolor','color']],
+			    ['table', ['table']],
+			    ['para', ['ul', 'ol', 'paragraph']],
+			    ['height', ['height']],
+			    ['insert',['picture','link','video']],
+			    ['view', ['fullscreen', 'help']]
+        ],
+		fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
+		fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
+    });
+      $('#summernote').summernote('foreColor', 'white');
+      $('#summernote').summernote('backColor', 'black');
       $('form').submit(function(){
     	  var code = $('#summernote').summernote('code');
     	  $('textarea[name=longcontent]').val(code);

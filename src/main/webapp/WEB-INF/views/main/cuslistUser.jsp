@@ -10,7 +10,7 @@
 		.main-body{      	
             background-color: rgb(60,60,60);
             width: 100%;
-            height: 100%;
+            height: 1500px;
         }
         .customerlist{
             width: 1000px;
@@ -39,7 +39,7 @@
                     <th>접수번호</th>
                     <th>서비스분류</th>
                     <th>제목</th>
-                    <th>날짜</th>
+                    <th>등록일</th>
                     <th>답변여부</th>
                 </tr>
                <c:forEach items="${cuslist}" var="cus">

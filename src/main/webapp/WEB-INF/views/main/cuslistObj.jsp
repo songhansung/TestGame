@@ -10,7 +10,7 @@
 		.main-body{      	
             background-color: rgb(60,60,60);
             width: 100%;
-            height: 100%;
+            height: 1500px;
         }
         .customerlist{
             width: 1000px;
@@ -38,7 +38,7 @@
                     <th>접수번호</th>
                     <th>서비스분류</th>
                     <th>제목</th>
-                    <th>날짜</th>
+                    <th>등록일</th>
                     <th>답변여부</th>
                 </tr>
                <c:forEach items="${list}" var="cus">
@@ -53,13 +53,13 @@
             </table>
           	<ul class="pagination justify-content-center">
 			  	<c:if test="${pm.prev}">
-			    	<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/cuslistUser?page=${pm.startPage-1}&type=${pm.criteria.type}&search=${pm.criteria.search}">이전</a></li>
+			    	<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/cuslistObj?page=${pm.startPage-1}&type=${pm.criteria.type}&search=${pm.criteria.search}">이전</a></li>
 			    </c:if>
 			    <c:forEach begin="${pm.startPage}" end="${pm.endPage}" var="index">
-			    	<li class="page-item <c:if test="${index == pm.criteria.page}">active</c:if>"><a class="page-link" href="<%=request.getContextPath()%>/cuslistUser?page=${index}&type=${pm.criteria.type}&search=${pm.criteria.search}">${index}</a></li>
+			    	<li class="page-item <c:if test="${index == pm.criteria.page}">active</c:if>"><a class="page-link" href="<%=request.getContextPath()%>/cuslistObj?page=${index}&type=${pm.criteria.type}&search=${pm.criteria.search}">${index}</a></li>
 			    </c:forEach>
 			    <c:if test="${pm.next}">
-			    	<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/cuslistUser?page=${pm.endPage+1}&type=${pm.criteria.type}&search=${pm.criteria.search}">다음</a></li>
+			    	<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/cuslistObj?page=${pm.endPage+1}&type=${pm.criteria.type}&search=${pm.criteria.search}">다음</a></li>
 			    </c:if>
 		  	</ul>
         </div>

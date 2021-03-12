@@ -125,14 +125,14 @@
 			font-weight: bold;			
 		}
 		.maincontent-box{
-			width: 70%;
+			width: 60%;
 			margin-left: auto;
 			margin-right: auto;
 			padding-top: 10px;
 			margin-top: 10px;
 			margin-bottom: 10px;
 			padding-bottom: 10px;
-			border-top: 1px solid black;
+			border-top: 1px double white;
 		}
 		.dispirce-box {
 			height: 30px;
@@ -158,9 +158,10 @@
 			font-weight: bold;
 			margin-top: 10px;
 		}
-		.longcontent-box{
-			border-bottom: 1px solid black;
+		.longcontent-box{			
 			margin-bottom: 10px;
+			background-color: black;
+			padding: 10px;
 		}
 	</style>
 </head>
