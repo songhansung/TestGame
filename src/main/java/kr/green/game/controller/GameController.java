@@ -105,6 +105,7 @@ public class GameController {
 	public ModelAndView registerPost(ModelAndView mv,GameVo game,MultipartFile[] filelist,MultipartFile Mfilelist) throws IOException, Exception {
 		
 		gameService.registerGame(game);
+		
 		if(Mfilelist != null && Mfilelist.getOriginalFilename().length() >= 0) {
 			String path = UploadFileUtils.uploadFile(uploadPath, Mfilelist.getOriginalFilename(),Mfilelist.getBytes());
 			gameService.registerFile(game.getGameNum(),Mfilelist.getOriginalFilename(),path,"M");

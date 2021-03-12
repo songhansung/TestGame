@@ -26,8 +26,7 @@
             text-align: center;
             border-collapse: collapse;
   			border-spacing: 0 20px;
-  			border-top: 1px solid white;
-  			
+  			border-top: 1px solid white;  			
         }
         .gamelist-table th, td{
 			border-bottom: 1px solid white;

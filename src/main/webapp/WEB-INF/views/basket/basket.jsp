@@ -36,7 +36,7 @@
                     <th>개발사</th>
                 </tr>
                 <c:forEach items="${bList}" var="game"> 
-                	<c:if test="${game.isdel != 'Y' }">           		
+                	<c:if test="${game.isdel != 'Y'}">           		
                     <tr class="" align="center" onClick="location.href='<%=request.getContextPath()%>/game/detail?gameNum=${game.gameNum}'" style="cursor:pointer;"> 
                         <td>                        
                             <img src="<%=request.getContextPath()%>/resources/img/${game.filename}" style="width: 200px; height: 100px;">                 

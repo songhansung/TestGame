@@ -1,5 +1,8 @@
 package kr.green.game.service;
 
+import java.text.ParseException;
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +10,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import kr.green.game.dao.UserDao;
+import kr.green.game.pagination.Criteria;
+import kr.green.game.vo.CustomerVo;
+import kr.green.game.vo.GameVo;
 import kr.green.game.vo.UserVo;
 
 @Service
@@ -51,5 +57,53 @@ public class UserServiceImp implements UserService{
 		userDao.updateMoney(amount, user);
 		
 	}
+
+	@Override
+	public void customerUser(UserVo user,CustomerVo cus) {
+		userDao.insertCustomer(user,cus);
+		
+	}
+
+	@Override
+	public int getTotalCount(Criteria cri) {
+		return userDao.getTotalCount(cri);
+	}
+
+	@Override
+	public ArrayList<CustomerVo> getcuslist(UserVo user,Criteria cri) {
+		ArrayList<CustomerVo> cuslist = userDao.getcuslist(user,cri);
+		
+		return cuslist;
+	}
+
+	@Override
+	public ArrayList<CustomerVo> getobjcuslist(Criteria cri) {
+		ArrayList<CustomerVo> cuslist = userDao.getobjcuslist(cri);
+		return cuslist;
+	}
+
+	@Override
+	public CustomerVo getCustomer(Integer cusNum) {
+		if(cusNum == null) {
+			return null;
+		}
+		CustomerVo cus = userDao.getcus(cusNum);
+		return cus;
+	}
+
+	@Override
+	public void setCustomer(CustomerVo cus) {
+		CustomerVo oricus = userDao.getcus(cus.getCusNum());
+		/* System.out.println(oricus); */
+		if(oricus == null) {
+			return;
+		}
+		oricus.setObjcontent(cus.getObjcontent());
+		oricus.setProcessing("답변 완료");
+		
+		userDao.updatecus(oricus);
+		
+	}
+
 
 }

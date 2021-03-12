@@ -14,8 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.green.game.pagination.Criteria;
+import kr.green.game.pagination.PageMaker;
 import kr.green.game.service.GameService;
 import kr.green.game.service.UserService;
+import kr.green.game.vo.CustomerVo;
 import kr.green.game.vo.DiscountVo;
 import kr.green.game.vo.GameVo;
 import kr.green.game.vo.ImgSlideVo;
@@ -145,7 +148,82 @@ public class HomeController {
 	//고객센터 뷰
 	@RequestMapping(value = "/customer", method = RequestMethod.GET)
 	public ModelAndView customerGet(ModelAndView mv,HttpServletRequest request) {
+		UserVo user = userService.getUser(request);
+//		mv.addObject("user",user);
 		mv.setViewName("/main/customer");
 		return mv;
 	}
+	//고객센터문의 유저뷰
+	@RequestMapping(value = "/customerUser", method = RequestMethod.GET)
+	public ModelAndView customerUserGet(ModelAndView mv,HttpServletRequest request) {
+		UserVo user = userService.getUser(request);
+		mv.setViewName("/main/customerUser");
+		return mv;
+	}
+	//문의 게시판 등록기능
+	@RequestMapping(value = "/customerUser", method = RequestMethod.POST)
+	public ModelAndView customerUserPost(ModelAndView mv,HttpServletRequest request,CustomerVo cus) {
+		UserVo user = userService.getUser(request);
+		userService.customerUser(user,cus);		
+		mv.setViewName("redirect:/customer");
+		return mv;
+	}
+	//유저문의게시판 리스트
+	@RequestMapping(value = "/cuslistUser", method = RequestMethod.GET)
+	public ModelAndView cuslistUserGet(ModelAndView mv,HttpServletRequest request,Criteria cri) {
+		int displayPageNum = 2;
+		int totalCount = userService.getTotalCount(cri);
+		UserVo user = userService.getUser(request);
+		//유저 정보에따른 리스트
+		ArrayList<CustomerVo> cuslist = userService.getcuslist(user,cri);
+		
+		PageMaker pm = new PageMaker(cri,displayPageNum,totalCount);
+		
+		mv.addObject("cuslist",cuslist);
+		mv.addObject("pm",pm);
+		mv.setViewName("/main/cuslistUser");
+		return mv;
+	}
+	//유저문의 상세보기
+		@RequestMapping(value = "/customerUserDetali", method = RequestMethod.GET)
+		public ModelAndView customerUserDetaliGet(ModelAndView mv,HttpServletRequest request, Integer cusNum) {
+			UserVo user = userService.getUser(request);
+			CustomerVo cus = userService.getCustomer(cusNum);
+			mv.addObject("cus",cus);
+			mv.setViewName("/main/customerUserDetali");
+			return mv;
+		}
+	//관리자문의게시판 리스트
+	@RequestMapping(value = "/cuslistObj", method = RequestMethod.GET)
+	public ModelAndView cuslistobjGet(ModelAndView mv,HttpServletRequest request,Criteria cri) {
+		int displayPageNum = 2;
+		int totalCount = userService.getTotalCount(cri);
+		//모든유저 문의리스트
+		ArrayList<CustomerVo> objcuslist = userService.getobjcuslist(cri);
+		
+		PageMaker pm = new PageMaker(cri,displayPageNum,totalCount);
+		mv.addObject("list",objcuslist);
+		mv.addObject("pm",pm);
+		mv.setViewName("/main/cuslistObj");
+		return mv;
+	}
+	
+	//고객센터답변 관리자뷰
+	@RequestMapping(value = "/customerObj", method = RequestMethod.GET)
+	public ModelAndView customerObjGet(ModelAndView mv,HttpServletRequest request, Integer cusNum) {
+		UserVo user = userService.getUser(request);
+		CustomerVo cus = userService.getCustomer(cusNum);
+		mv.addObject("cus",cus);
+		mv.setViewName("/main/customerObj");
+		return mv;
+	}
+	//답변하기 기능 관리자
+	@RequestMapping(value = "/customerObj", method = RequestMethod.POST)
+	public ModelAndView customerObjPost(ModelAndView mv,HttpServletRequest request, CustomerVo cus) {
+		/* System.out.println("문의"+cus); */
+		userService.setCustomer(cus);		
+		mv.setViewName("redirect:/cuslistObj");
+		return mv;
+	}
+	
 }

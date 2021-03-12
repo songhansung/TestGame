@@ -17,4 +17,27 @@
   		update user set pw = #{user.pw}, email = #{user.email}, phone = #{user.phone}, money = #{user.money} 
   		where id = #{user.id}
   	</update>
+  	<insert id="insertCustomer" parameterType="kr.green.game.vo.CustomerVo">
+	  	insert into customer(id,title,content,objcontent,kind)
+	  		values(#{user.id},#{cus.title},#{cus.content},#{cus.objcontent},#{cus.kind})
+  	</insert>
+  	<select id="getTotalCount" resultType="int">
+		select count(*) from customer where isDel = 'N'
+		order by cusNum desc
+	</select>
+	<select id="getcuslist" resultType="kr.green.game.vo.CustomerVo">
+    	select * from customer where isdel = 'N' and customer.id = #{user.id} 
+    	order by cusNum desc limit #{cri.pageStart}, #{cri.perPageNum}
+	</select>
+	<select id="getobjcuslist" resultType="kr.green.game.vo.CustomerVo">
+    	select * from customer where isdel = 'N'
+    	order by cusNum desc limit #{cri.pageStart}, #{cri.perPageNum}
+	</select>
+	<select id="getcus" resultType="kr.green.game.vo.CustomerVo">
+    	select * from customer where isdel = 'N' and cusNum = #{cusNum}
+	</select>
+	<update id="updatecus" parameterType="kr.green.game.vo.CustomerVo">
+		update customer set objcontent=#{cus.objcontent},objregisterDate=now(),processing = #{cus.processing}
+								where cusNum = #{cus.cusNum}
+	</update>
 </mapper>
