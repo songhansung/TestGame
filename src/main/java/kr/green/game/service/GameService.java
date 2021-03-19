@@ -66,6 +66,12 @@ public interface GameService {
 
 	DiscountVo getDiscount(GameVo game);
 
+	ImgVo getmainimg(GameVo game);
+
+	void deleteFile(Integer mImgNum);
+
+	void updateSubImgList(int gameNum, Integer[] sImgNum);
+
 
 
 	/* ArrayList<ImgSlideVo> getImgsubSlideList(ArrayList<GameVo> sublist); */

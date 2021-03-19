@@ -39,9 +39,9 @@
                     <div class="input-group-append col">
                         <select class="form-control" id="company" name="company">
                             <option value="1">개발사</option>
-                            <option value="2">블루홀</option>
-                            <option value="3">라이엇</option>
-                            <option value="4">NC소프트</option>
+                            <option value="블루홀">블루홀</option>
+                            <option value="라이엇">라이엇</option>
+                            <option value="NC소프트">NC소프트</option>
                         </select>
                   	</div>
                 </div>
@@ -74,8 +74,19 @@
 		    						<label>서브이미지:</label>
 			                        <input type="file" name="filelist" class="sub" multiple accept=".gif, .jpg, .png">
 			                    </div>
-			                    <div class="uploadResult">
-			                        <ul></ul>
+			                    <div class="uploadResult">			         
+			                        <div class="mainimg">
+			                        	<span>${main.oriFilename}</span>
+			                        	<input type="hidden" name="mImgNum" value="${main.imgNum}">
+			                        </div>
+			                        <c:forEach items="${imglist}" var="img">
+			                        <c:if test="${img.isimg == 'S'}">
+			                        <div class="subimg">
+			                        	<span>${img.oriFilename}</span>
+			                        	<input type="hidden" name="sImgNum" value="${img.imgNum}">
+			                        </div>
+			                        </c:if>
+			                        </c:forEach>
 			                    </div>
 			                </div>
 			            </div>

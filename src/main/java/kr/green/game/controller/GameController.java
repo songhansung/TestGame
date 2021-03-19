@@ -180,29 +180,42 @@ public class GameController {
 	public ModelAndView modifyGet(ModelAndView mv,Integer gameNum) {
 		GameVo game = gameService.getgame(gameNum);
 		ArrayList<ImgVo> imglist = gameService.getImglist(game);
-
+		ImgVo main = gameService.getmainimg(game);
+		
+		mv.addObject("main",main);
 		mv.addObject("imglist",imglist);
 		mv.addObject("game",game);
 		mv.setViewName("/game/modify");
 		return mv;
 	}
 	@RequestMapping(value = "/game/modify", method = RequestMethod.POST)
-	public ModelAndView modifyPost(ModelAndView mv,GameVo game,MultipartFile[] filelist,MultipartFile Mfilelist) throws IOException, Exception {
+	public ModelAndView modifyPost(ModelAndView mv,GameVo game,MultipartFile[] filelist,MultipartFile Mfilelist, Integer mImgNum, Integer[] sImgNum) throws IOException, Exception {
 		gameService.modifyGame(game);
 		ArrayList<ImgVo> imglist = gameService.getImglist(game);
 		
 		if(Mfilelist != null && Mfilelist.getOriginalFilename().length() > 0) {
 			String path = UploadFileUtils.uploadFile(uploadPath, Mfilelist.getOriginalFilename(),Mfilelist.getBytes());
 			gameService.modifyFile(game.getGameNum(),Mfilelist.getOriginalFilename(),path,"M");
+			//기존 이미지 삭제
+			gameService.deleteFile(mImgNum);
+			
 		}
+		//해당 게임에 등록된 기존 서브 이미지를 가져옴
+		//sImgNum배열에 가져온 서브 이미지가 있는지 없는지 체크해서 없으면 해당 이미지 삭제
+		gameService.updateSubImgList(game.getGameNum() , sImgNum);						
+		
 		if(filelist != null && filelist.length != 0) {
 			for(MultipartFile file : filelist) {
 				if(file != null && file.getOriginalFilename().length() != 0) {
 					String path = UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(),file.getBytes());
-					gameService.modifyFile(game.getGameNum(),file.getOriginalFilename(),path,"S");					
+					gameService.modifyFile(game.getGameNum(),file.getOriginalFilename(),path,"S");
+					
+					
 				}	
 			}
-		}
+		}		
+		System.out.println("filelist : " + Arrays.toString(filelist));
+		System.out.println("sImgNum : " + Arrays.toString(sImgNum));
 		mv.addObject("imglist",imglist);
 		mv.setViewName("redirect:/game/game");
 		return mv;

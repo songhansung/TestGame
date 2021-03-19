@@ -60,6 +60,11 @@ public class GameServiceImp implements GameService{
 	@Override
 	public void modifyGame(GameVo game) {
 		GameVo origame = gameDao.getgame(game.getGameNum());
+		ImgVo img = gameDao.getmainimg(game);
+		ArrayList <ImgVo> sublist = gameDao.getImgAlllist(game);
+		
+		String name = img.getFilename();
+		
 		if(origame == null) {
 			return;
 		}
@@ -71,8 +76,10 @@ public class GameServiceImp implements GameService{
 		origame.setCompany(game.getCompany());
 		origame.setTags(game.getTags());
 		gameDao.updateGame(origame);
-		//그전 첨부파일 삭제
-		gameDao.deleteFile(origame.getGameNum());
+//		//그전 첨부파일 삭제
+//		if(name != img.getFilename()) {
+//			gameDao.deleteFile(origame.getGameNum());
+//		}
 		//그전 데이터 DB삭제
 		/* gameDao.reDeleteFile(origame.getGameNum()); */
 	}
@@ -105,7 +112,6 @@ public class GameServiceImp implements GameService{
 		//리턴함
 			return false;
 		}
-		System.out.println(tmp);
 		//장바구니에 추가
 		gameDao.insertBasket(user,game);
 		return true;
@@ -304,6 +310,26 @@ public class GameServiceImp implements GameService{
 		DiscountVo gameDis = gameDao.selectDiscount(game);
 		
 		return gameDis;
+	}
+
+	@Override
+	public ImgVo getmainimg(GameVo game) {
+		return gameDao.getmainimg(game);
+	}
+
+	@Override
+	public void deleteFile(Integer mImgNum) {
+		gameDao.deleteMainimg(mImgNum);
+		
+	}
+
+	@Override
+	public void updateSubImgList(int gameNum, Integer[] sImgNum) {
+		ArrayList<ImgVo> count = new ArrayList<ImgVo>();
+		for(Integer tmp : sImgNum) {
+			ImgVo itmp = gameDao.selectSublist(tmp);
+		}
+		/* gameDao.updateSubImg(gameNum,sImgNum); */
 	}
 
 

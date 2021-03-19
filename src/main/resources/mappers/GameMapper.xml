@@ -27,6 +27,9 @@
     <select id="getgame" resultType="kr.green.game.vo.GameVo">
     	select * from game where gameNum = #{gameNum} and isdel = 'N'
 	</select>
+	<select id="getmainimg" resultType="kr.green.game.vo.ImgVo">
+    	select * from image where gameNum = #{game.gameNum} and isdel = 'N' and isimg = 'M'
+	</select>
 	<select id="getImglist" resultType="kr.green.game.vo.ImgVo">
 		select * from game 
 		join (select * from image where isimg = 'M' and isdel = 'N') as img 
@@ -69,6 +72,9 @@
 	</insert>
 	<update id="deleteFile">
 		update image set isDel='Y' where gameNum = #{gameNum}
+	</update>
+	<update id="deleteMainimg">
+		update image set isDel='Y' where imgNum = #{imgNum}
 	</update>
 	<!-- <delete id="reDeleteFile">
 		DELETE FROM image WHERE isdel = 'Y';
@@ -156,6 +162,9 @@
     	join (select * from game where isdel = 'N') as game
     	on discount.gameNum = game.gameNum
     	where discount.gameNum = #{game.gameNum};
+	</select>
+	<select id="selectSublist" resultType="kr.green.game.vo.ImgVo">
+    	select * from image where imgNum = #{imgNum}
 	</select>
 	
   </mapper>

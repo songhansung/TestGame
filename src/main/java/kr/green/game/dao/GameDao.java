@@ -74,6 +74,14 @@ public interface GameDao {
 
 	DiscountVo selectDiscount(@Param("game")GameVo game);
 
+	ImgVo getmainimg(@Param("game") GameVo game);
+
+	void deleteMainimg(@Param("imgNum")Integer mImgNum);
+
+	ArrayList<ImgVo> selectSublist(@Param("imgNum") Integer[] sImgNum);
+
+	ImgVo selectSublist(@Param("imgNum") Integer tmp);
+
 
 
 
