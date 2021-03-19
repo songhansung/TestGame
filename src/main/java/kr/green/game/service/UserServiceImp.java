@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import kr.green.game.dao.UserDao;
 import kr.green.game.pagination.Criteria;
+import kr.green.game.vo.AmountVo;
 import kr.green.game.vo.CustomerVo;
 import kr.green.game.vo.GameVo;
 import kr.green.game.vo.UserVo;
@@ -103,6 +104,17 @@ public class UserServiceImp implements UserService{
 		
 		userDao.updatecus(oricus);
 		
+	}
+
+	@Override
+	public AmountVo setAmount(int amount, UserVo user) {
+		AmountVo sys = userDao.insertAmount(amount,user);
+		return sys;
+	}
+
+	@Override
+	public ArrayList<AmountVo> getAmountList(UserVo user) {
+		return userDao.getAmountList(user);
 	}
 
 

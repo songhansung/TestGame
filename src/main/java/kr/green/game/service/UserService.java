@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 
 import kr.green.game.pagination.Criteria;
+import kr.green.game.vo.AmountVo;
 import kr.green.game.vo.CustomerVo;
 import kr.green.game.vo.UserVo;
 
@@ -29,5 +30,11 @@ public interface UserService {
 	CustomerVo getCustomer(Integer cusNum);
 
 	void setCustomer(CustomerVo cus);
+
+	AmountVo setAmount(int amount, UserVo user);
+
+	ArrayList<AmountVo> getAmountList(UserVo user);
+
+
 
 }

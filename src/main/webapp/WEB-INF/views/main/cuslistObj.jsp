@@ -38,6 +38,7 @@
                     <th>접수번호</th>
                     <th>서비스분류</th>
                     <th>제목</th>
+                    <th>아이디</th>
                     <th>등록일</th>
                     <th>답변여부</th>
                 </tr>
@@ -46,6 +47,7 @@
 	                    <td>${cus.cusNum}</td>
 	                    <td>${cus.kind}</td>
 	                    <td>${cus.title}</td>
+	                    <td>${cus.id}</td>
 	                    <td>${cus.registerDate}</td>
 	                    <td>${cus.processing}</td>    
 	                </tr>

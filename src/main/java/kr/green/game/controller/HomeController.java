@@ -18,6 +18,8 @@ import kr.green.game.pagination.Criteria;
 import kr.green.game.pagination.PageMaker;
 import kr.green.game.service.GameService;
 import kr.green.game.service.UserService;
+import kr.green.game.vo.AmountVo;
+import kr.green.game.vo.BuyVo;
 import kr.green.game.vo.CustomerVo;
 import kr.green.game.vo.DiscountVo;
 import kr.green.game.vo.GameVo;
@@ -123,7 +125,13 @@ public class HomeController {
 	}
 	//마이페이지뷰
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
-	public ModelAndView mypageGet(ModelAndView mv) {
+	public ModelAndView mypageGet(ModelAndView mv,HttpServletRequest request) {
+		UserVo user = userService.getUser(request);
+		ArrayList<BuyVo> buylist = gameService.buyGameList(user);
+		ArrayList<AmountVo> amountlist = userService.getAmountList(user);
+
+		mv.addObject("buylist",buylist);
+		mv.addObject("amountlist",amountlist);
 		mv.setViewName("/main/mypage");
 		return mv;
 	}
@@ -136,11 +144,14 @@ public class HomeController {
 	//충전 에이잭스
 	@ResponseBody
 	@RequestMapping(value = "/charge/point", method = RequestMethod.POST)
-	public String chargePost(@RequestParam("amount")int amount,HttpServletRequest request) {
+	public String chargePost(@RequestParam("amount")int amount,HttpServletRequest request,AmountVo sys) {
 		System.out.println(amount);
 		System.out.println(userService.getUser(request));
 		UserVo user = userService.getUser(request);
+		
 		userService.userMoney(amount,user);
+		sys = userService.setAmount(amount,user);
+		/* ArrayList<AmountVo> amountlist = userService.setAmount(amount,user); */
 		request.getSession().setAttribute("user", user);
 		
 		return "success";

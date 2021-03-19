@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.apache.ibatis.annotations.Param;
 
 import kr.green.game.pagination.Criteria;
+import kr.green.game.vo.AmountVo;
 import kr.green.game.vo.CustomerVo;
 import kr.green.game.vo.UserVo;
 
@@ -29,5 +30,9 @@ public interface UserDao {
 	public CustomerVo getcus(@Param("cusNum")Integer cusNum);
 
 	public void updatecus(@Param("cus") CustomerVo oricus);
+
+	public AmountVo insertAmount(@Param("money")int amount,@Param("user") UserVo user);
+
+	public ArrayList<AmountVo> getAmountList(@Param("user") UserVo user);
 
 }

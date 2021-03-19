@@ -55,7 +55,7 @@
 			</div>
 			<div class="form-group">
 				<label>제목(필수)</label>
-				<input type="text" class="form-control" name="title">
+				<input type="text" class="form-control" name="title" placeholder="최대20글자입력가능">
 			</div>
 			<div class="form-group">
 				<div class="row">                   

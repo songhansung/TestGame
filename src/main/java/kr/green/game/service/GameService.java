@@ -66,6 +66,8 @@ public interface GameService {
 
 	DiscountVo getDiscount(GameVo game);
 
+
+
 	/* ArrayList<ImgSlideVo> getImgsubSlideList(ArrayList<GameVo> sublist); */
 
 
