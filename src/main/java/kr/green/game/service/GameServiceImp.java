@@ -73,10 +73,17 @@ public class GameServiceImp implements GameService{
 		origame.setContent(game.getContent());
 		origame.setLongcontent(game.getLongcontent());
 		origame.setPrice(game.getPrice());
-		origame.setLaunch(game.getLaunch());
+		try {
+			origame.setLaunch(game.getLaunch());
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		origame.setCompany(game.getCompany());
 		origame.setTags(game.getTags());
 		gameDao.updateGame(origame);
+		System.out.println("tt1:"+game.getLaunch());
+		System.out.println("tt2:"+origame.getLaunch());
 //		//그전 첨부파일 삭제
 //		if(name != img.getFilename()) {
 //			gameDao.deleteFile(origame.getGameNum());
@@ -253,6 +260,7 @@ public class GameServiceImp implements GameService{
 		/* for(ImgVo tmp : msList) { System.out.println(tmp);} */
 		return msList;
 	}
+
 	//메인화면 이미지 출력
 	@Override
 	public ArrayList<ImgSlideVo> getImgSlideList(ArrayList<ImgVo> mimg) {
@@ -337,6 +345,48 @@ public class GameServiceImp implements GameService{
 		}
 		/* gameDao.updateSubImg(gameNum,sImgNum); */
 	}
+
+	@Override
+	public void deletediscount(GameVo game, DiscountVo dis) {
+		gameDao.updateisdiscount(game);
+		gameDao.deletediscount(dis);
+	}
+
+	@Override
+	public ArrayList<ImgVo> getImgmsSublist(ArrayList<GameVo> list) {
+		ArrayList<ImgVo> msSubList = gameDao.selectmsSubList(list);
+		return msSubList;
+	}
+
+	@Override
+	public ArrayList<ImgSlideVo> getImgSlideSubList(ArrayList<ImgVo> msubimg) {
+		ArrayList<ImgSlideVo> imglist = new ArrayList<ImgSlideVo>();
+		ImgSlideVo isVo = null;
+
+		for(ImgVo tmp : msubimg) {
+			//Isimg에 M이랑 비교하여
+			if(tmp.getIsimg().equals("M")) {
+				//isVo 가 널이아니면 isVo를 가지고 list를 추가
+				if(isVo != null) {
+					imglist.add(isVo);
+				}
+				//isVo에 새로운 SlideVo를 생성 하여 Main에 저장
+				isVo = new ImgSlideVo();
+				isVo.setMain(tmp);
+				//M이 아닐시 sub에 사이즈는 4보다 작다 나머지를 isVo에 저장
+			}else {
+				if(isVo.getSub().size() < 4) {
+					isVo.add(tmp);
+				}
+			}
+		}
+		//반복문이 끝나면 리스트에 isVo를 add에 저장
+		imglist.add(isVo);
+		return imglist;
+	}
+
+
+
 
 
 	

@@ -112,11 +112,17 @@
     	on game.gameNum = img.gameNum
     	where game.mainview = 'M' and game.isdel = 'N' group by game.gameNum;
 	</select>
-	<select id="selectmsList" resultType="kr.green.game.vo.ImgVo">
+	<select id="selectmsSubList" resultType="kr.green.game.vo.ImgVo">
 		select * from image
     	join (select * from game where isdel = 'N') as game on image.gameNum = game.gameNum
     	LEFT join (select * from discount) as dis on game.gameNum = dis.gameNum
     	where image.isdel = 'N' and game.mainview = 'M';
+	</select>
+	<select id="selectmsList" resultType="kr.green.game.vo.ImgVo">
+		select * from image
+    	join (select * from game where isdel = 'N') as game on image.gameNum = game.gameNum
+    	LEFT join (select * from discount) as dis on game.gameNum = dis.gameNum
+    	where image.isdel = 'N' and game.mainview = 'M' and isimg = 'M' order by rand() limit 0,10;
 	</select>
 	<select id="getBasket" resultType="kr.green.game.vo.BasketVo">
     	select * from basket where basket.gameNum = #{gameNum} and basket.id = #{id} and isdel = 'N'
@@ -131,7 +137,7 @@
     	select * from image
     	join (select * from game where isdel = 'N' and isdiscount = 'Y') as game on image.gameNum = game.gameNum
         LEFT join (select * from discount) as dis on image.gameNum = dis.gameNum
-    	where image.isimg = 'M' and image.isdel = 'N' limit 0,#{count};
+    	where image.isimg = 'M' and image.isdel = 'N' order by rand() limit 0,#{count};
 	</select>
 <!-- 	<select id="selectNewList" resultType="kr.green.game.vo.ImgVo">
     	select * from game
@@ -167,7 +173,12 @@
     	select * from image where gameNum = #{gameNum}
 	</select>
 	<update id="updateimgisdel">
-		update image set isdel='Y' where imgNum = #{imgNum} and isimg = 'S'
+		update image set image.isdel='Y' where image.imgNum = #{imgNum} and image.isimg = 'S'
 	</update>
-	
+	<update id="updateisdiscount">
+		update game set game.disprice = '0', isdiscount='N' where game.gameNum = #{game.gameNum}
+	</update>
+	<delete id="deletediscount">
+		DELETE FROM discount WHERE gameNum = #{dis.gameNum};
+	</delete>
   </mapper>

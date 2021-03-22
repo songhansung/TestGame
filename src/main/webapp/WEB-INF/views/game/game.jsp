@@ -82,8 +82,8 @@
 			        <form action="<%=request.getContextPath()%>/game/discount" method="post">
 			        <div class="discount-sudbox">
 			            <div class="sudbox-input">
-			                <input type="text" placeholder="할인율" name="discount" style="text-align:right;">
-			                <input type="text" placeholder="할인기간" name="discountTime" style="text-align:right;">
+			                <input type="text" placeholder="할인율 단위%(ex:50)" name="discount" style="text-align:right;">
+			                <input type="text" placeholder="할인기간(ex:20210101)" name="discountTime" style="text-align:right;">
 			            </div>
 			            <div class="sudbox-btn">
 			                <button type="button" class="btn btn-primary btn-apply">적용</button>
@@ -120,8 +120,14 @@
 	                    <td>	                    	
 	                    	<div class="form-check-inline">
 						      	<label class="form-check-label" for="check1">
-						        	<input type="checkbox" class="form-check-input" id="cnt" name="cnt" value="${game.gameNum}">
+						        	<input type="checkbox" class="form-check-input" id="cnt" name="cnt" value="${game.gameNum}" <c:if test="${game.disprice != 0}">style="display:none;"</c:if>>
 						      	</label>
+						      	<form action="<%=request.getContextPath()%>/game/disUpDate" method="post">
+							      	<c:if test="${game.disprice != 0}">
+							      	<input type="hidden" name="gameNum" value="${game.gameNum}">
+							      	<button type="submit" class="btn btn-danger">취소</button>				
+							      	</c:if>
+						      	</form>
 						    </div>
 	                    </td>     
 	                    <th>
@@ -133,7 +139,7 @@
 	                    	</form>
 	                    	<form action="<%=request.getContextPath()%>/game/game2" method="post">
 	                    		<c:if test="${game.mainview == 'M'}">
-		                    		<button class="btn btn-success" type="submit">취소</button>
+		                    		<button class="btn btn-danger" type="submit">취소</button>
 		                    		<input type="hidden" name="gameNum" value="${game.gameNum}">
 	                    		</c:if>	                    		
 	                    	</form>
@@ -177,7 +183,7 @@
 		    // 사용자 ID(문자열)와 체크박스 값들(배열)을 name/value 형태로 담는다.
 		    var discount = $("input[name='discount']").val();
 		    var discountTime = $("input[name='discountTime']").val();
-		    var allData = {"checkArray": checkboxValues, "discount": discount, "discountTime":discountTime };
+		    var allData = {"checkArray": checkboxValues, "discount": discount, "discountTime":discountTime};
 		    console.log(allData);
 		    $.ajax({
 		        url:"<%=request.getContextPath()%>/game/discount",
@@ -186,6 +192,11 @@
 		      //데이터 전송이 완료되면 출력되는 메시지		
 		        success:function(data){
 		            alert("완료!");
+		            //에이잭스를 적용하면 화면에 바로적용시키기
+		            $("input[name='cnt']:checked").each(function(i) {
+				        $(this).attr('disabled',true);
+				        $(this).prop('checked',false);
+				    });
 		            //window.opener.location.reload();
 		            //self.close();
 		        },

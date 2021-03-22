@@ -43,11 +43,17 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView openTilesView(ModelAndView mv,Integer gameNum,ArrayList<GameVo> game) {
 		
-		ArrayList<GameVo> list = gameService.seletMList(); 
+		ArrayList<GameVo> list = gameService.seletMList();
+		//메인 슬라이드
 		ArrayList<ImgVo> mimg = gameService.getImgmslist(list);
+		//메인 서브 슬라이드
+		ArrayList<ImgVo> msubimg = gameService.getImgmsSublist(list);
+
 		/* ArrayList<DiscountVo> dis = gameService.getDisList(list); */
 		//메인 슬라이드
 		ArrayList<ImgSlideVo> imgSlideList = gameService.getImgSlideList(mimg);
+		//메인 서브 슬라이드
+		ArrayList<ImgSlideVo> imgSlidesubList = gameService.getImgSlideSubList(msubimg);
 		
 		//할인 슬라이드 ()안에숫자는 최대가져오는수
 		ArrayList<ImgSlideVo> sublist = gameService.seletDistcountList(12);
@@ -65,6 +71,7 @@ public class HomeController {
 		 */
 //		mv.addObject("subimg",imgsubSlideList);
 		mv.addObject("mimg",mimg);
+		mv.addObject("msubimg",imgSlidesubList);
 		/* mv.addObject("list",list); */
 		mv.addObject("sublist",sublist);
 		mv.addObject("tapmainlist",tapmainlist);

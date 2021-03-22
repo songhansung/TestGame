@@ -42,10 +42,11 @@ public class GameController {
 	private String uploadPath ="D:\\java_SHS\\git\\TestGame\\src\\main\\webapp\\resources\\img";
 	
 	@RequestMapping(value = "/game/game", method = RequestMethod.GET)
-	public ModelAndView gameGet(ModelAndView mv,Integer gameNum,Criteria cri) {
+	public ModelAndView gameGet(ModelAndView mv,Integer gameNum,Criteria cri,HttpServletRequest request) {
 		int displayPageNum = 2;
 		int totalCount = gameService.getTotalCount(cri);
 		
+		UserVo user = userService.getUser(request);
 		//게임정보를 담는 리스트(페이지정보포함)
 		ArrayList<GameVo> list = gameService.getGameList(cri);
 		//이미지리스트
@@ -54,6 +55,11 @@ public class GameController {
 		PageMaker pm = new PageMaker(cri,displayPageNum,totalCount);
 		
 		ArrayList<DiscountVo> dis = gameService.getDisList(list);
+		
+		if(user.getRating() != 10) {
+			mv.setViewName("redirect:/game");
+		}
+		
 		mv.addObject("dis",dis);
 		mv.addObject("pm",pm);
 		mv.addObject("list", list);
@@ -67,11 +73,23 @@ public class GameController {
 	public ModelAndView gamePost(ModelAndView mv,Integer gameNum) {
 		GameVo game = gameService.getgame(gameNum);
 		gameService.getMainView(game);
-
+		
 		mv.addObject("game", game);
 		mv.setViewName("redirect:/game/game");
 		return mv;
 	}
+	//할인정보삭제
+	@RequestMapping(value = "/game/disUpDate", method = RequestMethod.POST)
+	public ModelAndView disUpDatePost(ModelAndView mv,Integer gameNum) {
+		GameVo game = gameService.getgame(gameNum);
+		DiscountVo dis = gameService.getDiscount(game);
+		gameService.deletediscount(game,dis);
+		System.out.println(game);
+		System.out.println(dis);
+		mv.setViewName("redirect:/game/game");
+		return mv;
+	}
+	
 	@RequestMapping(value = "/game/game2", method = RequestMethod.POST)
 	public ModelAndView game2Post(ModelAndView mv,Integer gameNum) {
 		GameVo game = gameService.getgame(gameNum);
@@ -190,6 +208,7 @@ public class GameController {
 	}
 	@RequestMapping(value = "/game/modify", method = RequestMethod.POST)
 	public ModelAndView modifyPost(ModelAndView mv,GameVo game,MultipartFile[] filelist,MultipartFile Mfilelist, Integer mImgNum, Integer[] sImgNum) throws IOException, Exception {
+		
 		gameService.modifyGame(game);
 		ArrayList<ImgVo> imglist = gameService.getImglist(game);
 		
@@ -214,8 +233,7 @@ public class GameController {
 				}	
 			}
 		}		
-		System.out.println("filelist : " + Arrays.toString(filelist));
-		System.out.println("sImgNum : " + Arrays.toString(sImgNum));
+
 		mv.addObject("imglist",imglist);
 		mv.setViewName("redirect:/game/game");
 		return mv;

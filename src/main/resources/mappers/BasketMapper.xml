@@ -16,6 +16,6 @@
 	  	where buy.id = #{user.id} and game.isdel = 'N' group by game.gameNum order by buy.buyNum desc;
 	  </select>
 	  <update id="updatebasket">
-		update basket set isdel = 'Y' where basket.gameNum = #{tmp.gameNum} and basket.id = #{tmp.id};
+		update basket set basket.isdel = 'Y' where basket.gameNum = #{tmp.gameNum} and basket.id = #{tmp.id};
 	</update>
   </mapper>

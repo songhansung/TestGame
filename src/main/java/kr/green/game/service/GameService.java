@@ -72,6 +72,15 @@ public interface GameService {
 
 	void updateSubImgList(int gameNum, Integer[] sImgNum);
 
+	void deletediscount(GameVo game, DiscountVo dis);
+
+	ArrayList<ImgVo> getImgmsSublist(ArrayList<GameVo> list);
+
+	ArrayList<ImgSlideVo> getImgSlideSubList(ArrayList<ImgVo> msubimg);
+
+
+
+
 
 
 	/* ArrayList<ImgSlideVo> getImgsubSlideList(ArrayList<GameVo> sublist); */

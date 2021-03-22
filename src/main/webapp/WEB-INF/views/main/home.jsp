@@ -436,7 +436,7 @@
 	            <div class="right-icon"><i class="fas fa-chevron-right next main"></i></div>
 	        </div>		    
 		        <div class="slick-items main">
-		        <c:forEach items="${msimg}" var="sVo">   	        	
+		        <c:forEach items="${msimg}" var="sVo">   	
 		            <div class="main-items">
 		                <div class="items-box">               	
 		                    <a href="<%=request.getContextPath()%>/game/detail?gameNum=${sVo.main.gameNum}">
@@ -445,8 +445,13 @@
 		                </div>
 	                    <div class="items-subbox">
 		                    <ul class="items-subimg">
-		                    	<c:forEach items="${sVo.sub}" var="sub">
-		                        	<li><img src="<%=request.getContextPath()%>/resources/img/${sub.filename}" alt="" style="width:100%; height: 100%;"></li>
+		                    	<c:forEach items="${msubimg}" var="subimg">
+		                    		<c:forEach items="${subimg.sub}" var="sub">
+		                    		<c:if test="${sVo.main.gameNum == subimg.main.gameNum}">
+		                        	<li><img src="<%=request.getContextPath()%>/resources/img${sub.filename}" alt="" style="width:100%; height: 100%;"></li>
+		                        	</c:if>
+		                        	</c:forEach>
+		                        	
 		                        </c:forEach>
 		                    </ul>
 		                    <div class="items-subbox">

@@ -82,6 +82,18 @@ public interface GameDao {
 
 	void updateimgisdel(@Param("imgNum") int imgNum);
 
+	void updateisdiscount(@Param("game")GameVo game);
+
+	void deletediscount(@Param("dis")DiscountVo dis);
+
+	ArrayList<ImgVo> selectmsSubList(@Param("game") ArrayList<GameVo> list);
+
+
+
+
+
+
+
 
 
 
