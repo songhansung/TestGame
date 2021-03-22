@@ -32,7 +32,7 @@ CREATE TABLE `basket` (
   KEY `id_idx` (`id`),
   CONSTRAINT `gameNum` FOREIGN KEY (`gameNum`) REFERENCES `game` (`gameNum`),
   CONSTRAINT `id` FOREIGN KEY (`id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `basket` (
 
 LOCK TABLES `basket` WRITE;
 /*!40000 ALTER TABLE `basket` DISABLE KEYS */;
-INSERT INTO `basket` VALUES (42,17,'gkstjd3540','N'),(54,25,'thdgkstjd','Y'),(55,27,'thdgkstjd','Y'),(61,25,'gkstjd3540','Y'),(62,27,'gkstjd3540','N'),(64,14,'thdgkstjd','N'),(65,16,'thdgkstjd','N'),(66,14,'gkstjd3540','N'),(67,30,'thdgkstjd','N'),(68,29,'thdgkstjd','Y'),(69,31,'thdgkstjd','N'),(70,17,'thdgkstjd','N'),(71,15,'thdgkstjd','N'),(72,27,'thdgkstjd','Y'),(73,25,'thdgkstjd','Y'),(74,26,'gkstjd3540','N'),(75,32,'thdgkstjd','N'),(76,33,'thdgkstjd','N');
+INSERT INTO `basket` VALUES (42,17,'gkstjd3540','N'),(61,25,'gkstjd3540','Y'),(62,27,'gkstjd3540','N'),(66,14,'gkstjd3540','N'),(74,26,'gkstjd3540','N'),(84,31,'thdgkstjd','N'),(85,27,'thdgkstjd','N');
 /*!40000 ALTER TABLE `basket` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-03-19 17:47:59
+-- Dump completed on 2021-03-22 17:33:18
