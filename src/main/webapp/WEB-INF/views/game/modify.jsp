@@ -16,6 +16,15 @@
             height: 100%;
             margin: 0 auto;
         }
+        .uploadResult{
+        	display: flex;
+        }
+        .mainimg-box{
+        	flex: 1;
+        }
+        .subimg-box{
+        	flex: 1;
+        }
     </style>
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
@@ -74,19 +83,24 @@
 		    						<label>서브이미지:</label>
 			                        <input type="file" name="filelist" class="sub" multiple accept=".gif, .jpg, .png">
 			                    </div>
-			                    <div class="uploadResult">			         
-			                        <div class="mainimg">
-			                        	<span>${main.oriFilename}</span>
-			                        	<input type="hidden" name="mImgNum" value="${main.imgNum}">
+			                    <div class="uploadResult">
+			                    	<div class="mainimg-box"><span>메인이미지</span>			         
+				                        <div class="mainimg">			                        	
+				                        	<span>${main.oriFilename}</span>
+				                        	<input type="hidden" name="mImgNum" value="${main.imgNum}">
+				                        </div>
 			                        </div>
+			                        <div class="subimg-box"><span>서브이미지</span>
 			                        <c:forEach items="${imglist}" var="img">
-			                        <c:if test="${img.isimg == 'S'}">
-			                        <div class="subimg">
-			                        	<span>${img.oriFilename}</span>
-			                        	<input type="hidden" name="sImgNum" value="${img.imgNum}">
-			                        </div>
-			                        </c:if>
+				                        <c:if test="${img.isimg == 'S'}">
+					                        <div class="subimg" id="parent">			                        	
+					                        	<span>${img.oriFilename}</span>
+					                        	<input type="hidden" name="sImgNum" value="${img.imgNum}">
+					                        	<button id="child" onclick="deleteParent(this)">X</button>
+					                        </div>
+				                        </c:if>
 			                        </c:forEach>
+			                        </div>
 			                    </div>
 			                </div>
 			            </div>
@@ -146,6 +160,13 @@
 	    		}
 	    	});	
 	    }
+	      //수정에서 이미지옆에 X버튼 클릭시 삭제
+	      function deleteParent(child) {
+	    	  //parent 변수선언
+	    	  let parent = child.parentNode;
+	    	  //부모노드삭제
+	    	  parent.parentNode.removeChild(parent);
+	    	}
     </script>
 </body>
 </html>

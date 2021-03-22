@@ -78,9 +78,9 @@ public interface GameDao {
 
 	void deleteMainimg(@Param("imgNum")Integer mImgNum);
 
-	ArrayList<ImgVo> selectSublist(@Param("imgNum") Integer[] sImgNum);
+	ArrayList<ImgVo> selectSublist(@Param("gameNum") int gameNum);
 
-	ImgVo selectSublist(@Param("imgNum") Integer tmp);
+	void updateimgisdel(@Param("imgNum") int imgNum);
 
 
 

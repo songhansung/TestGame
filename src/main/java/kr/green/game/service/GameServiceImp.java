@@ -2,6 +2,7 @@ package kr.green.game.service;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -322,12 +323,17 @@ public class GameServiceImp implements GameService{
 		gameDao.deleteMainimg(mImgNum);
 		
 	}
-
+	//서브이미지 를가져와서 배열에없으면 업데이트 있으면삭제
 	@Override
 	public void updateSubImgList(int gameNum, Integer[] sImgNum) {
-		ArrayList<ImgVo> count = new ArrayList<ImgVo>();
-		for(Integer tmp : sImgNum) {
-			ImgVo itmp = gameDao.selectSublist(tmp);
+		ArrayList<ImgVo> itmp = gameDao.selectSublist(gameNum);
+		ArrayList<Integer> sImgNumList = new ArrayList<Integer>(Arrays.asList(sImgNum));
+		
+		for(ImgVo tmp : itmp) {
+			if(sImgNumList.indexOf(tmp.getImgNum()) == -1){
+				//tmp를 삭제처리
+				gameDao.updateimgisdel(tmp.getImgNum());
+			}
 		}
 		/* gameDao.updateSubImg(gameNum,sImgNum); */
 	}
