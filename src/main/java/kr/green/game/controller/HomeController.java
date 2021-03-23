@@ -136,7 +136,9 @@ public class HomeController {
 		UserVo user = userService.getUser(request);
 		ArrayList<BuyVo> buylist = gameService.buyGameList(user);
 		ArrayList<AmountVo> amountlist = userService.getAmountList(user);
-
+		if(user == null) {
+			mv.setViewName("redirect:/");
+		}
 		mv.addObject("buylist",buylist);
 		mv.addObject("amountlist",amountlist);
 		mv.setViewName("/main/mypage");
@@ -218,6 +220,11 @@ public class HomeController {
 		int totalCount = userService.getTotalCount(cri);
 		//모든유저 문의리스트
 		ArrayList<CustomerVo> objcuslist = userService.getobjcuslist(cri);
+		UserVo user = userService.getUser(request);
+		
+		if(user == null) {
+			mv.setViewName("redirect:/");
+		}
 		
 		PageMaker pm = new PageMaker(cri,displayPageNum,totalCount);
 		mv.addObject("list",objcuslist);
@@ -243,5 +250,26 @@ public class HomeController {
 		mv.setViewName("redirect:/cuslistObj");
 		return mv;
 	}
+	//비밀번호변경
+	@RequestMapping(value = "/user/modify", method = RequestMethod.POST)
+	public ModelAndView userModifyPost(ModelAndView mv,HttpServletRequest request, UserVo user) {
+		userService.updateUser(user);
+		
+		//request.getSession().setAttribute("user", user);
+		request.getSession().removeAttribute("user");
+		mv.setViewName("redirect:/");
+		return mv;
+	}
+	//아이디중복검사
+	@RequestMapping(value ="/dup", method = RequestMethod.POST)
+	@ResponseBody
+	public String dupPost(String id){
+		UserVo user = userService.getUser(id);
+	    if(user == null) {
+	    	return "not user";
+	    }
+	    return "user";
+	}
+	
 	
 }

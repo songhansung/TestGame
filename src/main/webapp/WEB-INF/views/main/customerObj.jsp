@@ -42,6 +42,7 @@
 </style>
 </head>
 <body>
+
 <div class="main-body">
 		<form action="<%=request.getContextPath()%>/customerObj" class="register-form" method="post" enctype="multipart/form-data">
 		<div class="coustomerbody">

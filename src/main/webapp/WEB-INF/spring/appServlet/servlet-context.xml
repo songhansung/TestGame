@@ -41,11 +41,18 @@
 			<mapping path="/login"/>
 			<beans:ref bean="loginInterceptor"/>
 		</interceptor>
+		<interceptor>
+        	<mapping path="/game/game"/>
+	        <beans:ref bean="authInterceptor"/>
+	    </interceptor>
 	</interceptors>
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 	    <!-- 업로드 최대 크기 10Mb -->
 	    <beans:property name="maxUploadSize" value="10485760"></beans:property>
 	</beans:bean>
+	<!-- 관리자인터셉터 -->
+	<beans:bean id="authInterceptor" 
+	class="kr.green.game.interceptor.AuthInterceptor"></beans:bean>
 	
 	
 </beans:beans>

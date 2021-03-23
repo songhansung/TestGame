@@ -34,5 +34,6 @@ public interface UserDao {
 	public AmountVo insertAmount(@Param("money")int amount,@Param("user") UserVo user);
 
 	public ArrayList<AmountVo> getAmountList(@Param("user") UserVo user);
+	
 
 }

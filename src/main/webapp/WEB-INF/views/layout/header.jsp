@@ -206,8 +206,7 @@
 		                    <a href="">3252</a>
 		                </div>
 		            </div>
-	            </c:if>
-	            <div class="mybox"></div>           
+	            </c:if>          
 	        </div>
         </div>
     </div>

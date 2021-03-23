@@ -21,13 +21,12 @@
         .login-body{
             width: 100%;
             height: 800px;
-            padding: 100px 700px 100px 700px;
             box-sizing: border-box;
         }
         .login-body .login-box{
-            height: 100%;
+            height: 600px;
             background-color: rgb(30,30,30);
-            padding: 50px 40px 20px 40px;
+            padding: 50px 100px 20px 100px;
             width: 500px;
             margin: 0 auto;
         }
@@ -47,6 +46,13 @@
         .login-body .login-box .login-inbox .login-form input{
             background-color: gray;
         }
+        .login-body .login-box .login-inbox .login-form .form-label{
+        	color: white;
+        	font-size: 10px;
+        }
+        label{
+        	color: white;
+        }
         .footer{
             width: 100%;
             height: 100px;
@@ -56,27 +62,27 @@
 </head>
 	<body>
 		<div class="login">
-	        <div class="header"></div>
-			<div class="login-body">
-	            <div class="login-box">
-					<div class="login-img">
-					    <a href="<%=request.getContextPath()%>/">
-					        <img src="https://store.akamai.steamstatic.com/public/shared/images/header/logo_steam.svg?t=962016" height="80" width="250">
-					    </a>
-					</div>
-					<form action="<%=request.getContextPath()%>/login" class="login-form" method="post">
-					    <label for="">로그인 후 이용바랍니다.</label>
-					    <div class="form-group">
-					      <input type="text" class="form-control" placeholder="ID" id="id" name="id">
-					    </div>
-					    <div class="form-group">
-					      <input type="password" class="form-control" placeholder="Password" id="pw" name="pw">
-					    </div>
-					    <button type="submit" class="btn btn-dark btn-block">로그인</button>
-					</form>				
-	            </div>
-	        </div>
-			<div class="footer"></div>
-	    </div>
+        <div class="header"></div>
+		<div class="login-body">
+            <div class="login-box">
+				<div class="login-img">
+				    <a href="<%=request.getContextPath()%>/">
+				        <img src="https://store.akamai.steamstatic.com/public/shared/images/header/logo_steam.svg?t=962016" height="80" width="250">
+				    </a>
+				</div>
+				<form action="<%=request.getContextPath()%>/login" class="login-form" method="post">
+				    <div class="form-group">
+				      <input type="text" class="form-control" placeholder="아이디" id="id" name="id" value="${user.id}">
+				      <label for=""><span>로그인 후 이용바랍니다.</span></label>
+				    </div>				    
+				    <div class="form-group">
+				      <input type="password" class="form-control" placeholder="비밀번호" id="pw" name="pw" value="${user.pw}">
+				    </div>
+				    <button type="submit" class="btn btn-dark btn-block">로그인</button>
+				</form>				
+            </div>
+        </div>
+		<div class="footer"></div>
+    </div>
 	</body>
 </html>

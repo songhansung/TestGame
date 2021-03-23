@@ -12,9 +12,9 @@
 	}
 	.btn-group-vertical .btn{
 		height: 60px;
-		border: 1px solid black;
 		text-align: left;
 		font-size: 20px;
+		border-top: 1px solid rgb(235,235,235);
 	}
 	.btn-group-vertical .btn >i{
 		margin-right: 14px;
@@ -29,6 +29,59 @@
     	text-align: center;
     	font-size: 20px;
     }
+    .mypage-img{
+    	text-align: center;
+    }
+    .mybox{
+    	padding-left: 10px;
+    	padding-right: 10px;
+    	border: 1px solid rgb(235,235,235);
+    }
+    body{
+    	background-color: rgb(248,248,248);
+    }
+    .container{
+    	height: 1100px;    	
+    }
+    .laft-box{
+    	background-color: white;
+    	border: 1px solid rgb(235,235,235);
+    }
+    .mypage-body{
+    	background-color: white;
+    }
+    .id-box{
+    	margin-top: 40px;
+    }
+    .pw-box{
+    	margin-top: 40px;
+    }
+    .pw-mainbox{
+    	margin-top: 30px;
+    }
+    .pw-mainbox .btn-outline-success{
+    	float: right;
+    }
+    .pw-sub{
+    	float: left;
+    }
+    .pw-sub1{
+    	float: right;
+    }
+    .pw2-box{
+    	margin-top: 50px;
+    }
+    .laft-box>h3{
+    	text-align: center;
+    	margin-top: 20px;
+    	margin-bottom: 20px;
+    }
+    .pw-btnbox{
+    	margin-top: 30px;
+    }
+    .pw-btnbox>button{
+    	height: 50px;
+    }
 </style>
 <script src="https://kit.fontawesome.com/3a4fdcd1c5.js" crossorigin="anonymous"></script>
 </head>
@@ -36,6 +89,7 @@
 	<div class="container" style="margin-top:30px">
 	  	<div class="row">
 		    <div class="col-sm-4">
+		    	<div class="laft-box">
 		      	<h3>My Page</h3>
 		      	<div class="btn-group-vertical btn-block mypage-btns">
 				  <button type="button" class="btn mypage" data-target=".mypage-box1"><i class="fas fa-address-card"></i>내정보</button>
@@ -44,38 +98,54 @@
 				</div>
 		      	<hr class="d-sm-none">
 		    	</div>
+		    </div>
 		    <div class="col-sm-8 mypage-box1 mypage-box">
-		      	<div class="login-body">
-		            <div class="login-box">
-						<div class="login-img">
+		      	<div class="mypage-body">
+		            <div class="mybox">
+						<div class="mypage-img">
 						    <a href="<%=request.getContextPath()%>/">
 						        <img src="https://store.akamai.steamstatic.com/public/shared/images/header/logo_steam.svg?t=962016" height="80" width="250">
 						    </a>
 						</div>
-						<form action="<%=request.getContextPath()%>/signup" class="login-form" method="post">
-						    <div class="input-group mb-3">
-							  <input type="text" class="form-control" placeholder="아이디" id="id" name="id" value="${user.id}">
-							  <div class="input-group-append">
-							    <button class="btn btn-success" type="submit">변경</button>
-							  </div>
+						<div class="title-box">
+							<h3>일반 설정</h3>
+							<span>이름, 연락처 정보 등 에픽게임즈에 공유된 계정 정보를 확인하고 관리할 수 있습니다.</span>
+						</div>
+						<div class="id-box">
+							<H3>계정 정보</H3>
+							<span>ID : ${user.id}</span>
+						</div>
+						<div class="pw-box">
+							<h3>비밀번호 변경</h3>
+							<span>보안을 위해 비밀번호는 다른 온라인 계정에서 사용하지 않는 고유한 것을 사용하길 권장합니다</span>
+							<form action="<%=request.getContextPath()%>/user/modify" class="pw-form" method="post">
+							<input type="hidden" class="form-control" id="id" name="id" value="${user.id}">
+							<input type="hidden" class="form-control" id="money" name="money" value="${user.money}">
+							<input type="hidden" class="form-control" id="email" name="email" value="${user.email}">
+							<input type="hidden" class="form-control" id="phone" name="phone" value="${user.phone}">
+							<div class="pw-mainbox row">
+								<div class="col-md-6">
+									<div>
+									<h6>새 비밀번호</h6>
+									<input type="password" class="form-control input-password" placeholder="비밀번호" id="pw" name="pw">
+									</div>
+									<div class="pw2-box">
+									<h6>새 비밀번호 재입력</h6>
+									<input type="password" class="form-control input-password" placeholder="비밀번호확인" id="pw2" name="pw2">
+									</div>
+									<div class="pw-btnbox">
+									<button class="btn btn-outline-secondary col-5" onclick="clearInput()" type="button">지우기</button>
+									<button type="submit" class="btn btn-outline-success col-5">변경</button>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<h6>귀하의 비밀번호</h6>
+									<p>비밀번호에는 공백이 없어야 합니다.</p>
+									<p>비밀번호는 7자 이상 입력해야 합니다.</p>
+								</div>
 							</div>
-						    <div class="form-group">
-						      <input type="text" class="form-control" placeholder="이름" id="name" name="name" value="${user.name}">
-						    </div>
-						    <div class="form-group">
-						      <input type="password" class="form-control" placeholder="비밀번호" id="pw" name="pw" value="${user.pw}">
-						    </div>
-						    <div class="form-group">
-						      <input type="password" class="form-control" placeholder="비밀번호확인" id="pw2" name="pw2" value="">
-						    </div>
-						    <div class="form-group">
-						      <input type="text" class="form-control" placeholder="전화번호" id="phone" name="phone" value="${user.phone}">
-						    </div>
-						    <div class="form-group">
-						      <input type="text" class="form-control" placeholder="이메일" id="email" name="email" value="${user.email}">
-						    </div>
-						    <button type="submit" class="btn btn-dark btn-block">변경하기</button>
-						</form>				
+							</form>
+						</div>
 		            </div>
 		        </div>
 		    </div>
@@ -137,12 +207,35 @@
 	</div>
 </body>
 <script>
+	function clearInput(){
+	
+		var el = document.getElementsByClassName('input-password');
+	
+		for(var i=0; i<el.length; i++){
+			el[i].value = '';
+			}
+		}
     $(function() {
         $('.mypage-btns>button').click(function() {
 			$('.mypage-box').addClass('disnone')
 			var target = $(this).attr('data-target');
 			$(target).removeClass('disnone')
         })
+        $('.pw-form').submit(function() {
+			var pw = $('input[name=pw]').val();
+			var pw2 = $('input[name=pw2]').val();
+			if(pw == ''){
+				alert('비밀번호를 입력하세요');
+				return false;
+			}
+			if(pw != pw2){
+				alert('비밀번호가 일치하지 않습니다');
+				return false;
+			}
+			alert('비밀번호 변경이되었습니다 다시 로그인하세요')
+		})		
     })
+
+    
 </script>
 </html>

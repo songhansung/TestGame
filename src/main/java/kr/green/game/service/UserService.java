@@ -35,6 +35,10 @@ public interface UserService {
 
 	ArrayList<AmountVo> getAmountList(UserVo user);
 
+	void updateUser(UserVo user);
+
+	UserVo getUser(String id);
+
 
 
 }

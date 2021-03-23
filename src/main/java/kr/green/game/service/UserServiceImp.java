@@ -117,5 +117,23 @@ public class UserServiceImp implements UserService{
 		return userDao.getAmountList(user);
 	}
 
+	@Override
+	public void updateUser(UserVo user) {
+		if(user == null) {
+			return;
+		}
+		//암호화
+		String encodePw = passwordEncoder.encode(user.getPw());
+		user.setPw(encodePw);
+		userDao.updateUser(user);
+		
+	}
+
+	@Override
+	public UserVo getUser(String id) {
+		UserVo user = userDao.getUser(id);
+		return user;
+	}
+
 
 }
