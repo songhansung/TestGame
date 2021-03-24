@@ -57,6 +57,11 @@
             height: 100px;
             /* background-color: red; */
         }
+        .login-img{
+        	text-align: center;
+        	margin-left: 34px;
+        	margin-bottom: 30px;
+        }
     </style>
 </head>
 <body>

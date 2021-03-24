@@ -109,7 +109,7 @@ public class GameServiceImp implements GameService{
 	}
 	//장바구니 추가 기능
 	@Override
-	public boolean getbasket(UserVo user, GameVo game) {
+	public boolean getbasket(UserVo user, GameVo game,boolean ok) {
 		if(user == null) {
 			return false;
 		}
@@ -121,7 +121,8 @@ public class GameServiceImp implements GameService{
 			return false;
 		}
 		//장바구니에 추가
-		gameDao.insertBasket(user,game);
+		if(ok)
+			gameDao.insertBasket(user,game);
 		return true;
 	}
 	//첨부파일 수정목록에서 추가 기능

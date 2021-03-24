@@ -8,7 +8,7 @@
 <title>로그인</title>
 	<style>
         .login{
-            height: auto;
+            height: 100vh;
             width: 100%;
             background-image: url(https://downloadwap.com/thumbs2/wallpapers/p2ls/2019/movies/40/9971a07113180017.jpg);
             background-size: cover;
@@ -20,8 +20,8 @@
         }
         .login-body{
             width: 100%;
-            height: 800px;
             box-sizing: border-box;
+            margin-top: 60px;
         }
         .login-body .login-box{
             height: 600px;
@@ -35,9 +35,6 @@
         }
         .login-body .login-box .login-inbox .login-img{
             text-align: center;
-        }
-        .login-body .login-box .login-inbox .login-form{
-            margin-top: 30px;
         }
         .login-body .login-box .login-inbox .login-form label{
             color: white;
@@ -53,11 +50,16 @@
         label{
         	color: white;
         }
+        .login-img{
+        	text-align: center;
+        	margin-left: 34px;
+        	margin-bottom: 30px;
+        }
         .footer{
             width: 100%;
             height: 100px;
-            /* background-color: red; */
-        }
+            /* background-color: red; */     
+               
     </style>
 </head>
 	<body>
@@ -84,5 +86,36 @@
         </div>
 		<div class="footer"></div>
     </div>
+    <script type="text/javascript">
+   $('form').submit(function() {
+		var id = $('input[name=id]').val();
+		var pw = $('input[name=pw]').val();
+		
+		if(id == ''){
+			alert('아이디를 입력하세요');
+			return;
+		}
+		console.log(id)
+		console.log(pw)
+		var data = { 'id' : id, 'pw' : pw};
+		$.ajax({
+			url : '<%=request.getContextPath()%>/sub',
+			type : 'post',
+			data : data,
+			success : function(data){
+				console.log(data)
+				if(data != 'user'){
+					alert('비밀번호가 일치하지않습니다.');
+				}
+				
+			},
+			error : function(){
+				console.log('실패');
+				alert('아이디가 일치하지않습니다.')
+			}
+			
+		})
+	})
+    </script>
 	</body>
 </html>

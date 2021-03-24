@@ -28,7 +28,7 @@ public interface GameService {
 
 	int getTotalCount(Criteria cri);
 
-	boolean getbasket(UserVo user, GameVo game);
+	boolean getbasket(UserVo user, GameVo game,boolean ok);
 
 	void modifyFile(int gameNum, String originalFilename, String path, String isimg);
 

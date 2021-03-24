@@ -151,7 +151,7 @@ public class GameController {
 		UserVo user = userService.getUser(request);
 		DiscountVo dis = gameService.getDiscount(game);
 		int buylist = gameService.buyGameList(game, user);
-		boolean bsk = gameService.getbasket(user,game);
+		boolean bsk = gameService.getbasket(user,game,false);
 		//메인이미지 리스트
 		mv.addObject("Mlist", Mlist);
 		//서브이미지 리스트
@@ -171,7 +171,7 @@ public class GameController {
 		UserVo user = userService.getUser(request);
 		GameVo game = gameService.getgame(gameNum);
 		
-		boolean bsk = gameService.getbasket(user,game);
+		boolean bsk = gameService.getbasket(user,game,true);
 		
 		mv.addObject("gameNum",gameNum);
 		/* System.out.println(bsk); */

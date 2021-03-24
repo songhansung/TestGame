@@ -270,6 +270,16 @@ public class HomeController {
 	    }
 	    return "user";
 	}
+	//아이디,비밀번호확인
+	@RequestMapping(value ="/sub", method = RequestMethod.POST)
+	@ResponseBody
+	public String subPost(String id,String pw){
+		UserVo user = userService.getUsers(id,pw);
+	    if(user == null) {
+	    	return "not user";
+	    }
+	    return "user";
+	}
 	
 	
 }

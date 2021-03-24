@@ -16,6 +16,11 @@
             width: 100%;
             height: 100%;
         }
+        @media (min-width: 4000px){
+        	.main-body{
+        		height: 100vh;
+        	}
+        }
         .main-body-home{
 	        width: 1500px;
 	        height: 100%;

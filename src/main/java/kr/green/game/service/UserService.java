@@ -39,6 +39,8 @@ public interface UserService {
 
 	UserVo getUser(String id);
 
+	UserVo getUsers(String id, String pw);
+
 
 
 }

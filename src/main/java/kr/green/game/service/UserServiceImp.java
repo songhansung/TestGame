@@ -135,5 +135,14 @@ public class UserServiceImp implements UserService{
 		return user;
 	}
 
+	@Override
+	public UserVo getUsers(String id, String pw) {
+		UserVo user = userDao.getUsers(id);
+		if(passwordEncoder.matches(pw, user.getPw())) {
+			return user;
+		}
+		return null;
+	}
+
 
 }

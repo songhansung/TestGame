@@ -10,6 +10,9 @@
   	<select id="getUser" resultType="kr.green.game.vo.UserVo">
     	select * from user where id = #{id}
   	</select>
+  	<select id="getUsers" resultType="kr.green.game.vo.UserVo">
+    	select * from user where id = #{id}
+  	</select>
   	<update id="updateMoney" parameterType="kr.green.game.vo.UserVo">
   		update user set money = money + #{money} where id = #{user.id}
   	</update>
