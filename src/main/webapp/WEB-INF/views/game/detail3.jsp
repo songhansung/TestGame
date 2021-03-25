@@ -226,7 +226,7 @@
 			width: 70%;
 		    margin-left: auto;
 		    margin-right: auto;
-		    background: black;
+		    
 		    color: white;
 		}
 		.container .row{
@@ -253,6 +253,13 @@
 		}
 		.reply-up-title{
 			height: 100%;
+		}
+		.col-sm-8{
+			background: black;		
+		}
+		
+		.container .reply-left{
+			float: left;
 		}
 	</style>
 </head>
@@ -371,43 +378,42 @@
 		</div>		
 		</form>		
 	</div>
-	</c:if>
-	<div class="reply-container">
-	<c:forEach items="${likeList}" var="like">
+	</c:if>	
 	<div class="container" style="margin-top:16px">
-	  	<div class="row">	  		
-		    <div class="col-sm-4">
-		    	
-		    </div>
+	  	<div class="row">
+	  		  		
 		    <div class="col-sm-8">
-		    	
-		    </div>		             
-	  	</div>
-	</div>
-	<div class="container" style="margin-top:16px">
-	  	<div class="row left">	  		
-		    <div class="col-sm-4">
-		    	<div class="reply-id-box">
-		    	<span>${user.id}</span>
-		    	</div>
-		    </div>
-		    <div class="col-sm-8">
-		    	<%-- <c:if test=""> --%>
-		      	<div class="reply-up-box">
-		      		<div class="reply-img-box">
-			      		<i class="fas fa-thumbs-up"></i>			      		
-			      	</div>
-			      	<div class="reply-up-title">
-			      	<span>추천</span>
-			      	</div>			      				      	
-		      	</div>      	
-		      	<div>
-			      	${like.registerDate}
+		    	<c:forEach items="${likeList}" var="like">	
+		    	<div class="row">
+			    	<div class="col-md-3">
+				    	<div class="reply-id-box">
+				    	<span>${user.id}</span>
+				    	</div>
+				    </div>
+				    <div class="col-md-9">
+				    	<%-- <c:if test=""> --%>
+				      	<div class="reply-up-box">
+				      		<div class="reply-img-box">
+					      		<i class="fas fa-thumbs-up"></i>			      		
+					      	</div>	
+					      	<div class="reply-up-title">
+					      		<span>추천</span>
+					      	</div>			      				      	
+				      	</div>      	
+				      	<div>
+					      	게시 일시 : ${like.registerDate}
+					    </div>
+					    <div>
+					    	${like.content}
+					    </div>
+				    </div>
 			    </div>
+			    </c:forEach>	
+		    </div>		    
+		    <div class="col-sm-4">
+		    	213123
 		    </div>		             
 	  	</div>
-	</div>
-	</c:forEach> 
 	</div>
     <!-- Swiper JS -->
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
