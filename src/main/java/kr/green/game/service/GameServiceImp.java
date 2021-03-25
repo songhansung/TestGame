@@ -17,6 +17,7 @@ import kr.green.game.vo.DiscountVo;
 import kr.green.game.vo.GameVo;
 import kr.green.game.vo.ImgSlideVo;
 import kr.green.game.vo.ImgVo;
+import kr.green.game.vo.LikesVo;
 import kr.green.game.vo.UserVo;
 
 @Service
@@ -358,7 +359,7 @@ public class GameServiceImp implements GameService{
 		ArrayList<ImgVo> msSubList = gameDao.selectmsSubList(list);
 		return msSubList;
 	}
-
+	//메인화면에 서브이미지 출력
 	@Override
 	public ArrayList<ImgSlideVo> getImgSlideSubList(ArrayList<ImgVo> msubimg) {
 		ArrayList<ImgSlideVo> imglist = new ArrayList<ImgSlideVo>();
@@ -384,6 +385,17 @@ public class GameServiceImp implements GameService{
 		//반복문이 끝나면 리스트에 isVo를 add에 저장
 		imglist.add(isVo);
 		return imglist;
+	}
+
+	@Override
+	public void insertlike(LikesVo likes) {
+		gameDao.insertLike(likes);		
+	}
+
+	@Override
+	public LikesVo getLikes(Integer gameNum, String id) {
+		LikesVo likes = gameDao.selectLikes(gameNum,id);
+		return likes;
 	}
 
 

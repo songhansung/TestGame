@@ -27,6 +27,7 @@ import kr.green.game.vo.BuyVo;
 import kr.green.game.vo.DiscountVo;
 import kr.green.game.vo.GameVo;
 import kr.green.game.vo.ImgVo;
+import kr.green.game.vo.LikesVo;
 import kr.green.game.vo.UserVo;
 import kr.green.game.pagination.PageMaker;
 
@@ -144,7 +145,7 @@ public class GameController {
 		return mv;
 	}
 	@RequestMapping(value = "/game/detail", method = RequestMethod.GET)
-	public ModelAndView detailGet(ModelAndView mv,Integer gameNum,HttpServletRequest request) {
+	public ModelAndView detailGet(ModelAndView mv,Integer gameNum,HttpServletRequest request,String id) {
 		GameVo game = gameService.getgame(gameNum);
 		ArrayList<ImgVo> imglist = gameService.getImglist(game);
 		ArrayList<ImgVo> Mlist = gameService.getMList(game);
@@ -152,6 +153,7 @@ public class GameController {
 		DiscountVo dis = gameService.getDiscount(game);
 		int buylist = gameService.buyGameList(game, user);
 		boolean bsk = gameService.getbasket(user,game,false);
+		LikesVo likes = gameService.getLikes(gameNum,id);
 		//메인이미지 리스트
 		mv.addObject("Mlist", Mlist);
 		//서브이미지 리스트
@@ -161,6 +163,7 @@ public class GameController {
 		mv.addObject("bsk",bsk);
 		mv.addObject("dis",dis);
 		mv.addObject("user",user);
+		mv.addObject("likes",likes);
 		/* System.out.println(buylist); */
 		mv.setViewName("/game/detail");
 		return mv;
@@ -275,6 +278,13 @@ public class GameController {
 
 		mv.setViewName("/game/list");
 		return mv;
+	}
+	@ResponseBody
+	@RequestMapping(value ="/game/like", method = RequestMethod.POST)
+	public String boardLikePost(LikesVo likes){
+		gameService.insertlike(likes);
+
+		return "";
 	}
 	
 }

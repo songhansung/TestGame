@@ -8,6 +8,7 @@ import kr.green.game.vo.DiscountVo;
 import kr.green.game.vo.GameVo;
 import kr.green.game.vo.ImgSlideVo;
 import kr.green.game.vo.ImgVo;
+import kr.green.game.vo.LikesVo;
 import kr.green.game.vo.UserVo;
 
 public interface GameService {
@@ -77,6 +78,10 @@ public interface GameService {
 	ArrayList<ImgVo> getImgmsSublist(ArrayList<GameVo> list);
 
 	ArrayList<ImgSlideVo> getImgSlideSubList(ArrayList<ImgVo> msubimg);
+
+	void insertlike(LikesVo likes);
+
+	LikesVo getLikes(Integer gameNum, String id);
 
 
 

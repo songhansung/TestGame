@@ -57,7 +57,7 @@ public class BuyVo {
 		this.isbuy = isbuy;
 	}
 	public String getRegisterDate() {
-		SimpleDateFormat simpleFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+		SimpleDateFormat simpleFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		String dateString = simpleFormat.format(registerDate);
 		return dateString;
 	}
@@ -65,7 +65,7 @@ public class BuyVo {
 		this.registerDate = registerDate;
 	}
 	public void setRegisterDate(String registerDate) throws ParseException {
-		SimpleDateFormat simpleFormat2 = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+		SimpleDateFormat simpleFormat2 = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		this.registerDate = simpleFormat2.parse(registerDate);
 	}
 	@Override

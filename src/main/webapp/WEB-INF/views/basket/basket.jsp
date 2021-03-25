@@ -10,6 +10,7 @@
         .main-body{      	
             background-color: rgb(60,60,60);
             width: 100%;
+            height: 1000px;
         }
         .basket{
             width: 1000px;

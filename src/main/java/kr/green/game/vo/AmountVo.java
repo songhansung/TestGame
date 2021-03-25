@@ -30,7 +30,7 @@ public class AmountVo {
 		this.id = id;
 	}
 	public String getRegisterDate() {
-		SimpleDateFormat simpleFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+		SimpleDateFormat simpleFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		String dateString = simpleFormat.format(registerDate);
 		return dateString;
 	}
@@ -38,7 +38,7 @@ public class AmountVo {
 		this.registerDate = registerDate;
 	}
 	public void setRegisterDate(String registerDate) throws ParseException {
-		SimpleDateFormat simpleFormat2 = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+		SimpleDateFormat simpleFormat2 = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		this.registerDate = simpleFormat2.parse(registerDate);
 	}
 	@Override

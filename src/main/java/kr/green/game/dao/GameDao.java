@@ -12,6 +12,7 @@ import kr.green.game.vo.DiscountVo;
 import kr.green.game.vo.GameVo;
 import kr.green.game.vo.ImgSlideVo;
 import kr.green.game.vo.ImgVo;
+import kr.green.game.vo.LikesVo;
 import kr.green.game.vo.UserVo;
 
 public interface GameDao {
@@ -87,6 +88,10 @@ public interface GameDao {
 	void deletediscount(@Param("dis")DiscountVo dis);
 
 	ArrayList<ImgVo> selectmsSubList(@Param("game") ArrayList<GameVo> list);
+
+	void insertLike(@Param("likes")LikesVo likes);
+
+	LikesVo selectLikes(@Param("gameNum")Integer gameNum,@Param("id") String id);
 
 
 

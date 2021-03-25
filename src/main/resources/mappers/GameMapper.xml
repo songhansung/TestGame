@@ -181,4 +181,10 @@
 	<delete id="deletediscount">
 		DELETE FROM discount WHERE gameNum = #{dis.gameNum};
 	</delete>
+	<insert id="insertLike" parameterType="kr.green.game.vo.LikesVo">
+		insert into likes(gameNum,id,up,content) values(#{likes.gameNum},#{likes.id},#{likes.up},#{likes.content})
+	</insert>
+	<select id="selectLikes" resultType="kr.green.game.vo.LikesVo">
+    	select * from likes where gameNum = #{gameNum} and id = #{id}
+	</select>
   </mapper>

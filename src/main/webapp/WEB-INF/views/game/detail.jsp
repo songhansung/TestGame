@@ -163,6 +163,53 @@
 			background-color: black;
 			padding: 10px;
 		}
+		.review-box{
+			width: 70%;
+		    margin-left: auto;
+		    margin-right: auto;
+		    background: black;
+		    color: white;
+		    box-sizing: border-box;
+		    padding-top: 10px;
+		    padding-left: 15px;
+		    padding-right: 15px;
+		}		
+		.revice-contentbox{
+			display: flex;
+		}
+		.review-box .revice-left{
+			flex: 0 0 20%;
+		}
+		.review-box .form-control{
+			background-color: rgb(80,80,80);
+			color: white;
+		}
+		.review-box .form-group{
+			flex: 0 0 80%;
+		}
+		.review-box .revice-btnbox{
+			margin-top: 20px;
+		}
+		.review-box .btn-success{
+			float: right;
+		}
+		.footer-bar{
+			margin-top: 100px;
+		}
+		input[name=up]{
+			display: none;
+		}
+		.review-box .revice-btnbox .revice-radio-input{
+			width:90px;
+			height:39px;
+			background-color: cadetblue;
+			line-height: 40px;
+			text-align: center;
+			border-radius: 2px;
+		}
+		.review-box .revice-btnbox .revice-radio-input.a{
+			background-color:green;
+		}
 	</style>
 </head>
 <body>
@@ -254,6 +301,33 @@
 		  	</c:if>
 		</div>
 	</div>
+	<c:if test="${buylist != 0}">
+	<div class="review-box">
+		<div class="review-game-title">
+			<h3>${game.title} 제품에 대한 평가 작성</h3>
+		</div>
+		<div class="review-title">
+			<p>이 게임의 좋았던 점 또는 싫었던 점, 그리고 이를 다른 사람들에게 추천하는지 여부에 대해 써주세요.<br>
+			정중하게 써주셔야 하며 규칙 및 기준을 지키셔야 합니다.</p>
+		</div>				
+		<form>		
+		<div class="revice-contentbox">
+			<input type="hidden" value="${game.gameNum}" name='gameNum'>
+			<div class="revice-left">
+			<span>${user.id}</span>
+			</div>	
+			<div class="form-group">		    
+			    <textarea rows="4" class="form-control" name="content"></textarea>
+			    <div class="revice-btnbox">
+					<label class="revice-radio-input up"><input type='radio' name='up' value='1'>추천</label>
+					<label class="revice-radio-input down"><input type='radio' name='up' value='-1'>비추천</label>
+					<button type="button" class="btn btn-success revice-success but">평가 등록</button>
+				</div>
+			</div>
+		</div>		
+		</form>		
+	</div>
+	</c:if>
     <!-- Swiper JS -->
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
       
@@ -331,6 +405,37 @@
 				}
 			})
         })
+        //추천,비추천 클래스넣어서 색상변경하기
+        $(function () {
+        	$('.revice-radio-input').click(function(){
+            	$('.revice-radio-input').removeClass('a')
+            	$(this).addClass('a');
+            })
+		})
+        //추천비추천리뷰 에이잭스로 전송
+		$('.revice-success').click(function() {
+			
+			var gameNum = $('input[name=gameNum]').val();
+			var id = '${user.id}';
+			var up = $('input[name=up]').val();
+			var content = $('[name=content]').val();
+			
+			if(id == ''){
+				alert('추천/비추천 기능은 로그인 해야합니다.')
+				return;
+			}
+			var obj = $(this);
+			var sendData = { 'gameNum' : gameNum, 'id' : id, 'up' : up, 'content' : content}
+			$.ajax({
+				url : '<%=request.getContextPath()%>/game/like',
+				type : 'post',
+				data : sendData,
+				success : function(data){
+					
+				}
+				
+			})
+		})
     </script>
     
 </body>

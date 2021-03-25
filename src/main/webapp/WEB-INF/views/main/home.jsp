@@ -15,6 +15,7 @@
             background-color: rgb(60,60,60);
             width: 100%;
             height: 100%;
+            padding-bottom: 30px;
         }
         @media (min-width: 4000px){
         	.main-body{
@@ -241,7 +242,7 @@
     	.discount-title{
     		height:48px;
     		width:100%;
-    		margin-top: 120px;
+    		margin-top: 100px;
     		color: white;
     		font-size: 26px;
     		padding-left: 50px;
@@ -321,7 +322,7 @@
             box-sizing: border-box;
             padding-left: 50px;
             padding-right: 50px;
-            margin-top: 140px;
+            margin-top: 100px;
         }
         .home-page-content .tap-wrap{
         	position: relative;
@@ -414,6 +415,11 @@
         }
         .home-rightcol .rightcol-title .launch-box{
         	font-size: 16px;
+        }
+        .home-page-content .home-tap{
+        	color: white;
+        	font-size: 26px;
+        	font-weight: bold;
         }
 </style>
 <script src="https://kit.fontawesome.com/3a4fdcd1c5.js" crossorigin="anonymous"></script>
