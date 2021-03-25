@@ -229,15 +229,15 @@
 		    
 		    color: white;
 		}
-		.container .row{
+		.container .row.left-row{
 			height: 100%;
+			margin-bottom: 10px;
 		}
 		.col-sm-8{
 			height: 100%;
 			padding-right: 0;
 		}
 		.container .reply-up-box{
-			font-size: 20px;
 			height: 50px;
 			background-color: gray;
 			box-sizing: border-box;			
@@ -251,16 +251,16 @@
 		.container .reply-up-box .reply-img-box >i{
 			line-height: 50px;			
 		}
-		.reply-up-title{
-			height: 100%;
-		}
-		.col-sm-8{
-			background: black;		
-		}
-		
+		.container .reply-up-title{
+			font-size: 16px;
+		}		
 		.container .reply-left{
 			float: left;
 		}
+		.container .row.left-row .col-md-9{
+			padding-left: 0;
+		}
+		
 	</style>
 </head>
 <body>
@@ -383,9 +383,9 @@
 	  	<div class="row">
 	  		  		
 		    <div class="col-sm-8">
-		    	<c:forEach items="${likeList}" var="like">	
-		    	<div class="row">
-			    	<div class="col-md-3">
+		    	<c:forEach items="${likeList}" var="like">			    	
+		    	<div class="row left-row">
+			    	<div class="col-md-3" style="background-color: black;">
 				    	<div class="reply-id-box">
 				    	<span>${user.id}</span>
 				    	</div>
@@ -393,25 +393,40 @@
 				    <div class="col-md-9">
 				    	<%-- <c:if test=""> --%>
 				      	<div class="reply-up-box">
-				      		<div class="reply-img-box">
-					      		<i class="fas fa-thumbs-up"></i>			      		
-					      	</div>	
-					      	<div class="reply-up-title">
-					      		<span>추천</span>
-					      	</div>			      				      	
-				      	</div>      	
-				      	<div>
-					      	게시 일시 : ${like.registerDate}
-					    </div>
-					    <div>
+				      		<c:if test="${like.up == 1}">
+					      		<div class="reply-img-box">
+						      		<i class="fas fa-thumbs-up"></i>			      		
+						      	</div>
+						      	<div class="reply-up-title">
+						      		<span>추천</span>
+						      	</div>
+						      	<div style="color: rgb(80,80,80)">
+						      	게시 일시 : ${like.registerDate}
+						    	</div>	
+					      	</c:if>
+					      	<c:if test="${like.up != 1}">
+						      	<div class="reply-img-box">
+						      		<i class="fas fa-thumbs-down"></i>			      		
+						      	</div>
+						      	<div class="reply-up-title">
+						      		<span>비추천</span>
+						      	</div>
+						      	<div style="color: rgb(80,80,80)">
+						      	게시 일시 : ${like.registerDate}
+						    	</div>	
+					      	</c:if>					      			      				      	
+				      	</div>      					      	
+					    <div style="background-color: black;">
 					    	${like.content}
 					    </div>
 				    </div>
 			    </div>
-			    </c:forEach>	
-		    </div>		    
+			    </c:forEach>			    	
+		    </div>			    	    
 		    <div class="col-sm-4">
-		    	213123
+		    	<div class="reply-right-box">
+		    		<i class="fas fa-thumbs-up"></i>
+		    	</div>
 		    </div>		             
 	  	</div>
 	</div>
@@ -504,13 +519,14 @@
 			
 			var gameNum = $('input[name=gameNum]').val();
 			var id = '${user.id}';
-			var up = $('input[name=up]').val();
+			var up = $('input[name=up]:checked').val();
 			var content = $('[name=content]').val();
 			
 			if(id == ''){
 				alert('추천/비추천 기능은 로그인 해야합니다.')
 				return;
 			}
+			
 			var obj = $(this);
 			var sendData = { 'gameNum' : gameNum, 'id' : id, 'up' : up, 'content' : content}
 			$.ajax({
