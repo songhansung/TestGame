@@ -93,6 +93,8 @@ public interface GameDao {
 
 	LikesVo selectLikes(@Param("gameNum")Integer gameNum,@Param("id") String id);
 
+	ArrayList<LikesVo> selectLikesList(@Param("gameNum")Integer gameNum,@Param("cri") Criteria cri);
+
 
 
 

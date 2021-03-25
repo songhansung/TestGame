@@ -187,4 +187,7 @@
 	<select id="selectLikes" resultType="kr.green.game.vo.LikesVo">
     	select * from likes where gameNum = #{gameNum} and id = #{id}
 	</select>
+	<select id="selectLikesList" resultType="kr.green.game.vo.LikesVo">
+    	select * from likes where gameNum = #{gameNum} order by likeNum limit #{cri.pageStart}, #{cri.perPageNum};
+	</select>
   </mapper>

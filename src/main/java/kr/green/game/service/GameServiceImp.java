@@ -398,6 +398,11 @@ public class GameServiceImp implements GameService{
 		return likes;
 	}
 
+	@Override
+	public ArrayList<LikesVo> getlikeList(Integer gameNum,Criteria cri) {
+		ArrayList<LikesVo> likeList = gameDao.selectLikesList(gameNum,cri);
+		return likeList;
+	}
 
 
 

@@ -44,7 +44,7 @@ public class GameController {
 	
 	@RequestMapping(value = "/game/game", method = RequestMethod.GET)
 	public ModelAndView gameGet(ModelAndView mv,Integer gameNum,Criteria cri,HttpServletRequest request) {
-		int displayPageNum = 2;
+		int displayPageNum = 5;
 		int totalCount = gameService.getTotalCount(cri);
 		
 		UserVo user = userService.getUser(request);
@@ -145,7 +145,11 @@ public class GameController {
 		return mv;
 	}
 	@RequestMapping(value = "/game/detail", method = RequestMethod.GET)
-	public ModelAndView detailGet(ModelAndView mv,Integer gameNum,HttpServletRequest request,String id) {
+	public ModelAndView detailGet(ModelAndView mv,Integer gameNum,HttpServletRequest request,String id,Criteria cri) {
+		int displayPageNum = 5;
+		int totalCount = gameService.getTotalCount(cri);
+		PageMaker pm = new PageMaker(cri,displayPageNum,totalCount);
+		
 		GameVo game = gameService.getgame(gameNum);
 		ArrayList<ImgVo> imglist = gameService.getImglist(game);
 		ArrayList<ImgVo> Mlist = gameService.getMList(game);
@@ -154,7 +158,10 @@ public class GameController {
 		int buylist = gameService.buyGameList(game, user);
 		boolean bsk = gameService.getbasket(user,game,false);
 		LikesVo likes = gameService.getLikes(gameNum,id);
+		
+		ArrayList<LikesVo> likeList = gameService.getlikeList(gameNum,cri);
 		//메인이미지 리스트
+		System.out.println(likeList);
 		mv.addObject("Mlist", Mlist);
 		//서브이미지 리스트
 		mv.addObject("imglist",imglist);
@@ -164,8 +171,9 @@ public class GameController {
 		mv.addObject("dis",dis);
 		mv.addObject("user",user);
 		mv.addObject("likes",likes);
+		mv.addObject("likeList",likeList);
 		/* System.out.println(buylist); */
-		mv.setViewName("/game/detail");
+		mv.setViewName("/game/detail3");
 		return mv;
 	}
 	//장바구니 기능

@@ -83,6 +83,9 @@ public interface GameService {
 
 	LikesVo getLikes(Integer gameNum, String id);
 
+	ArrayList<LikesVo> getlikeList(Integer gameNum, Criteria cri);
+
+
 
 
 

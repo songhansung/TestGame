@@ -202,13 +202,57 @@
 		.review-box .revice-btnbox .revice-radio-input{
 			width:90px;
 			height:39px;
-			background-color: cadetblue;
-			line-height: 40px;
+			background-color: cadetblue;	
+			line-height: 40px;		
 			text-align: center;
 			border-radius: 2px;
+			float: left;
 		}
 		.review-box .revice-btnbox .revice-radio-input.a{
 			background-color:green;
+		}
+		.review-box .revice-btnbox .revice-radio-input .fa-thumbs-up{
+			font-size: 20px;
+			
+		}
+		.review-box .revice-btnbox .revice-radio-input .fa-thumbs-down{
+			font-size: 20px;
+			line-height: 45px;
+		}
+		.review-box .revice-btnbox .revice-radio-input.down{
+			margin-left: 10px;
+		}
+		.container{
+			width: 70%;
+		    margin-left: auto;
+		    margin-right: auto;
+		    background: black;
+		    color: white;
+		}
+		.container .row{
+			height: 100%;
+		}
+		.col-sm-8{
+			height: 100%;
+			padding-right: 0;
+		}
+		.container .reply-up-box{
+			font-size: 20px;
+			height: 50px;
+			background-color: gray;
+			box-sizing: border-box;			
+		}
+		.container .reply-up-box .reply-img-box{
+			width: 40px;
+			background-color: blue;
+			float: left;
+			text-align: center;
+		}
+		.container .reply-up-box .reply-img-box >i{
+			line-height: 50px;			
+		}
+		.reply-up-title{
+			height: 100%;
 		}
 	</style>
 </head>
@@ -319,8 +363,8 @@
 			<div class="form-group">		    
 			    <textarea rows="4" class="form-control" name="content"></textarea>
 			    <div class="revice-btnbox">
-					<label class="revice-radio-input up"><input type='radio' name='up' value='1'>추천</label>
-					<label class="revice-radio-input down"><input type='radio' name='up' value='-1'>비추천</label>
+					<label class="revice-radio-input up" style="cursor: pointer;"><i class="fas fa-thumbs-up"></i><input type='radio' name='up' value='1'></label>
+					<label class="revice-radio-input down" style="cursor: pointer;"><i class="fas fa-thumbs-down"></i><input type='radio' name='up' value='-1'></label>
 					<button type="button" class="btn btn-success revice-success but">평가 등록</button>
 				</div>
 			</div>
@@ -328,6 +372,43 @@
 		</form>		
 	</div>
 	</c:if>
+	<div class="reply-container">
+	<c:forEach items="${likeList}" var="like">
+	<div class="container" style="margin-top:16px">
+	  	<div class="row">	  		
+		    <div class="col-sm-4">
+		    	
+		    </div>
+		    <div class="col-sm-8">
+		    	
+		    </div>		             
+	  	</div>
+	</div>
+	<div class="container" style="margin-top:16px">
+	  	<div class="row left">	  		
+		    <div class="col-sm-4">
+		    	<div class="reply-id-box">
+		    	<span>${user.id}</span>
+		    	</div>
+		    </div>
+		    <div class="col-sm-8">
+		    	<%-- <c:if test=""> --%>
+		      	<div class="reply-up-box">
+		      		<div class="reply-img-box">
+			      		<i class="fas fa-thumbs-up"></i>			      		
+			      	</div>
+			      	<div class="reply-up-title">
+			      	<span>추천</span>
+			      	</div>			      				      	
+		      	</div>      	
+		      	<div>
+			      	${like.registerDate}
+			    </div>
+		    </div>		             
+	  	</div>
+	</div>
+	</c:forEach> 
+	</div>
     <!-- Swiper JS -->
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
       
@@ -431,7 +512,7 @@
 				type : 'post',
 				data : sendData,
 				success : function(data){
-					
+					console.log('리뷰가 완료되었습니다.')
 				}
 				
 			})

@@ -56,7 +56,8 @@ public class LikesVo {
 	@Override
 	public String toString() {
 		return "LikesVo [likeNum=" + likeNum + ", gameNum=" + gameNum + ", id=" + id + ", up=" + up + ", content="
-				+ content + "]";
+				+ content + ", registerDate=" + registerDate + "]";
 	}
+
 	
 }
