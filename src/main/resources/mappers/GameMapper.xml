@@ -188,6 +188,18 @@
     	select * from likes where gameNum = #{gameNum} and id = #{id}
 	</select>
 	<select id="selectLikesList" resultType="kr.green.game.vo.LikesVo">
-    	select * from likes where gameNum = #{gameNum} order by likeNum limit #{cri.pageStart}, #{cri.perPageNum};
+    	select * from likes where gameNum = #{gameNum} and isdel = 'N' order by likeNum limit #{cri.pageStart}, #{cri.perPageNum};
 	</select>
+	<insert id="insertRelike" parameterType="kr.green.game.vo.RelikeVo">
+		insert into relike(likeNum,id,reup) values(#{like.likeNum},#{like.id},#{like.reup})
+	</insert>
+	<select id="selectUserLikes" resultType="kr.green.game.vo.LikesVo">
+    	select * from likes where gameNum = #{gameNum} and id = #{id}
+	</select>
+	<select id="selectRelike" resultType="kr.green.game.vo.RelikeVo">
+    	select * from relike where likeNum = #{likeNum} and id = #{id}
+	</select>
+	<update id="updateRelike">
+		update relike set relike.reup = #{like.reup} where relike.likeNum = #{like.likeNum}
+	</update>
   </mapper>

@@ -18,6 +18,7 @@ import kr.green.game.vo.GameVo;
 import kr.green.game.vo.ImgSlideVo;
 import kr.green.game.vo.ImgVo;
 import kr.green.game.vo.LikesVo;
+import kr.green.game.vo.RelikeVo;
 import kr.green.game.vo.UserVo;
 
 @Service
@@ -403,6 +404,34 @@ public class GameServiceImp implements GameService{
 		ArrayList<LikesVo> likeList = gameDao.selectLikesList(gameNum,cri);
 		return likeList;
 	}
+
+	@Override
+	public void insertRelike(RelikeVo like) {
+		gameDao.insertRelike(like);	
+	}
+
+	@Override
+	public LikesVo seletUserLikes(int gameNum, String id) {
+		LikesVo like = gameDao.selectUserLikes(gameNum,id);
+		return like;
+	}
+
+	@Override
+	public RelikeVo getRelike(int likeNum, String id) {
+		RelikeVo like = gameDao.selectRelike(likeNum,id);
+		return like;
+	}
+
+	@Override
+	public void updateRelike(RelikeVo like) {
+		gameDao.updateRelike(like);
+		
+	}
+
+	/*
+	 * @Override public RelikeVo getRelike(LikesVo likes) { RelikeVo relike =
+	 * gameDao.selectRelike(likes); return relike; }
+	 */
 
 
 

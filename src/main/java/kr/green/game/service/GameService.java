@@ -9,6 +9,7 @@ import kr.green.game.vo.GameVo;
 import kr.green.game.vo.ImgSlideVo;
 import kr.green.game.vo.ImgVo;
 import kr.green.game.vo.LikesVo;
+import kr.green.game.vo.RelikeVo;
 import kr.green.game.vo.UserVo;
 
 public interface GameService {
@@ -84,6 +85,17 @@ public interface GameService {
 	LikesVo getLikes(Integer gameNum, String id);
 
 	ArrayList<LikesVo> getlikeList(Integer gameNum, Criteria cri);
+
+	void insertRelike(RelikeVo like);
+
+	LikesVo seletUserLikes(int gameNum, String id);
+
+	RelikeVo getRelike(int likeNum, String id);
+
+	void updateRelike(RelikeVo like);
+
+	/* RelikeVo getRelike(LikesVo likes); */
+
 
 
 

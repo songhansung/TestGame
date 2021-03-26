@@ -13,6 +13,7 @@ import kr.green.game.vo.GameVo;
 import kr.green.game.vo.ImgSlideVo;
 import kr.green.game.vo.ImgVo;
 import kr.green.game.vo.LikesVo;
+import kr.green.game.vo.RelikeVo;
 import kr.green.game.vo.UserVo;
 
 public interface GameDao {
@@ -94,6 +95,16 @@ public interface GameDao {
 	LikesVo selectLikes(@Param("gameNum")Integer gameNum,@Param("id") String id);
 
 	ArrayList<LikesVo> selectLikesList(@Param("gameNum")Integer gameNum,@Param("cri") Criteria cri);
+
+	void insertRelike(@Param("like")RelikeVo like);
+
+	LikesVo selectUserLikes(@Param("gameNum")int gameNum,@Param("id") String id);
+
+	RelikeVo selectRelike(@Param("likeNum")int likeNum,@Param("id") String id);
+
+	void updateRelike(@Param("like")RelikeVo like);
+
+	/* RelikeVo selectRelike(@Param("likes")LikesVo likes); */
 
 
 

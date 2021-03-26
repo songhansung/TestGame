@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,7 @@ import kr.green.game.vo.DiscountVo;
 import kr.green.game.vo.GameVo;
 import kr.green.game.vo.ImgVo;
 import kr.green.game.vo.LikesVo;
+import kr.green.game.vo.RelikeVo;
 import kr.green.game.vo.UserVo;
 import kr.green.game.pagination.PageMaker;
 
@@ -158,10 +160,10 @@ public class GameController {
 		int buylist = gameService.buyGameList(game, user);
 		boolean bsk = gameService.getbasket(user,game,false);
 		LikesVo likes = gameService.getLikes(gameNum,id);
-		
+		/* RelikeVo relike = gameService.getRelike(likes); */
 		ArrayList<LikesVo> likeList = gameService.getlikeList(gameNum,cri);
 		//메인이미지 리스트
-		System.out.println(likeList);
+
 		mv.addObject("Mlist", Mlist);
 		//서브이미지 리스트
 		mv.addObject("imglist",imglist);
@@ -172,6 +174,7 @@ public class GameController {
 		mv.addObject("user",user);
 		mv.addObject("likes",likes);
 		mv.addObject("likeList",likeList);
+
 		/* System.out.println(buylist); */
 		mv.setViewName("/game/detail3");
 		return mv;
@@ -289,10 +292,28 @@ public class GameController {
 	}
 	@ResponseBody
 	@RequestMapping(value ="/game/like", method = RequestMethod.POST)
-	public String boardLikePost(LikesVo likes){
-		gameService.insertlike(likes);
-
-		return "";
+	public String LikePost(LikesVo likes){
+		//게임 번호와 사용자로 조회
+			LikesVo like = gameService.seletUserLikes(likes.getGameNum(), likes.getId());
+		//없으면
+			if(like == null) {
+				gameService.insertlike(likes);
+				return "insert";
+			}
+		//있으면
+			return "fail";
+	}
+	@ResponseBody
+	@RequestMapping(value ="/game/relike", method = RequestMethod.POST)
+	public String ReLikePost(RelikeVo like){
+		RelikeVo likes = gameService.getRelike(like.getLikeNum(), like.getId());
+		if(likes == null) {
+			gameService.insertRelike(like);
+			return"su";
+		}else {
+			gameService.updateRelike(like);
+			return"suup";
+		}		
 	}
 	
 }

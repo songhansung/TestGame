@@ -11,6 +11,7 @@ public class LikesVo {
 	private int up;
 	private String content;
 	private Date registerDate;
+	private String isdel;
 	public int getLikeNum() {
 		return likeNum;
 	}
@@ -53,11 +54,18 @@ public class LikesVo {
 		SimpleDateFormat simpleFormat2 = new SimpleDateFormat("yyyy-MM-dd");
 		this.registerDate = simpleFormat2.parse(registerDate);
 	}
+	public String getIsdel() {
+		return isdel;
+	}
+	public void setIsdel(String isdel) {
+		this.isdel = isdel;
+	}
 	@Override
 	public String toString() {
 		return "LikesVo [likeNum=" + likeNum + ", gameNum=" + gameNum + ", id=" + id + ", up=" + up + ", content="
-				+ content + ", registerDate=" + registerDate + "]";
+				+ content + ", registerDate=" + registerDate + ", isdel=" + isdel + "]";
 	}
+
 
 	
 }

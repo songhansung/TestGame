@@ -260,6 +260,21 @@
 		.container .row.left-row .col-md-9{
 			padding-left: 0;
 		}
+		.reup-box{
+			width: 100%;
+			height: 26px;
+		}
+		.reup-box .reup{
+			float: left;
+			
+		}
+		.reup-box .reup> button {
+			font-size: 12px;
+			padding: 3px 6px;
+		}
+		.reup-box .re-yes-box{
+			margin-right: 5px;
+		}
 		
 	</style>
 </head>
@@ -383,15 +398,15 @@
 	  	<div class="row">
 	  		  		
 		    <div class="col-sm-8">
-		    	<c:forEach items="${likeList}" var="like">			    	
+		    	<c:forEach items="${likeList}" var="like">
+		    	<input type="hidden" value="${like.likeNum}" name="likeNum">			    	
 		    	<div class="row left-row">
 			    	<div class="col-md-3" style="background-color: black;">
 				    	<div class="reply-id-box">
-				    	<span>${user.id}</span>
+				    	<span>${like.id}</span>
 				    	</div>
 				    </div>
 				    <div class="col-md-9">
-				    	<%-- <c:if test=""> --%>
 				      	<div class="reply-up-box">
 				      		<c:if test="${like.up == 1}">
 					      		<div class="reply-img-box">
@@ -418,6 +433,20 @@
 				      	</div>      					      	
 					    <div style="background-color: black;">
 					    	${like.content}
+					    </div>
+					    <div style="background-color: black; border-top: 1px solid rgb(80,80,80)">
+					    	<span style="color: rgb(80,80,80); font-size: 12px;">이평가가 도움이되었나요?</span>
+					    </div>
+					    <div class="reup-box" style="background-color: black;">
+					    	<div class="reup re-yes-box">
+					    	<button type="button" class="btn btn-secondary reup"><i class="fas fa-thumbs-up">네</i></button>					    	
+					    	</div>
+					    	<div class="reup re-no-box">
+					    	<button type="button" class="btn btn-secondary redown"><i class="fas fa-thumbs-down">아니요</i></button>
+					    	</div>
+					    </div>
+					    <div style="background-color: black;">
+					    	<span style="color: rgb(80,80,80); font-size: 12px;">??명이 유용하다고함</span>
 					    </div>
 				    </div>
 			    </div>
@@ -525,8 +554,7 @@
 			if(id == ''){
 				alert('추천/비추천 기능은 로그인 해야합니다.')
 				return;
-			}
-			
+			}						
 			var obj = $(this);
 			var sendData = { 'gameNum' : gameNum, 'id' : id, 'up' : up, 'content' : content}
 			$.ajax({
@@ -534,9 +562,56 @@
 				type : 'post',
 				data : sendData,
 				success : function(data){
-					console.log('리뷰가 완료되었습니다.')
+					if(data == 'insert'){
+						alert('리뷰가 완료되었습니다.')
+					}
+					if(data == 'fail'){
+						alert('이미등록되어있습니다')
+					}
 				}
 				
+			})
+		})
+		//댓글에 추천기능
+		$('.btn.reup, .btn.redown').click(function() {
+			var reup = '${relike.reup}';
+			var likeNum = $('input[name=likeNum]').val();
+			
+			if($(this).hasClass('reup')){
+				//추천상태에서 추천버튼을 클릭하면
+				if(reup == 1){
+					reup = 0;
+				//추천상태가 아닌상황에서 추천버튼을 클릭하면
+				}else{
+					reup = 1;
+				}
+			}else{
+				//비추천상태에서 비추천버튼을 클릭하면 
+				if(reup == -1){
+					reup = 0;
+				//비추천상태가 아닌상황에서 비추천버튼을 클릭하면	
+				}else{
+					reup = -1;
+				}
+			}
+			var id = '${user.id}';
+			if(id == ''){
+				alert('추천/비추천 기능은 로그인 해야합니다.')
+				return;
+			}
+			var obj = $(this);
+			var sendData = {'id' : id, 'likeNum' : likeNum,'reup' : reup}
+			$.ajax({
+				url : '<%=request.getContextPath()%>/game/relike',
+				type : 'post',
+				data : sendData,
+				success : function(data){
+					if(reup == 1){
+						alert('추천하였습니다')
+					}else if(reup == -1){
+						alert('비추천하였습니다')
+					}				
+				}
 			})
 		})
     </script>
