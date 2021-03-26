@@ -188,7 +188,9 @@
     	select * from likes where gameNum = #{gameNum} and id = #{id}
 	</select>
 	<select id="selectLikesList" resultType="kr.green.game.vo.LikesVo">
-    	select * from likes where gameNum = #{gameNum} and isdel = 'N' order by likeNum limit #{cri.pageStart}, #{cri.perPageNum};
+    	select * from likes join 
+    	(SELECT *,sum(reup) as sum FROM game.relike group by likeNum order by sum(reup) desc limit 0,20) as c on likes.likeNum = c.likeNum 
+    	where likes.gameNum = #{gameNum} order by sum desc;
 	</select>
 	<insert id="insertRelike" parameterType="kr.green.game.vo.RelikeVo">
 		insert into relike(likeNum,id,reup) values(#{like.likeNum},#{like.id},#{like.reup})

@@ -84,7 +84,7 @@ public interface GameService {
 
 	LikesVo getLikes(Integer gameNum, String id);
 
-	ArrayList<LikesVo> getlikeList(Integer gameNum, Criteria cri);
+	ArrayList<LikesVo> getlikeList(Integer gameNum, RelikeVo relike);
 
 	void insertRelike(RelikeVo like);
 
@@ -95,6 +95,8 @@ public interface GameService {
 	void updateRelike(RelikeVo like);
 
 	ArrayList<LikesVo> getRightLikeList(Integer gameNum);
+
+	
 
 
 	/* RelikeVo getRelike(LikesVo likes); */

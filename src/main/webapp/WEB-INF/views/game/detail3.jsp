@@ -421,8 +421,7 @@
 	  	<div class="row">
 	  		  		
 		    <div class="col-sm-8">
-		    	<c:forEach items="${likeList}" var="like">
-		    				    	
+		    	<c:forEach items="${likeList}" var="like">		    				    	
 		    	<div class="row left-row">
 			    	<div class="col-md-3" style="background-color: black;">
 				    	<div class="reply-id-box">

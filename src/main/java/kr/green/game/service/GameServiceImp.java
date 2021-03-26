@@ -400,12 +400,6 @@ public class GameServiceImp implements GameService{
 	}
 
 	@Override
-	public ArrayList<LikesVo> getlikeList(Integer gameNum,Criteria cri) {
-		ArrayList<LikesVo> likeList = gameDao.selectLikesList(gameNum,cri);
-		return likeList;
-	}
-
-	@Override
 	public void insertRelike(RelikeVo like) {
 		gameDao.insertRelike(like);	
 	}
@@ -430,8 +424,17 @@ public class GameServiceImp implements GameService{
 
 	@Override
 	public ArrayList<LikesVo> getRightLikeList(Integer gameNum) {
-		
-		return gameDao.selectRightLikeList(gameNum);
+		ArrayList<LikesVo> likes = gameDao.selectRightLikeList(gameNum);
+		for(LikesVo tmp : likes) {
+			System.out.println(tmp);
+		}
+		return likes;
+	}
+
+	@Override
+	public ArrayList<LikesVo> getlikeList(Integer gameNum, RelikeVo relike) {
+		ArrayList<LikesVo> getlikeList = gameDao.selectLikesList(gameNum, relike);
+		return getlikeList;
 	}
 
 

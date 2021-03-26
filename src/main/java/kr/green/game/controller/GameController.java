@@ -147,10 +147,7 @@ public class GameController {
 		return mv;
 	}
 	@RequestMapping(value = "/game/detail", method = RequestMethod.GET)
-	public ModelAndView detailGet(ModelAndView mv,Integer gameNum,HttpServletRequest request,String id,Criteria cri) {
-		int displayPageNum = 5;
-		int totalCount = gameService.getTotalCount(cri);
-		PageMaker pm = new PageMaker(cri,displayPageNum,totalCount);
+	public ModelAndView detailGet(ModelAndView mv,Integer gameNum,HttpServletRequest request,String id,RelikeVo relike) {
 		
 		GameVo game = gameService.getgame(gameNum);
 		ArrayList<ImgVo> imglist = gameService.getImglist(game);
@@ -161,8 +158,11 @@ public class GameController {
 		boolean bsk = gameService.getbasket(user,game,false);
 		LikesVo likes = gameService.getLikes(gameNum,id);
 		/* RelikeVo relike = gameService.getRelike(likes); */
-		ArrayList<LikesVo> likeList = gameService.getlikeList(gameNum,cri);
+		ArrayList<LikesVo> likeList = gameService.getlikeList(gameNum,relike);
 		ArrayList<LikesVo> rightlikeList = gameService.getRightLikeList(gameNum);
+		for(LikesVo tmp : rightlikeList) {
+			System.out.println(tmp);
+		}
 		
 		//메인이미지 리스트
 
@@ -308,7 +308,6 @@ public class GameController {
 	@ResponseBody
 	@RequestMapping(value ="/game/relike", method = RequestMethod.POST)
 	public String ReLikePost(RelikeVo like){
-		System.out.println(like);
 		RelikeVo likes = gameService.getRelike(like.getLikeNum(), like.getId());
 		if(likes == null) {
 			gameService.insertRelike(like);
