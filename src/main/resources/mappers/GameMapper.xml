@@ -200,6 +200,9 @@
     	select * from relike where likeNum = #{likeNum} and id = #{id}
 	</select>
 	<update id="updateRelike">
-		update relike set relike.reup = #{like.reup} where relike.likeNum = #{like.likeNum}
+		update relike set relike.reup = #{like.reup} where relike.likeNum = #{like.likeNum} and relike.id = #{like.id}
 	</update>
+	<select id="selectRightLikeList" resultType="kr.green.game.vo.LikesVo">
+    	select * from likes where gameNum = #{gameNum} order by likeNum desc limit 0,8;
+	</select>
   </mapper>

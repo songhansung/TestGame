@@ -239,12 +239,18 @@
 		}
 		.container .reply-up-box{
 			height: 50px;
-			background-color: gray;
+			background-color: rgb(18,18,18);
 			box-sizing: border-box;			
 		}
-		.container .reply-up-box .reply-img-box{
+		.container .reply-up-box .reply-img-box .fa-thumbs-up{
 			width: 40px;
 			background-color: blue;
+			float: left;
+			text-align: center;
+		}
+		.container .reply-up-box .reply-img-box .fa-thumbs-down{
+			width: 40px;
+			background-color: red;
 			float: left;
 			text-align: center;
 		}
@@ -275,7 +281,24 @@
 		.reup-box .re-yes-box{
 			margin-right: 5px;
 		}
-		
+		.reply-right-box{
+			background-color: black;
+			margin-bottom: 10px;
+		}
+		.reply-right-inbox{
+			background-color: rgb(18,18,18);
+		}
+		.reply-right-box .reply-right-img{
+			float: left;
+			text-align: center;
+			margin-right: 10px;
+		}
+		.reup-box.right{
+			height: 34px;
+		}
+		.col-sm-4{
+			padding-right: 0;
+		}
 	</style>
 </head>
 <body>
@@ -399,7 +422,7 @@
 	  		  		
 		    <div class="col-sm-8">
 		    	<c:forEach items="${likeList}" var="like">
-		    	<input type="hidden" value="${like.likeNum}" name="likeNum">			    	
+		    				    	
 		    	<div class="row left-row">
 			    	<div class="col-md-3" style="background-color: black;">
 				    	<div class="reply-id-box">
@@ -438,6 +461,7 @@
 					    	<span style="color: rgb(80,80,80); font-size: 12px;">이평가가 도움이되었나요?</span>
 					    </div>
 					    <div class="reup-box" style="background-color: black;">
+					    	<input type="hidden" value="${like.likeNum}" name="likeNum">
 					    	<div class="reup re-yes-box">
 					    	<button type="button" class="btn btn-secondary reup"><i class="fas fa-thumbs-up">네</i></button>					    	
 					    	</div>
@@ -453,9 +477,45 @@
 			    </c:forEach>			    	
 		    </div>			    	    
 		    <div class="col-sm-4">
+		    	<c:forEach items="${rightlikeList}" var="list">
 		    	<div class="reply-right-box">
-		    		<i class="fas fa-thumbs-up"></i>
+		    		<div class="reply-right-inbox">
+		    			<c:if test="${list.up == 1}">
+		    			<div class="reply-right-img" style="background-color: blue; width: 20px;">
+		    				<i class="fas fa-thumbs-up" style="text-align: center;"></i>
+		    			</div>
+		    			</c:if>
+		    			<c:if test="${list.up == -1}">
+		    			<div class="reply-right-img" style="background-color: red; width: 20px;">
+		    				<i class="fas fa-thumbs-down" style="text-align: center;"></i>
+		    			</div>
+		    			</c:if>
+		    			<div class="reply-right-id">
+		    				<span>${list.id}</span>
+		    			</div>
+		    		</div>
+		    		<div class="reply-right-content">
+		    			<div>
+		    				<span style="font-size: 12px; color: rgb(80,80,80);">게시일시 : ${list.registerDate}</span>
+		    			</div>
+		    			<div>
+		    				<span>${list.content}</span>
+		    			</div>
+		    		</div>
+		    		<div style="background-color: black; border-top: 1px solid rgb(80,80,80);">
+		    			<span style="font-size: 12px; color: rgb(80,80,80);">이평가가 도움이되었나요?</span>
+			    		<div class="reup-box right">			    			
+			    			<input type="hidden" value="${list.likeNum}" name="likeNum">
+					    	<div class="reup re-yes-box">
+					    	<button type="button" class="btn btn-secondary reup"><i class="fas fa-thumbs-up">네</i></button>					    	
+					    	</div>
+					    	<div class="reup re-no-box">
+					    	<button type="button" class="btn btn-secondary redown"><i class="fas fa-thumbs-down">아니요</i></button>
+					    	</div>
+					    </div>
+		    		</div>		    		
 		    	</div>
+		    	</c:forEach>
 		    </div>		             
 	  	</div>
 	</div>
@@ -576,6 +636,7 @@
 		$('.btn.reup, .btn.redown').click(function() {
 			var reup = '${relike.reup}';
 			var likeNum = $('input[name=likeNum]').val();
+			var likeNum = $(this).parents('.reup-box').find('input[name=likeNum]').val();
 			
 			if($(this).hasClass('reup')){
 				//추천상태에서 추천버튼을 클릭하면

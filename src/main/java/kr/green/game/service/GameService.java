@@ -94,6 +94,9 @@ public interface GameService {
 
 	void updateRelike(RelikeVo like);
 
+	ArrayList<LikesVo> getRightLikeList(Integer gameNum);
+
+
 	/* RelikeVo getRelike(LikesVo likes); */
 
 

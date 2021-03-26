@@ -162,6 +162,8 @@ public class GameController {
 		LikesVo likes = gameService.getLikes(gameNum,id);
 		/* RelikeVo relike = gameService.getRelike(likes); */
 		ArrayList<LikesVo> likeList = gameService.getlikeList(gameNum,cri);
+		ArrayList<LikesVo> rightlikeList = gameService.getRightLikeList(gameNum);
+		
 		//메인이미지 리스트
 
 		mv.addObject("Mlist", Mlist);
@@ -174,7 +176,7 @@ public class GameController {
 		mv.addObject("user",user);
 		mv.addObject("likes",likes);
 		mv.addObject("likeList",likeList);
-
+		mv.addObject("rightlikeList",rightlikeList);
 		/* System.out.println(buylist); */
 		mv.setViewName("/game/detail3");
 		return mv;
@@ -306,6 +308,7 @@ public class GameController {
 	@ResponseBody
 	@RequestMapping(value ="/game/relike", method = RequestMethod.POST)
 	public String ReLikePost(RelikeVo like){
+		System.out.println(like);
 		RelikeVo likes = gameService.getRelike(like.getLikeNum(), like.getId());
 		if(likes == null) {
 			gameService.insertRelike(like);

@@ -104,6 +104,8 @@ public interface GameDao {
 
 	void updateRelike(@Param("like")RelikeVo like);
 
+	ArrayList<LikesVo> selectRightLikeList(@Param("gameNum") Integer gameNum);
+
 	/* RelikeVo selectRelike(@Param("likes")LikesVo likes); */
 
 
