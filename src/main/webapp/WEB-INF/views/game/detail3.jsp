@@ -226,8 +226,8 @@
 			width: 70%;
 		    margin-left: auto;
 		    margin-right: auto;
-		    
 		    color: white;
+		    margin-top: 12px;
 		}
 		.container .row.left-row{
 			height: 100%;
@@ -298,6 +298,22 @@
 		}
 		.col-sm-4{
 			padding-right: 0;
+		}
+		.container-row-title{
+			width: 70%;
+			margin-left: auto;
+    		margin-right: auto;
+    		margin-top: 8px;
+		}
+		.col-md-3{
+			padding-left: 0;
+		}
+		.col-md-8{
+			position: relative;
+		}
+		.row.left-row.title{
+			margin-bottom: 0;
+			font-size: 16px;
 		}
 	</style>
 </head>
@@ -416,11 +432,17 @@
 		</div>		
 		</form>		
 	</div>
-	</c:if>	
-	<div class="container" style="margin-top:16px">
-	  	<div class="row">
-	  		  		
+	</c:if>
+	<!-- <div class="container-row-title">
+	<div style="float: left;"></div>
+	<div><span>최근 게시 됨</span></div>
+	</div> -->
+	<div class="container" style="max-width: 70% !important;">
+	  	<div class="row">	  		  		
 		    <div class="col-sm-8">
+		    	<div class="row left-row title">
+		    		<span>가장유용한평가</span>
+		    	</div>
 		    	<c:forEach items="${likeList}" var="like">		    				    	
 		    	<div class="row left-row">
 			    	<div class="col-md-3" style="background-color: black;">
@@ -476,6 +498,9 @@
 			    </c:forEach>			    	
 		    </div>			    	    
 		    <div class="col-sm-4">
+		    	<div class="title">
+		    		<span style="font-size: 16px;">최근순</span>
+		    	</div>
 		    	<c:forEach items="${rightlikeList}" var="list">
 		    	<div class="reply-right-box">
 		    		<div class="reply-right-inbox">
