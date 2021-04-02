@@ -160,9 +160,6 @@ public class GameController {
 		/* RelikeVo relike = gameService.getRelike(likes); */
 		ArrayList<LikesVo> likeList = gameService.getlikeList(gameNum,relike);
 		ArrayList<LikesVo> rightlikeList = gameService.getRightLikeList(gameNum);
-		for(LikesVo tmp : rightlikeList) {
-			System.out.println(tmp);
-		}
 		
 		//메인이미지 리스트
 

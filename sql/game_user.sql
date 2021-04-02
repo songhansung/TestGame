@@ -42,7 +42,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('1234','유관순','$2a$10$ls0btZ4dD2v1KBBSh2E8HObMg/N5UxRa85ATxxa9eYOJvBohRsdu.','gksgk@naver.com',1055551111,85000,1,NULL,'N'),('123456','송한성','$2a$10$BvuvF/j/KQY7oOv2vRpNDO0HVlbdWqVhlLHdBGp76f0f9IlPelSTq','gkstjd6688@naver.com',1052730904,100000,1,NULL,'N'),('gkstjd3540','송한성','$2a$10$2e04WccNSQNu0sesFTsr1OIRGqgBonsxHTFxpjR.4UEbioxS/deni','151651',151515,33700,1,NULL,'N'),('gkstjd6688','송한성','$2a$10$6m4tgW91p1u0rVxznovh0ODihvWVK8XD0TMg1rZF8bVdOMHnBiYW6','gkstjd6688@naver.com',1052730904,100000,1,NULL,'N'),('thdgkstjd','이순신','$2a$10$VBOOtJtDWbxKS7/oEPO57.mOM89Qbcvq01Fx/cueXAO3/BuNq68Tm','gkstjd6688@naver.com',1052730904,12970,10,NULL,'N');
+INSERT INTO `user` VALUES ('1234','유관순','$2a$10$ls0btZ4dD2v1KBBSh2E8HObMg/N5UxRa85ATxxa9eYOJvBohRsdu.','gksgk@naver.com',1055551111,85000,1,NULL,'N'),('123456','송한성','$2a$10$BvuvF/j/KQY7oOv2vRpNDO0HVlbdWqVhlLHdBGp76f0f9IlPelSTq','gkstjd6688@naver.com',1052730904,100000,1,NULL,'N'),('gkstjd3540','송한성','$2a$10$2e04WccNSQNu0sesFTsr1OIRGqgBonsxHTFxpjR.4UEbioxS/deni','151651',151515,5200,1,NULL,'N'),('gkstjd6688','송한성','$2a$10$6m4tgW91p1u0rVxznovh0ODihvWVK8XD0TMg1rZF8bVdOMHnBiYW6','gkstjd6688@naver.com',1052730904,100000,1,NULL,'N'),('thdgkstjd','이순신','$2a$10$VBOOtJtDWbxKS7/oEPO57.mOM89Qbcvq01Fx/cueXAO3/BuNq68Tm','gkstjd6688@naver.com',1052730904,12970,10,NULL,'N');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-03-26 17:35:53
+-- Dump completed on 2021-04-02 13:55:53

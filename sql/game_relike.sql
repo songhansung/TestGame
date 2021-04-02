@@ -32,7 +32,7 @@ CREATE TABLE `relike` (
   KEY `id5_idx` (`id`),
   CONSTRAINT `id5` FOREIGN KEY (`id`) REFERENCES `user` (`id`),
   CONSTRAINT `like` FOREIGN KEY (`likeNum`) REFERENCES `likes` (`likeNum`)
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `relike` (
 
 LOCK TABLES `relike` WRITE;
 /*!40000 ALTER TABLE `relike` DISABLE KEYS */;
-INSERT INTO `relike` VALUES (8,6,'thdgkstjd',1),(9,6,'gkstjd3540',1),(13,19,'thdgkstjd',1),(16,6,'1234',1),(17,6,'gkstjd6688',-1),(18,19,'gkstjd6688',-1),(19,20,'gkstjd6688',-1),(32,6,'thdgkstjd',1),(33,6,'thdgkstjd',1),(34,6,'thdgkstjd',1),(35,6,'thdgkstjd',1),(36,6,'thdgkstjd',1),(37,6,'thdgkstjd',1),(38,6,'thdgkstjd',1),(39,6,'thdgkstjd',1),(40,6,'thdgkstjd',1),(41,6,'thdgkstjd',1),(51,6,'gkstjd6688',1),(52,6,'gkstjd6688',1),(53,6,'gkstjd6688',1),(54,6,'gkstjd6688',1),(55,6,'gkstjd6688',1),(56,6,'gkstjd6688',1),(57,6,'gkstjd6688',1),(58,6,'gkstjd6688',1),(59,6,'gkstjd6688',1),(60,6,'gkstjd6688',1),(61,20,'thdgkstjd',1),(62,20,'gkstjd3540',1);
+INSERT INTO `relike` VALUES (8,6,'thdgkstjd',1),(9,6,'gkstjd3540',1),(13,19,'thdgkstjd',1),(16,6,'1234',1),(17,6,'gkstjd6688',-1),(18,19,'gkstjd6688',-1),(19,20,'gkstjd6688',-1),(32,6,'thdgkstjd',1),(33,6,'thdgkstjd',1),(34,6,'thdgkstjd',1),(35,6,'thdgkstjd',1),(36,6,'thdgkstjd',1),(37,6,'thdgkstjd',1),(38,6,'thdgkstjd',1),(39,6,'thdgkstjd',1),(40,6,'thdgkstjd',1),(41,6,'thdgkstjd',1),(51,6,'gkstjd6688',1),(52,6,'gkstjd6688',1),(53,6,'gkstjd6688',1),(54,6,'gkstjd6688',1),(55,6,'gkstjd6688',1),(56,6,'gkstjd6688',1),(57,6,'gkstjd6688',1),(58,6,'gkstjd6688',1),(59,6,'gkstjd6688',1),(60,6,'gkstjd6688',1),(61,20,'thdgkstjd',1),(62,20,'gkstjd3540',1),(63,21,'thdgkstjd',-1),(64,26,'gkstjd3540',1);
 /*!40000 ALTER TABLE `relike` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-03-26 17:35:53
+-- Dump completed on 2021-04-02 13:55:53

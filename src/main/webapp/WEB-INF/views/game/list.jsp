@@ -111,6 +111,9 @@
         	color: white;
         	text-align: center;
         }
+        ul{
+        	margin-bottom: 0;
+        }
 	</style>
 </head>
 <body>
@@ -172,7 +175,7 @@
             	</c:forEach>              
             </div>
 		</div>
-		<%-- <ul class="pagination justify-content-center">
+		<ul class="pagination justify-content-center">
 		  	<c:if test="${pm.prev}">
 		    	<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/game/list?page=${pm.startPage-1}&type=${pm.criteria.type}&search=${pm.criteria.search}">이전</a></li>
 		    </c:if>
@@ -182,7 +185,7 @@
 		    <c:if test="${pm.next}">
 		    	<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/game/list?page=${pm.endPage+1}&type=${pm.criteria.type}&search=${pm.criteria.search}">다음</a></li>
 		    </c:if>
-	  	</ul> --%>
+	  	</ul>
 	</div>
 	<script type="text/javascript">
 	function clearInput(){

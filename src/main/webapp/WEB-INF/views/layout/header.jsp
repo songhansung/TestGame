@@ -203,7 +203,7 @@
 		                    </div>
 		                </div>
 		                <div class="login-box-img">
-		                    <a href="">3252</a>
+		                    
 		                </div>
 		            </div>
 	            </c:if>          

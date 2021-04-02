@@ -41,7 +41,7 @@ CREATE TABLE `basket` (
 
 LOCK TABLES `basket` WRITE;
 /*!40000 ALTER TABLE `basket` DISABLE KEYS */;
-INSERT INTO `basket` VALUES (42,17,'gkstjd3540','N'),(61,25,'gkstjd3540','Y'),(62,27,'gkstjd3540','N'),(66,14,'gkstjd3540','N'),(74,26,'gkstjd3540','N'),(95,43,'thdgkstjd','N'),(96,30,'thdgkstjd','N');
+INSERT INTO `basket` VALUES (42,17,'gkstjd3540','N'),(61,25,'gkstjd3540','Y'),(62,27,'gkstjd3540','N'),(66,14,'gkstjd3540','N'),(74,26,'gkstjd3540','Y'),(95,43,'thdgkstjd','Y'),(96,30,'thdgkstjd','N');
 /*!40000 ALTER TABLE `basket` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-03-26 17:35:52
+-- Dump completed on 2021-04-02 13:55:52

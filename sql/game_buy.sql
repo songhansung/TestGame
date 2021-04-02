@@ -33,7 +33,7 @@ CREATE TABLE `buy` (
   KEY `id2_idx` (`id`),
   CONSTRAINT `gameNum2` FOREIGN KEY (`gameNum`) REFERENCES `game` (`gameNum`),
   CONSTRAINT `id2` FOREIGN KEY (`id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=110 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=112 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `buy` (
 
 LOCK TABLES `buy` WRITE;
 /*!40000 ALTER TABLE `buy` DISABLE KEYS */;
-INSERT INTO `buy` VALUES (103,25,'thdgkstjd','Y','2021-03-19 10:01:53'),(104,29,'thdgkstjd','Y','2021-03-19 10:44:28'),(105,26,'gkstjd3540','Y','2021-03-19 11:39:34'),(106,31,'thdgkstjd','Y','2021-03-24 15:09:37'),(107,17,'thdgkstjd','Y','2021-03-25 15:02:12'),(108,43,'thdgkstjd','Y','2021-03-25 15:23:49'),(109,43,'1234','Y','2021-03-26 14:05:35');
+INSERT INTO `buy` VALUES (103,25,'thdgkstjd','Y','2021-03-19 10:01:53'),(104,29,'thdgkstjd','Y','2021-03-19 10:44:28'),(105,26,'gkstjd3540','Y','2021-03-19 11:39:34'),(106,31,'thdgkstjd','Y','2021-03-24 15:09:37'),(107,17,'thdgkstjd','Y','2021-03-25 15:02:12'),(108,43,'thdgkstjd','Y','2021-03-25 15:23:49'),(109,43,'1234','Y','2021-03-26 14:05:35'),(110,25,'gkstjd3540','Y','2021-04-02 10:07:09'),(111,30,'gkstjd3540','Y','2021-04-02 10:29:56');
 /*!40000 ALTER TABLE `buy` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-03-26 17:35:52
+-- Dump completed on 2021-04-02 13:55:52

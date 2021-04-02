@@ -494,8 +494,13 @@
 					    	<span style="color: rgb(80,80,80); font-size: 12px;">??명이 유용하다고함</span>
 					    </div>
 				    </div>
+			    </div>			    
+			    </c:forEach>
+			    <c:if test="${likeList.size() == 0}">
+			    <div style="text-align: center;">
+			    	<span>----- 유용한 평가가없습니다 -----</span>
 			    </div>
-			    </c:forEach>			    	
+			    </c:if>			    	
 		    </div>			    	    
 		    <div class="col-sm-4">
 		    	<div class="title">
@@ -540,6 +545,11 @@
 		    		</div>		    		
 		    	</div>
 		    	</c:forEach>
+		    	<c:if test="${rightlikeList.size() == 0}">
+			    <div style="text-align: center;">
+			    	<span>----- 등록된 평가 가 없습니다 -----</span>
+			    </div>
+			    </c:if>	
 		    </div>		             
 	  	</div>
 	</div>
@@ -552,7 +562,6 @@
 
     		if(count >= 4)
         		count = 4;		
-
     	 		
     	var galleryThumbs = new Swiper('.gallery-thumbs', {
         	spaceBetween: 10,
@@ -638,7 +647,15 @@
 			if(id == ''){
 				alert('추천/비추천 기능은 로그인 해야합니다.')
 				return;
-			}						
+			}
+			if(content == ''){
+				alert('내용을쓰세요')
+				return;
+			}
+			if($('input[name=up]:checked').length == 0){
+				alert('추천/비추천 둘중한개를 클릭하세요')
+				return;
+			}			
 			var obj = $(this);
 			var sendData = { 'gameNum' : gameNum, 'id' : id, 'up' : up, 'content' : content}
 			$.ajax({

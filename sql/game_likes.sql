@@ -35,7 +35,7 @@ CREATE TABLE `likes` (
   KEY `id4_idx` (`id`),
   CONSTRAINT `gameNum4` FOREIGN KEY (`gameNum`) REFERENCES `game` (`gameNum`),
   CONSTRAINT `id4` FOREIGN KEY (`id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `likes` (
 
 LOCK TABLES `likes` WRITE;
 /*!40000 ALTER TABLE `likes` DISABLE KEYS */;
-INSERT INTO `likes` VALUES (6,43,'thdgkstjd',1,'1','2021-03-25 14:48:01','N'),(7,23,'thdgkstjd',1,'1','2021-03-25 14:48:08','N'),(9,17,'thdgkstjd',1,'좋아연','2021-03-25 15:17:54','N'),(19,43,'gkstjd3540',1,'235235','2021-03-26 12:35:08','N'),(20,43,'1234',-1,'별로에요','2021-03-26 14:05:42','N');
+INSERT INTO `likes` VALUES (6,43,'thdgkstjd',1,'1','2021-03-25 14:48:01','N'),(7,23,'thdgkstjd',1,'1','2021-03-25 14:48:08','N'),(9,17,'thdgkstjd',1,'좋아연','2021-03-25 15:17:54','N'),(19,43,'gkstjd3540',1,'235235','2021-03-26 12:35:08','N'),(20,43,'1234',-1,'별로에요','2021-03-26 14:05:42','N'),(21,25,'thdgkstjd',1,'이게임 강추 재밌습니다','2021-04-02 09:55:50','N'),(26,25,'gkstjd3540',1,'23424','2021-04-02 10:22:21','N'),(27,30,'gkstjd3540',-1,'123213','2021-04-02 10:30:03','N');
 /*!40000 ALTER TABLE `likes` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-03-26 17:35:53
+-- Dump completed on 2021-04-02 13:55:53

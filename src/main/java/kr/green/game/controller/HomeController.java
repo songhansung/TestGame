@@ -48,8 +48,6 @@ public class HomeController {
 		ArrayList<ImgVo> mimg = gameService.getImgmslist(list);
 		//메인 서브 슬라이드
 		ArrayList<ImgVo> msubimg = gameService.getImgmsSublist(list);
-
-		/* ArrayList<DiscountVo> dis = gameService.getDisList(list); */
 		//메인 슬라이드
 		ArrayList<ImgSlideVo> imgSlideList = gameService.getImgSlideList(mimg);
 		//메인 서브 슬라이드
@@ -59,20 +57,11 @@ public class HomeController {
 		ArrayList<ImgSlideVo> sublist = gameService.seletDistcountList(12);
 		ArrayList<ImgSlideVo> tapmainlist = gameService.getTapmainlist(6);
 		ArrayList<ImgSlideVo> tapsublist = gameService.getTapsublist(50);
-		/*
-		 * for(ImgVo tmp : tapsublist) { System.out.println(tmp); }
-		 */
-//		ArrayList<ImgSlideVo> imgsubSlideList = gameService.getImgsubSlideList(sublist);
-		
+
 		mv.setViewName("/main/home");
 		mv.addObject("msimg",imgSlideList);
-		/*
-		 * System.out.println(imgSlideList); System.out.println(dis);
-		 */
-//		mv.addObject("subimg",imgsubSlideList);
 		mv.addObject("mimg",mimg);
 		mv.addObject("msubimg",imgSlidesubList);
-		/* mv.addObject("list",list); */
 		mv.addObject("sublist",sublist);
 		mv.addObject("tapmainlist",tapmainlist);
 		mv.addObject("tapsublist",tapsublist);
