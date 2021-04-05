@@ -149,7 +149,9 @@ public class HomeController {
 		
 		userService.userMoney(amount,user);
 		sys = userService.setAmount(amount,user);
+		
 		/* ArrayList<AmountVo> amountlist = userService.setAmount(amount,user); */
+		/* 세션에 amount 정보를 같이보내줘야함*/
 		request.getSession().setAttribute("user", user);
 		
 		return "success";
